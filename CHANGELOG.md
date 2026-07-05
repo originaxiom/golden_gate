@@ -27,6 +27,12 @@ history is in `PROGRESS_LOG.md`.
 - **Governance** — `GOVERNANCE.md` (exact/numeric honesty lock, result labels, CI gates,
   method-bug guards), `PROGRESS_LOG.md` (append-only), this `CHANGELOG.md`.
 
+### Added
+- **SVG braid diagrams** — `demo.visualize.braid_diagram(..., fmt="svg")` renders a
+  standalone, theme-aware SVG with permuting strands and proper over/under crossings.
+- **`docs/EXAMPLES.md`** — three worked examples (compile a gate, golden-gate properties,
+  verify the exact Jones value).
+
 ### Changed
 - **Multi-agent audit hardening.** Fixed stale `Jones = -phi` docstrings (the corrected value
   is `1 - sqrt5`); reframed the `-phi` bracket factor honestly (`bracket_convention_factor`,

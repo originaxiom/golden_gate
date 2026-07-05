@@ -96,3 +96,20 @@ findings addressed:
 Verified: fast tier 86 passed / 4 skipped (~29 s); full `OA_SLOW=1` suite 90 passed, no
 dps leak; coverage 92% overall (`compiler`/`jones`/`knots`/`visualize`/`braiding` 100%,
 `cyclo` 97%); all discipline gates exit 0.
+
+## 2026-07-05 — Review follow-ups (SVG renderer, examples)
+
+Acting on a peer review's polish suggestions:
+
+- **SVG braid renderer** — `demo/visualize.braid_diagram(..., fmt="svg")` now returns a
+  standalone, theme-aware SVG with strands that actually permute through each crossing
+  (over/under gaps by exact cubic-Bezier subdivision; gold over-strand). Tested for
+  well-formedness and crossing count; `n_strands` validated.
+- **`docs/EXAMPLES.md`** — three copy-pasteable worked examples (compile a Hadamard;
+  the golden gate's properties + ASCII/SVG diagrams; verify `Jones = 1-sqrt5` exactly), all
+  verified to run as written (Hadamard → 11 crossings at fidelity 0.99).
+- **GitHub topics** — flagged as an owner action (the integration cannot set repo topics):
+  `quantum-computing`, `topological-quantum-computation`, `fibonacci-anyons`, `knot-theory`,
+  `braid-group`.
+
+Suite 88 passed / 4 skipped; gates exit 0.
