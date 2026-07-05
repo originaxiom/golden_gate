@@ -105,9 +105,17 @@ def gate_license_present():
     return (ok, "MIT LICENSE present" if ok else "LICENSE missing or not MIT")
 
 
+def gate_charvar_theta_lift():
+    """Banked identity: the theta-lift Weil matrix at seed 3 has order 6 exactly."""
+    from . import charvar as CV
+    order, _ = CV.matrix_order(CV.build_theta_W(3))
+    return (order == 6, f"theta-lift seed-3 order = {order} (expect 6)")
+
+
 GATES = {
     "cyclo-radicals": gate_cyclo_radicals,
     "cyclo-weil-unitary": gate_cyclo_weil_unitary,
+    "charvar-theta-lift": gate_charvar_theta_lift,
     "no-forbidden-tokens": gate_no_forbidden_tokens,
     "license-present": gate_license_present,
 }
