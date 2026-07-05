@@ -11,8 +11,8 @@ def test_all_gates_pass():
 
 def test_expected_gates_present():
     assert set(gates.GATES) >= {
-        "cyclo-radicals", "cyclo-weil-unitary",
-        "no-forbidden-tokens", "license-present",
+        "cyclo-radicals", "cyclo-weil-unitary", "charvar-theta-lift",
+        "no-forbidden-tokens", "license-present", "governance-docs",
     }
 
 

@@ -105,6 +105,14 @@ def gate_license_present():
     return (ok, "MIT LICENSE present" if ok else "LICENSE missing or not MIT")
 
 
+def gate_governance_docs_present():
+    """Hygiene: the governance / log / changelog docs exist (GOVERNANCE.md sec.8)."""
+    required = ["GOVERNANCE.md", "PROGRESS_LOG.md", "CHANGELOG.md"]
+    missing = [d for d in required if not (ROOT / d).exists()]
+    return (not missing, "governance docs present" if not missing
+            else f"missing: {missing}")
+
+
 def gate_charvar_theta_lift():
     """Banked identity: the theta-lift Weil matrix at seed 3 has order 6 exactly."""
     from . import charvar as CV
@@ -118,6 +126,7 @@ GATES = {
     "charvar-theta-lift": gate_charvar_theta_lift,
     "no-forbidden-tokens": gate_no_forbidden_tokens,
     "license-present": gate_license_present,
+    "governance-docs": gate_governance_docs_present,
 }
 
 
