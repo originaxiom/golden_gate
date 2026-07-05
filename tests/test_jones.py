@@ -22,16 +22,24 @@ def test_figure_eight_is_NOT_minus_phi():
     assert J.jones_at_fibonacci("figure_eight") != minus_phi
 
 
-def test_kauffman_normalization_recovers_minus_phi():
-    # standard_value * (phi^2 / 2) = -phi, exactly
+def test_bracket_convention_factor_recovers_minus_phi():
+    # standard_value * (phi^2 / 2) = -phi, exactly (an algebraic identity)
     v = J.jones_at_fibonacci("figure_eight")
-    norm = J.kauffman_bracket_normalization()
+    norm = J.bracket_convention_factor()
     minus_phi = C.scal(Fr(-1), C.add(C.scal(Fr(1, 2), C.ONE), C.scal(Fr(1, 2), C.SQRT5)))
     assert C.mul(v, norm) == minus_phi
 
 
 def test_trefoil_differs_from_figure_eight():
     assert J.jones_at_fibonacci("trefoil") != J.jones_at_fibonacci("figure_eight")
+
+
+def test_jones_symbolic():
+    import sympy as sp
+    t = sp.symbols("t")
+    expr = J.jones_symbolic("figure_eight")
+    # V(4_1;t) = t^2 - t + 1 - t^-1 + t^-2
+    assert sp.simplify(expr - (t**2 - t + 1 - 1 / t + 1 / t**2)) == 0
 
 
 def test_unknown_knot_raises():

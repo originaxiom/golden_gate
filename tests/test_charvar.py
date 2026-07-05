@@ -29,6 +29,18 @@ def test_theta_lift_smallest_seed():
     assert CV.single_controls(powers)
 
 
+def test_charvar_gates_negative_control():
+    # the sanity gates must be able to FAIL: a corrupted power cache is rejected.
+    W = CV.build_theta_W(3)
+    _, powers = CV.matrix_order(W)
+    bad = [[row[:] for row in M] for M in powers]
+    bad[1][0][0] = CV.C.add(bad[1][0][0], CV.C.ONE)   # perturb one entry
+    assert not CV.projector_gates(bad)
+    assert not CV.single_controls(bad)
+    # a wrong-length cache also fails the projector sum
+    assert not CV.projector_gates(powers[:-1])
+
+
 def test_solve_model_separable():
     X3, X5, X4 = {0: Fr(2), 1: Fr(3)}, {0: Fr(1), 1: Fr(5)}, {0: Fr(1), 1: Fr(7)}
     recs = [(a, b, c, X3[a] * X5[b] * X4[c])

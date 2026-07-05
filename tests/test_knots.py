@@ -24,6 +24,13 @@ def test_all_named_knot_gates_are_unitary():
         assert np.allclose(U @ U.conj().T, np.eye(2)), name
 
 
+def test_jones_value_wrapper():
+    from golden_gate.core import cyclo as C
+    from golden_gate.demo import jones as J
+    assert K.jones_value("figure_eight") == J.jones_at_fibonacci("figure_eight")
+    assert K.jones_value("figure_eight") == C.sub(C.ONE, C.SQRT5)
+
+
 def test_unknown_knot_raises():
     import pytest
     with pytest.raises(KeyError):

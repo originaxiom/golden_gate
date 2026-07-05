@@ -68,6 +68,10 @@ def gate_properties(U) -> dict:
     angle = 2.0 * np.arccos(np.clip(abs(np.real(tr_su2)) / 2.0, 0.0, 1.0))
     # axis from Usu2 = cos(theta/2) I - i sin(theta/2) (n.sigma): the Pauli
     # coefficients are -i sin(theta/2) n_k, so n_k = -Im(coeff)/sin(theta/2).
+    # NOTE: the axis SIGN is convention-dependent -- it is read from Usu2 = U/sqrt(det),
+    # and the sqrt(det) branch is arbitrary, so (angle, axis) fix the rotation only up to
+    # the simultaneous flip (angle, axis) -> (2pi-angle, -axis). angle is folded to [0,pi]
+    # via abs() above; the axis is returned unreconciled with that fold.
     coeffs = np.array([np.trace(P.conj().T @ Usu2) / 2 for P in (_X, _Y, _Z)])
     axis_vec = np.imag(coeffs)
     norm = np.linalg.norm(axis_vec)
@@ -89,6 +93,9 @@ def gate_fidelity(U, V) -> float:
     return float(abs(np.trace(U.conj().T @ V)) ** 2 / 4.0)
 
 
-def trace_distance(U, V) -> float:
-    """A simple gate distance: ``1 - fidelity(U, V)`` in ``[0, 1]``."""
+def infidelity(U, V) -> float:
+    """``1 - gate_fidelity(U, V)`` in ``[0, 1]`` -- the compilation error measure.
+
+    (This is the process infidelity, NOT the trace distance ``(1/2)||U-V||_1``.)
+    """
     return 1.0 - gate_fidelity(U, V)

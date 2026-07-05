@@ -18,11 +18,18 @@ value"; that is the *unnormalized Kauffman bracket* normalization, related by
     -phi = (1 - sqrt5) * phi**2 / 2 .
 
 ``jones_at_fibonacci`` returns the **standard normalized** value ``1 - sqrt5``;
-``kauffman_bracket_normalization`` documents the factor for anyone who needs the
-bracket convention.
+``bracket_convention_factor`` records the algebraic factor ``phi**2/2`` relating it
+to the brief's ``-phi`` (stated as an identity, not derived from a canonical
+bracket normalization -- we do not claim ``-phi`` is itself a standard invariant).
 
-Standard Jones polynomials below are textbook (Lickorish, *An Introduction to
-Knot Theory*; the Knot Atlas). Chirality: the right-handed representatives.
+Standard Jones polynomials below are the textbook Knot Atlas tabulations
+(Lickorish, *An Introduction to Knot Theory*). Chirality note: the chiral knots
+here (trefoil, cinquefoil) are tabulated in one handedness, while the braid words
+in ``golden_gate.demo.knots`` use positive crossings (``sigma1^3``, ``sigma1^5``),
+which realize the *mirror* handedness; at ``t = zeta_5`` a mirror sends the value
+to its complex conjugate. The figure-eight is amphichiral, so it is unaffected --
+and it is the only knot whose exact value (``1 - sqrt5``, real) this library
+relies on.
 """
 
 from fractions import Fraction as Fr
@@ -71,11 +78,14 @@ def jones_at_fibonacci(knot_name):
     return acc
 
 
-def kauffman_bracket_normalization():
-    """The factor relating the standard Jones value to the brief's bracket value.
+def bracket_convention_factor():
+    """The algebraic factor between the standard Jones value and the brief's ``-phi``.
 
-    ``bracket_value = standard_value * phi**2 / 2`` (so the figure-eight's
-    ``1 - sqrt5`` becomes ``-phi``). Returned as an exact ``core.cyclo`` element.
+    The standard normalized Jones is ``1 - sqrt5``; the brief quotes ``-phi``. They
+    differ by exactly ``phi**2 / 2``:  ``-phi = (1 - sqrt5) * phi**2/2``. This is
+    stated as an algebraic identity, NOT derived here from a specific Kauffman-bracket
+    normalization -- we make no claim that ``-phi`` is a canonical knot invariant.
+    Returned as an exact ``core.cyclo`` element.
     """
     phi = C.add(C.scal(Fr(1, 2), C.ONE), C.scal(Fr(1, 2), C.SQRT5))
     phi2 = C.mul(phi, phi)

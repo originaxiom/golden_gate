@@ -100,36 +100,42 @@ def brute_force(target, max_length=14, tolerance=1e-3):
 
 
 def golden(target, max_power=40, tolerance=1e-3, refine=6):
-    """Approximate ``target`` by a power of the golden gate, then a short
-    brute-force refinement of the residual."""
+    """Approximate ``target`` by a power of the golden gate G, then a short
+    brute-force refinement of the residual.
+
+    SCOPE (honest): this is effective mainly when ``target`` is at or near a power
+    of the golden gate -- it then returns that power directly. For a *general*
+    target it is not competitive with ``brute_force``: the fidelity-maximizing
+    power ``G^n`` is usually not the "true" one, so the residual is not short and
+    the refinement (bounded to ``refine`` crossings) rarely reaches ``tolerance``.
+    It never returns a worse result than the best pure power. Use ``brute_force``
+    for general single-qubit targets.
+    """
+    from .gates import golden_gate_word
     G = golden_gate()
+    gword = golden_gate_word()
     best = _result([], target)
-    word_word = golden_word()
     U = np.eye(2, dtype=complex)
     acc_word = []
+    best_power = best
     for n in range(1, max_power + 1):
         U = U @ G
-        acc_word = acc_word + word_word
+        acc_word = acc_word + gword
         fid = gate_fidelity(U, target)
         if fid > best.fidelity:
             best = CompilationResult(word=list(acc_word), gate=U, fidelity=fid,
                                      length=len(acc_word), error=1.0 - fid)
+            best_power = best
             if fid >= 1 - tolerance:
                 return best
-    # refine: brute-force the residual target' = target * U_best^-1 to `refine` length
-    if best.fidelity < 1 - tolerance and best.word:
-        residual = target @ np.linalg.inv(best.gate)
+    # refine: brute-force the residual target' = target * U_best^-1 up to `refine`
+    if best.fidelity < 1 - tolerance and best_power.word:
+        residual = target @ np.linalg.inv(best_power.gate)
         r = brute_force(residual, max_length=refine, tolerance=tolerance)
-        combined = r.word + best.word
-        cand = _result(combined, target)
+        cand = _result(r.word + best_power.word, target)
         if cand.fidelity > best.fidelity:
             best = cand
     return best
-
-
-def golden_word():
-    from .gates import golden_gate_word
-    return golden_gate_word()
 
 
 _METHODS = {"brute_force": brute_force, "golden": golden}
@@ -141,12 +147,15 @@ def compile_gate(target, max_length=14, tolerance=1e-3, method="brute_force"):
     Parameters
     ----------
     target : np.ndarray        2x2 unitary to approximate.
-    max_length : int           max braid word length (brute_force).
+    max_length : int           max braid word length. For ``brute_force`` this is
+                               the search depth; for ``golden`` it bounds the
+                               residual-refinement search.
     tolerance : float          required error ``1 - fidelity``.
-    method : str               'brute_force' or 'golden'.
+    method : str               'brute_force' (general workhorse) or 'golden'
+                               (special-case; best only near powers of G).
     """
     if method not in _METHODS:
         raise ValueError(f"method must be one of {sorted(_METHODS)}, got {method!r}")
     if method == "brute_force":
         return brute_force(target, max_length=max_length, tolerance=tolerance)
-    return golden(target, tolerance=tolerance)
+    return golden(target, tolerance=tolerance, refine=max_length)

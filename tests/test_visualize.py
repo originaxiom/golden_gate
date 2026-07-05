@@ -34,3 +34,9 @@ def test_bad_format_rejected():
     import pytest
     with pytest.raises(ValueError):
         V.braid_diagram([(1, 1)], fmt="svg")
+
+
+def test_too_few_strands_rejected():
+    import pytest
+    with pytest.raises(ValueError):
+        V.braid_diagram([(2, 1)], n_strands=2)   # sigma_2 needs >= 3 strands

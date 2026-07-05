@@ -99,7 +99,12 @@ def pair_smatrix(pow1, pow2):
 
 
 def single_controls(powers):
-    """Single-seed control: every ``tr(Par P_a)`` has zero sqrt-3 and sqrt-15 parts."""
+    """Single-seed control: every ``tr(Par P_a)`` has zero sqrt-3 and sqrt-15 parts.
+
+    A NECESSARY-condition sanity check, not a sufficient validator: degenerate
+    inputs (e.g. all-identity powers) can pass it. It exists to catch a genuine
+    seam leaking into a single-seed readout.
+    """
     o = len(powers)
     z = C.CONDUCTOR // o
     for a in range(o):
@@ -119,7 +124,12 @@ def single_controls(powers):
 
 
 def projector_gates(powers):
-    """Sanity gates on the DFT eigenprojectors: ``sum_a P_a = I`` and ``P_0^2 = P_0``."""
+    """Sanity gates on the DFT eigenprojectors: ``sum_a P_a = I`` and ``P_0^2 = P_0``.
+
+    A NECESSARY-condition sanity check, not a sufficient validator: degenerate
+    inputs (e.g. all-identity powers) satisfy both conditions vacuously. It catches
+    a genuinely broken power cache (wrong order, corrupted entries).
+    """
     o = len(powers)
     z = C.CONDUCTOR // o
     ident = C.mat_identity(N)

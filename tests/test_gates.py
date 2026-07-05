@@ -33,3 +33,12 @@ def test_token_gate_is_non_vacuous():
     ok, detail = gates.gate_no_forbidden_tokens()
     assert ok, detail
     assert "0 files" not in detail and "vacuous" not in detail
+
+
+def test_token_gate_fires_on_a_dirty_file(tmp_path, monkeypatch):
+    # the file-scanning wrapper (not just the pure detector) must report a hit.
+    dirty = tmp_path / "dirty.md"
+    dirty.write_text("this file mentions " + gates._FORBIDDEN_TOKENS[0].capitalize())
+    monkeypatch.setattr(gates, "_tracked_files", lambda: [dirty])
+    ok, detail = gates.gate_no_forbidden_tokens()
+    assert not ok and "forbidden" in detail

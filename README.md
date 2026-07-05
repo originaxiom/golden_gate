@@ -16,8 +16,9 @@ symbolic equalities, not tolerance checks.
 
 - `core.cyclo` — exact arithmetic in `ℚ(ζ₆₀)` (Fraction-vector power basis mod `Φ₆₀`), the
   radical constants `√5, √−3, √−15` and the Gauss sum `g(15) = i√15`, the level-15 `T`/`S`
-  Weil matrices, and exact projection into `H = ℚ(√5, √−3)` (`H_avg`, `solve_H`). Verified
-  analytically faithful (each constant evaluates to its definition to 1e-30).
+  Weil matrices, and exact projection into `H = ℚ(√5, √−3)` (`H_avg`, `solve_H`). Locked by
+  exact-equality gates, and cross-validated numerically (each constant evaluates to its
+  analytic definition to 1e-30).
 - `core.charvar` — the theta-lift / seam toolkit: the level-15 Weil matrices `W_m`, `Par`
   traces, DFT eigenprojectors, exact H-readouts, and multiplicative tensor completion.
   Reproduces the research program's banked results exactly (seed orders `20,12,6,20,12`;

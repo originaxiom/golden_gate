@@ -89,7 +89,11 @@ def gate_no_forbidden_tokens():
             continue
         scanned += 1
         for tok in contains_forbidden(text):
-            hits.append(f"{p.relative_to(ROOT)}:{tok}")
+            try:
+                label = p.relative_to(ROOT)
+            except ValueError:
+                label = p
+            hits.append(f"{label}:{tok}")
     if hits:
         return (False, f"forbidden tokens: {hits}")
     # non-vacuity: a clean verdict only counts if we actually scanned something

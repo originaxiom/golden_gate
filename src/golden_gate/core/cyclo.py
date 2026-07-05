@@ -1,7 +1,7 @@
 """Exact arithmetic in the cyclotomic field Q(zeta_60), and the level-15 Weil data.
 
 This is the foundational engine of ``golden_gate``: everything the library proves
-"exactly" (Yang-Baxter, ``F**2 = I``, ``Jones(4_1; zeta_5) = -phi``, the seam
+"exactly" (Yang-Baxter, ``F**2 = I``, ``Jones(4_1; zeta_5) = 1 - sqrt5``, the seam
 readouts) reduces to identities in this field, computed over ``fractions.Fraction``
 with **no floating point anywhere**.
 

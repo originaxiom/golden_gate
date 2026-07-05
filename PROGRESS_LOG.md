@@ -61,7 +61,38 @@ honesty lock, result labels, the CI gates, the red-team lens, method-bug guards 
 this `PROGRESS_LOG.md` (append-only), and `CHANGELOG.md`. Standing directive: commit and push
 constantly; never touch origin-axiom (read-only reference).
 
-## 2026-07-05 — Independent multi-agent audit of M2 (in progress)
+## 2026-07-05 — Independent multi-agent audit of M2 + hardening
 
-Three adversarial auditors commissioned (math correctness, test rigor/code quality, port
-faithfulness/honesty). Findings and fixes to be logged here on completion.
+Three adversarial auditors (math correctness; test rigor/code quality; port faithfulness/
+honesty), each read-only/run-only. Headline: **no CRITICAL/HIGH correctness defects** — the
+exact core (`cyclo`, `charvar`) is faithful and strong, ports verified line-for-line, the
+banked B367 numbers (orders 20/12/6/20/12, the ±1/48 seam) reproduced, the previously-fixed
+traps (global `mp.dps`, circular mirroring, vacuous hygiene gate) confirmed remediated. All
+findings addressed:
+
+- **Honesty (§2 lock):** three stale `Jones = -phi` docstrings (`core/cyclo`, `demo/exact`,
+  `demo/__init__`) contradicted the corrected `1-sqrt5` framing — fixed. The `jones.py`
+  bracket factor `phi^2/2` was named "the Kauffman bracket normalization" without derivation
+  — renamed `bracket_convention_factor`, reframed as an algebraic identity (no claim `-phi`
+  is a canonical invariant). Chirality label made honest (the tabulated trefoil/cinquefoil
+  are the mirror of `knots.py`'s positive-crossing braids; figure-eight amphichiral, immune).
+- **Compiler (H1/H2/M2/M5):** the `golden` method's refinement branch was untested and it is
+  not competitive as a general method — scoped honestly (best only near powers of G), and
+  now fully covered: a refinement-branch test (with an honest "brute_force >= golden" check),
+  a brute-force best-effort-fallback test, and `compile_gate` now passes `max_length` through
+  to golden instead of silently dropping it. `compiler.py` coverage 100%.
+- **Vacuity (M1/M3):** replaced a tautological `error == 1-fidelity` test with a real `repr`
+  test; added **negative controls** for the charvar sanity gates (a perturbed power cache is
+  rejected) and documented them as *necessary-condition* checks (degenerate all-identity
+  input passes vacuously — stated, not hidden).
+- **Hygiene robustness (M4):** added a hit-path test for the token gate — which exposed a
+  real bug: `gate_no_forbidden_tokens` crashed (`relative_to`) on a path outside the repo
+  root; fixed to degrade gracefully.
+- **Naming/edges (L1–L4):** `trace_distance` (which returned `1-fidelity`, not the trace
+  distance) renamed `infidelity`; `rotation_axis` sign-convention caveat documented;
+  `braid_diagram` now validates `n_strands`; thin wrappers (`jones_symbolic`, `jones_value`)
+  tested; redundant `golden_word` removed.
+
+Verified: fast tier 86 passed / 4 skipped (~29 s); full `OA_SLOW=1` suite 90 passed, no
+dps leak; coverage 92% overall (`compiler`/`jones`/`knots`/`visualize`/`braiding` 100%,
+`cyclo` 97%); all discipline gates exit 0.

@@ -37,11 +37,12 @@ def test_mirror_differs_from_golden():
     assert not np.allclose(G.golden_gate(), G.golden_gate_mirror())
 
 
-def test_fidelity():
+def test_fidelity_and_infidelity():
     U = G.golden_gate()
     assert abs(G.gate_fidelity(U, U) - 1.0) < 1e-12
     assert G.gate_fidelity(U, np.eye(2, dtype=complex)) < 1.0
-    assert abs(G.trace_distance(U, U)) < 1e-12
+    assert abs(G.infidelity(U, U)) < 1e-12
+    assert G.infidelity(U, np.eye(2, dtype=complex)) > 0.0
 
 
 def test_pauli_decomposition_reconstructs():

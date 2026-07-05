@@ -10,8 +10,9 @@ match the arithmetic:
   unitarity are symbolic equalities, not tolerance checks.
 * **golden_gate.core.cyclo** for the cyclotomic facts: the R-matrix phases are
   exact 60th roots of unity, and the golden ratio satisfies ``phi**2 = phi + 1``
-  exactly in ``Q(zeta_60)``. (The Jones value ``-phi`` is also cyclotomic and is
-  proved exactly in ``golden_gate.demo.jones``.)
+  exactly in ``Q(zeta_60)``. (The standard Jones value ``1 - sqrt5`` is also
+  cyclotomic and is proved exactly in ``golden_gate.demo.jones``; the brief's
+  ``-phi`` is the unnormalized Kauffman-bracket convention, ``= (1-sqrt5)*phi^2/2``.)
 """
 
 from fractions import Fraction as Fr

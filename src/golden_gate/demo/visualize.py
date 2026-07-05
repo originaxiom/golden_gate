@@ -23,6 +23,10 @@ def braid_diagram(word, n_strands=3, fmt="text") -> str:
     if fmt != "text":
         raise ValueError("only fmt='text' is supported in v0.1")
     units = _expand_units(word)
+    for gen, _sign in units:
+        if gen + 1 > n_strands:
+            raise ValueError(f"generator sigma_{gen} needs >= {gen + 1} strands, "
+                             f"but n_strands={n_strands}")
     header = "braid on %d strands (%d crossings): %s" % (
         n_strands, len(units), compress_word(word))
     if not units:

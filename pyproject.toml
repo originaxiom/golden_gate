@@ -10,10 +10,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Dritëro M." }]
-dependencies = ["numpy>=1.24", "sympy>=1.12", "mpmath>=1.3"]
+dependencies = ["numpy>=1.24", "sympy>=1.12"]
 
 [project.optional-dependencies]
-test = ["pytest>=7.4"]
+# mpmath is used only by the numeric cross-validation tests today; it will move to
+# core `dependencies` when the mpmath-based engines (core.lie / core.jets) land.
+test = ["pytest>=7.4", "mpmath>=1.3"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

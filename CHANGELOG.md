@@ -27,6 +27,17 @@ history is in `PROGRESS_LOG.md`.
 - **Governance** — `GOVERNANCE.md` (exact/numeric honesty lock, result labels, CI gates,
   method-bug guards), `PROGRESS_LOG.md` (append-only), this `CHANGELOG.md`.
 
+### Changed
+- **Multi-agent audit hardening.** Fixed stale `Jones = -phi` docstrings (the corrected value
+  is `1 - sqrt5`); reframed the `-phi` bracket factor honestly (`bracket_convention_factor`,
+  an algebraic identity, not a claimed canonical invariant); scoped the compiler's `golden`
+  method honestly and covered its refinement + fallback paths (compiler 100% covered); added
+  negative controls for the charvar sanity gates (documented as necessary-condition checks);
+  fixed a `gate_no_forbidden_tokens` crash on out-of-root paths; renamed `trace_distance` →
+  `infidelity` (it returns `1 - fidelity`, not the trace distance); `braid_diagram` now
+  validates `n_strands`; moved `mpmath` to test-only dependencies (nothing in `src/` uses it
+  yet).
+
 ### Notes
 - The standard Jones value is `1 - sqrt5`; the brief's `-phi` is the unnormalized Kauffman
   bracket convention (`= standard * phi^2/2`). The library computes and documents the
