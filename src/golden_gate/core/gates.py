@@ -64,8 +64,19 @@ def gate_cyclo_weil_unitary():
     return (ok, "T,S invertible exactly" if ok else "T or S inverse FAILED")
 
 
+def contains_forbidden(text):
+    """Return the list of forbidden tokens present in ``text`` (case-insensitive).
+
+    Pure function so the detector can be unit-tested with a positive control -- a
+    gate that can never fire is worse than no gate (the vacuity trap).
+    """
+    low = text.lower()
+    return [tok for tok in _FORBIDDEN_TOKENS if tok.lower() in low]
+
+
 def gate_no_forbidden_tokens():
     """Hygiene: no Claude/session labels leaked into tracked text source."""
+    scanned = 0
     hits = []
     for p in _tracked_files():
         if p.suffix.lower() not in _TEXT_SUFFIXES:
@@ -76,10 +87,15 @@ def gate_no_forbidden_tokens():
             text = p.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        for tok in _FORBIDDEN_TOKENS:
-            if tok in text:
-                hits.append(f"{p.relative_to(ROOT)}:{tok}")
-    return (not hits, "clean" if not hits else f"forbidden tokens: {hits}")
+        scanned += 1
+        for tok in contains_forbidden(text):
+            hits.append(f"{p.relative_to(ROOT)}:{tok}")
+    if hits:
+        return (False, f"forbidden tokens: {hits}")
+    # non-vacuity: a clean verdict only counts if we actually scanned something
+    if scanned == 0:
+        return (False, "vacuous: no tracked text files scanned (nothing committed?)")
+    return (True, f"clean ({scanned} files scanned)")
 
 
 def gate_license_present():
