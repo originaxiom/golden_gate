@@ -51,6 +51,20 @@ history is in `PROGRESS_LOG.md`.
   `h1_line` off-block check with a genuine cocycle test. The full Massey sweeps remain opt-in
   `python -m` reproducers (~10 min each).
 
+### Changed — M3 round-2 scrutiny (deep adversarial pass)
+- **Robustness confirmed (no code change needed):** every banked verdict survived seed,
+  input-perturbation, and dps (80/120) variation; the suite is test-order-independent (incl.
+  the historical B347 dps-leak case); memoized caches are bit-identical regardless of first-touch
+  precision; the math interpretation ("unobstructed to 2nd/3rd order") is sound and hedged.
+- **`omega_on_h1` nondegeneracy gate (MEDIUM latent trap):** the determinant decays with the
+  exponent (0.64 at m=1 → 3.07e-11 at m=11); the fast test gated `|det| > 1e-6` on m∈{1,4} only,
+  and m=7/8/11 fall below 1e-6. Fixed: iterate **all six** m with the principled `|det| > 1e-30`
+  gate (above the dps-60 noise floor; matches `run_all`); documented the decay trend.
+- **Harness gate hardened:** a permanent fast regression proves `demo_e6.run` refuses the real
+  (minutes-long) obstruction compute when the banked identity regresses (compute runs zero times).
+- **Honesty:** `obstruction_class` docstring now flags that the `{4,8}` class components vanish
+  *by parity* (structural), so the verdict rests on the F4 blocks `{1,5,7,11}` — weight all six.
+
 ### Added
 - **`core.cyclo`** — exact arithmetic in `Q(zeta_60)` (Fraction-vector power basis mod
   `Phi_60`): field operations, the radical constants `sqrt5 / sqrt(-3) / sqrt(-15)` and the

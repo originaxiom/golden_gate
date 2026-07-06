@@ -35,12 +35,18 @@ def test_K_is_rep_invariant_and_coboundaries_pair_to_zero():
 
 def test_omega_on_h1_is_antisymmetric_and_nondegenerate():
     # the real symplectic certificate: on the 2-dim H^1(T^2, Sym^{2m}) basis, omega is a
-    # nonzero antisymmetric 2x2 form.
-    for m in (1, 4):
+    # nonzero antisymmetric 2x2 form, for EVERY exponent (not just 1,4).
+    #
+    # Threshold: |det| decays ~exponentially with m from the e^{2m*mu} block dynamic range
+    # (0.64 at m=1 down to ~3e-11 at m=11), so a fixed 1e-6 gate would MISFIRE at m>=7 -- it
+    # only survived before because the loop was restricted to {1,4}. The principled gate is
+    # "det is far above the dps-60 noise floor (~1e-50)": 1e-30 clears the true det at m=11
+    # by ~19 decades and the noise by ~20, and matches run_all's omega_nondeg gate.
+    for m in B.EXPONENTS:
         M = B.omega_on_h1(m)
         assert abs(M[0, 1] + M[1, 0]) < mp.mpf(10) ** -30 * (abs(M[0, 1]) + 1)
         det = M[0, 0] * M[1, 1] - M[0, 1] * M[1, 0]
-        assert abs(det) > mp.mpf(10) ** -6
+        assert abs(det) > mp.mpf(10) ** -30
 
 
 def test_restriction_rank_is_one():

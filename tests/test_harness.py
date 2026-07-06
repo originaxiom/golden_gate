@@ -112,6 +112,26 @@ def test_demo_e6_prereg_is_frozen_and_names_the_gate():
         p.name = "mutated"
 
 
+def test_demo_e6_refuses_real_compute_when_gate_fails(monkeypatch):
+    # surface 5 of the round-2 scrutiny, as a permanent regression: when the banked identity
+    # REGRESSES, the real (minutes-long) obstruction computation must never run. Fast: the
+    # gate fails first, so no E6 solve happens. A spy proves compute was skipped.
+    import mpmath as mp
+
+    from golden_gate.core.harness import demo_e6
+    calls = []
+    monkeypatch.setattr(demo_e6, "compute_escape_obstruction",
+                        lambda m=4: calls.append(m) or {"unobstructed": True})
+    # force the banked identity to fail (bad residual, far above the 1e-40 ceiling)
+    monkeypatch.setattr(demo_e6.CP, "rep_checks",
+                        lambda *a, **k: (mp.mpf("1e-3"), mp.mpf("1e-3")))
+    rec = demo_e6.run(4)
+    assert not rec.gate_passed and not rec.computed
+    assert rec.verdict is None
+    assert calls == []                           # the real obstruction solve was NEVER run
+    assert "1.00e-03" in rec.gate_detail
+
+
 @_SLOW
 def test_demo_e6_campaign_passes_the_gate_and_finds_unobstructed():
     # the harness on a real gate: the rep-assembly banked identity passes, so the

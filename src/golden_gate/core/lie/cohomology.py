@@ -456,7 +456,14 @@ def obstruction_vector(za_c, zb_c):
 @at_precision(DPS_E6)
 def obstruction_class(za_c, zb_c):
     """The H^2 class of the obstruction, per exponent block: convert q back to chain
-    coordinates and pair with the block H^2 functionals."""
+    coordinates and pair with the block H^2 functionals.
+
+    Reading the components (honesty note): for a theta-ODD input direction (m in {4,8}) the
+    obstruction q is theta-EVEN, so its ``{4,8}`` components vanish IDENTICALLY by parity
+    (control C3) -- those zeros are structural, NOT evidence of integrability. The genuine
+    content is the F4 blocks ``{1,5,7,11}``: an unobstructed verdict means THOSE vanish too
+    (they do, ~1e-62, while ``q`` itself is O(1)-to-O(1e9) nonzero). Always weight the verdict
+    on all six blocks, not the parity-forced escape components."""
     q, first, res = obstruction_vector(za_c, zb_c)
     q_c = S_INV * q
     comps = {}

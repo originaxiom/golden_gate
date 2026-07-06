@@ -212,3 +212,49 @@ OA_SLOW banked verdicts (33 tests) all reproduced. Findings addressed:
 
 The two precision "observations" (rep `_base` built at DPS_E6=100; leg-B mixing dps-100 jets
 with dps-60 boundary data) were confirmed deliberate and adequately documented — not defects.
+
+## 2026-07-06 — Round-2 scrutiny (deep adversarial pass) + hardening
+
+A second, deeper 3-agent pass (owner-scoped to adversarial-only, skipping the ~40-min opt-in
+reproducers): a **verdict-breaker** (tried to break the banked results via seed/perturbation/
+dps variation), a **numerical-&-state-robustness** auditor (test-order independence, cache
+poisoning, conditioning), and a **math-convention critic** (is the *interpretation* sound, not
+just "matches origin-axiom"). Headline: **every banked verdict SURVIVED; no CRITICAL/HIGH/
+substantive-math defect.** Key adversarial results:
+
+- **Verdict robustness (survives):** `rep_checks` automorphism residual stays ~1e-81 across
+  seeds {1,2,3,17,99}; `control_pairing` never below 0.030; the obstruction class tracks the
+  precision floor (1.5e-42 @ dps80 → 7e-63 @ 100 → 8e-83 @ 120, always ≥22 orders under the
+  1e-20 gate — a genuine numerical zero, not tuned to dps 100); a 1e-6 input perturbation drives
+  `first_order_residual` 6e-53 → 4.85e+19 (the gate loudly rejects non-cocycles — the verdict is
+  discriminating, not vacuous); rank cliffs are 45–100 decades below their cut.
+- **State discipline (robust):** full suite order-independent (incl. the exact B347 case — dps 25
+  set *before* cohomology holds full 3.8e-54 quality); no global-dps leak (decorator save/
+  restores from a non-default dps too); memoized caches (`_XROOT`, `_BASE_CACHE`, …) bit-identical
+  whether first-touched at ambient dps 15 or 100. Gram cond 57.7, `lu_solve` residual 0.0,
+  `S·S_INV−I` = 7.6e-104.
+- **Math/interpretation (sound):** "class vanishes ⇒ unobstructed to 2nd order (Massey: 3rd)" is
+  the correct Goldman–Millson reading, representative-independent; the `rep_checks` bracket-
+  automorphism residual is a *sufficient* coherence check (the e6 bracket mixes blocks, so a
+  convention error can't cancel into it); the universal-τ and leg-B δ indeterminacy-invariance
+  hold. Decisive: at m=4, `q_norm ≈ 2.05e9` while every class component is ~1e-62 — emphatically
+  not a silent `q ≈ 0`.
+
+Findings fixed:
+- **(MEDIUM) `omega_on_h1` nondegeneracy-gate mismatch / latent trap.** The determinant decays
+  ~exponentially with the exponent (0.64 at m=1 → 3.07e-11 at m=11, from the `e^{2m·mu}` block
+  range). The **fast** test gated `|det| > 1e-6` but only looped m∈{1,4}; m=7/8/11 fall *below*
+  1e-6 and passed only by not being iterated. Fixed: the fast test now iterates **all six** m
+  with the principled `|det| > 1e-30` gate (far above the dps-60 noise floor ~1e-50; matches
+  `run_all`'s `omega_nondeg`), and `omega_on_h1`'s docstring documents the decay trend.
+- **(surface 5) Harness gate protects the real compute.** Added a permanent fast regression:
+  with the banked identity forced to regress, `demo_e6.run` refuses — the minutes-long
+  obstruction solve runs **zero** times (proven by a spy), verdict `None`.
+- **(LOW, framing) F4-content honesty note.** `obstruction_class`'s docstring now states that for
+  a θ-odd input the `{4,8}` class components vanish *by parity* (structural, not evidence) — the
+  genuine content is the F4 blocks `{1,5,7,11}` vanishing; weight the verdict on all six blocks.
+
+Noted, not changed (deliberate / out of the E6 verdict's path): the m=1 first-order cocycle gate
+would thin below ~dps 90 (irrelevant at the pinned 100); the massey `mb12` control could not be
+re-seeded without the ~10-min sweep (structurally a generic-position property). Fast suite
+125 pass / 15 skip; gates exit 0; origin-axiom untouched.

@@ -299,7 +299,14 @@ def symplectic_controls(m):
 
 @at_precision(DPS_BOUNDARY)
 def omega_on_h1(m):
-    """The 2x2 matrix of omega on the orthonormal H^1 basis (MB12: must be nondegenerate)."""
+    """The 2x2 matrix of omega on the orthonormal H^1 basis -- the genuine symplectic
+    nondegeneracy certificate (its determinant, not the vacuous E_mu/E_lam self-pairing).
+
+    Scale note: |det| decays ~exponentially with the exponent (0.64 at m=1 down to ~3e-11 at
+    m=11) because the ``e^{2m*mu}`` block dynamic range bleeds into the H^1 form. It stays far
+    above the dps-60 noise floor (~1e-50) at every E6 exponent (m=11 clears it by ~20 decades),
+    so the form is nondegenerate throughout -- but the headroom is much thinner at high m than
+    the m=1 value suggests. `run_all` gates ``|det| > 1e-30`` accordingly."""
     blk = block(m)
     h1, _ = _boundary_h1(blk)
     dim = blk["dim"]
