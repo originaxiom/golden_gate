@@ -124,10 +124,21 @@ def gate_charvar_theta_lift():
     return (order == 6, f"theta-lift seed-3 order = {order} (expect 6)")
 
 
+def gate_e6_exact():
+    """Banked identity: the exact Chevalley e6 is Jacobi-clean and carries the right
+    exponent decomposition (cheap: integer arithmetic, ~0.2 s)."""
+    from .lie import e6
+    jac = e6.jacobi_residual_count()
+    weights = e6.exponent_weights()
+    ok = jac == 0 and weights == [2, 8, 10, 14, 16, 22]
+    return (ok, f"e6 Jacobi violations = {jac} (expect 0); ad-h weights = {weights}")
+
+
 GATES = {
     "cyclo-radicals": gate_cyclo_radicals,
     "cyclo-weil-unitary": gate_cyclo_weil_unitary,
     "charvar-theta-lift": gate_charvar_theta_lift,
+    "e6-exact": gate_e6_exact,
     "no-forbidden-tokens": gate_no_forbidden_tokens,
     "license-present": gate_license_present,
     "governance-docs": gate_governance_docs_present,

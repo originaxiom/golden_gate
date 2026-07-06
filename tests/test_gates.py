@@ -1,5 +1,7 @@
 """The discipline gates must all pass on a clean tree."""
 
+import re
+
 from golden_gate.core import gates
 
 
@@ -32,7 +34,11 @@ def test_token_gate_is_non_vacuous():
     # guards against a silently-empty ls-files pass).
     ok, detail = gates.gate_no_forbidden_tokens()
     assert ok, detail
-    assert "0 files" not in detail and "vacuous" not in detail
+    assert "vacuous" not in detail
+    # parse the actual scanned count from "clean (N files scanned)" -- a substring
+    # check for "0 files" is brittle (it matches inside "30 files").
+    n_scanned = int(re.search(r"clean \((\d+) files", detail).group(1))
+    assert n_scanned > 0
 
 
 def test_token_gate_fires_on_a_dirty_file(tmp_path, monkeypatch):
