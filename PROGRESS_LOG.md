@@ -176,3 +176,39 @@ not a physics claim — mirrors the origin-axiom firewall. **Honesty note:** the
 `h^T K h`) is identically ~0 and thus always False — the genuine symplectic-nondegeneracy
 certificate is `omega_on_h1`'s 2x2 determinant (0.64 at m=1, 1.2e-3 at m=4); the tests assert
 that, and the field is documented as the faithful-but-misleading origin-axiom value.
+
+## 2026-07-06 — Independent 3-agent audit of M3 + hardening
+
+Three adversarial auditors (port faithfulness/precision; test rigor/vacuity; honesty/
+governance/hygiene), each read-only/run-only. Headline: **no CRITICAL/HIGH correctness
+defects** — all five engines diffed clean against origin-axiom (no changed constant/sign/
+ordering), no global-dps leak, the risk areas (the `ad_root` split, cohomology's two scoped
+assembly blocks, the lazy `_base`/`_amphi`/`_hyper` memoization) verified correct, and the
+OA_SLOW banked verdicts (33 tests) all reproduced. Findings addressed:
+
+- **Honesty (§2 lock):** the ported `boundary` docstrings still asserted `omega(E_mu,E_lam)
+  != 0` as a *passing* "ambient nondegeneracy" control — but it is identically ~0. Rewrote
+  the `symplectic_controls` + module docstrings with the honest note at the definition site
+  (not only in the test), pointing to `omega_on_h1` as the real certificate. The universal-tau
+  sign (MB4): the computed `tau = -2√3 i = -CUSP_SHAPE` (the conjugate of the SnapPy cusp
+  shape) is now documented on `tau_identity`, and the test asserts `tau == -CUSP_SHAPE`
+  (scoped) instead of comparing magnitudes past a "declared convention" that did not exist.
+- **Test rigor:** (a) `test_universal_tau` did its comparison at ambient dps 15 — the residual
+  floored at ~1e-14 while advertising 1e-40 (the MB3 trap, in the one M3 test file that forgot
+  it); now scoped to `DPS_BOUNDARY`. (b) The depth-2/3 Massey payload (`massey_direction`,
+  `class_complex`, `_span_residual`, `word_jet2` order 2) had ZERO coverage — added fast unit
+  tests (`class_complex` linearity + **nonzero** discriminating control; `_span_residual`
+  in-span/transverse/empty) and OA_SLOW tests (the m=1 raw Massey **class** vanishes while
+  `q3 != 0` — this exercises the order-3 jet → class path a P1/P2 gate cannot; `word_jet2`
+  order-2 solves cleanly). The full 6-direction transverse-residual sweep and the leg-B
+  δ-matrix stay opt-in `python -m` reproducers (~10 min each, too heavy for the suite — logged
+  here rather than silently dropped). (c) Added a **discriminating non-zero control** to the
+  obstruction tests (`q_norm > 1`): "unobstructed" now means "q is a coboundary", not a silent
+  `q ≈ 0` bug. (d) Strengthened the tautological `h1_line` off-block check with a genuine
+  scoped cocycle test (`d^1 z = 0`). (e) Added fast coverage of the demo-campaign
+  pre-registration; tightened `pytest.raises(Exception)` → `FrozenInstanceError`.
+- **Precision (port):** `boundary.omega` was the one public entry point not self-scoped —
+  decorated it `@at_precision(DPS_BOUNDARY)`.
+
+The two precision "observations" (rep `_base` built at DPS_E6=100; leg-B mixing dps-100 jets
+with dps-60 boundary data) were confirmed deliberate and adequately documented — not defects.

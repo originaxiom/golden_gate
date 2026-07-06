@@ -27,8 +27,9 @@ def _prereg():
 
 
 def test_preregistration_is_frozen():
+    import dataclasses
     p = _prereg()
-    with pytest.raises(Exception):
+    with pytest.raises(dataclasses.FrozenInstanceError):
         p.name = "mutated"           # frozen dataclass -> attribute assignment blocked
 
 
@@ -95,6 +96,20 @@ def test_record_summaries_are_legible():
     assert "gate PASS" in passed.summary() and "verdict: 42" in passed.summary()
     assert "gate FAIL" in failed.summary() and "REFUSED" in failed.summary()
     assert "preregistration: stub-campaign" in _prereg().summary()
+
+
+def test_demo_e6_prereg_is_frozen_and_names_the_gate():
+    # fast coverage of the demo campaign's pre-registration (no E6 compute): the frozen
+    # Preregistration names the m-block, the escape hypothesis, and the banked identity.
+    from golden_gate.core.harness import demo_e6
+    p = demo_e6.escape_prereg(4)
+    assert "m4" in p.name
+    assert "escape" in p.hypothesis.lower() and "second order" in p.hypothesis.lower()
+    assert p.banked_identities and "rep_checks" in p.banked_identities[0]
+    assert p.nulls and p.kill_conditions        # nulls + kill conditions declared up front
+    import dataclasses
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        p.name = "mutated"
 
 
 @_SLOW

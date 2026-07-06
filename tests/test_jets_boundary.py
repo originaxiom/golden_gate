@@ -52,10 +52,15 @@ def test_restriction_rank_is_one():
 
 def test_universal_tau_is_the_cusp_shape():
     tau, dev = B.tau_identity(1)
-    # tau is the SnapPy cusp shape up to the declared sign/conjugation convention
-    assert abs(abs(tau) - abs(B.CUSP_SHAPE)) < mp.mpf(10) ** -40
-    assert abs(tau.real) < mp.mpf(10) ** -40    # purely imaginary: 2*sqrt(3)*i
-    assert dev < mp.mpf(10) ** -40              # single tau over the whole Z^1 basis
+    # the comparison arithmetic must run at the boundary precision -- at ambient dps 15
+    # abs(tau) and abs(CUSP_SHAPE) each round to ~3.4641 BEFORE subtracting, flooring the
+    # residual at ~1e-14 and silently passing a 1e-40 assertion (the MB3 lesson).
+    with mp.workdps(B.DPS_BOUNDARY):
+        # tau = -CUSP_SHAPE (up to tol): the conjugate of the cusp shape 2*sqrt(3)*i under
+        # this rep's orientation (see tau_identity's sign-convention note).
+        assert abs(tau - (-B.CUSP_SHAPE)) < mp.mpf(10) ** -40
+        assert abs(tau.real) < mp.mpf(10) ** -40    # purely imaginary
+    assert dev < mp.mpf(10) ** -40                  # single tau over the whole Z^1 basis
 
 
 def test_no_global_dps_leak():

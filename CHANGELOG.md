@@ -37,6 +37,20 @@ history is in `PROGRESS_LOG.md`.
   B347's involution intertwiners and B357's per-block data lazy + self-scoped.
 - Fixed a brittle hygiene-gate test (`"0 files"` matched as a substring of `"30 files"`).
 
+### Changed — M3 audit hardening (3-agent adversarial review)
+- **Honesty:** rewrote the `boundary` docstrings that claimed `omega(E_mu,E_lam) != 0` as a
+  passing nondegeneracy control (it is identically ~0 — the real certificate is
+  `omega_on_h1`'s determinant); documented the universal-tau sign (`tau = -CUSP_SHAPE`, MB4).
+- **Precision:** self-scoped the one public entry point that wasn't (`boundary.omega`); fixed
+  a test that compared `tau` magnitudes at ambient dps (floored at ~1e-14 vs the advertised
+  1e-40 — the MB3 trap).
+- **Coverage:** added tests for the previously-untested depth-2/3 Massey payload
+  (`class_complex` linearity + nonzero control, `_span_residual`, the m=1 raw class vanishes,
+  `word_jet2` order 2); added a discriminating `q_norm > 1` non-zero control to the
+  obstruction tests so "unobstructed" cannot pass via a silent `q ≈ 0`; strengthened the
+  `h1_line` off-block check with a genuine cocycle test. The full Massey sweeps remain opt-in
+  `python -m` reproducers (~10 min each).
+
 ### Added
 - **`core.cyclo`** — exact arithmetic in `Q(zeta_60)` (Fraction-vector power basis mod
   `Phi_60`): field operations, the radical constants `sqrt5 / sqrt(-3) / sqrt(-15)` and the

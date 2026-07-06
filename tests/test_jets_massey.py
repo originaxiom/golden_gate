@@ -41,11 +41,48 @@ def test_no_global_dps_leak_from_solve_ad():
     assert mp.mp.dps == before
 
 
+def test_class_complex_is_linear():
+    # class_complex reads the 6 block H^2 functionals; it must be linear (a cheap check
+    # that the S_INV / h2_functional wiring is a genuine linear readout, not garbled).
+    with mp.workdps(CP.DPS_E6):
+        import random
+        rnd = random.Random(1)
+        q = mp.matrix([rnd.uniform(-1, 1) for _ in range(CP.DIM)])
+        c1 = M.class_complex(q)
+        c2 = M.class_complex(3 * q)
+        assert c1.rows == 6
+        # NONZERO on a generic input -- the discriminating control that keeps the OA_SLOW
+        # "class vanishes" verdicts honest (class_complex is not silently the zero map).
+        assert mp.norm(c1) > mp.mpf("0.01")
+        assert max(abs(c2[i] - 3 * c1[i]) for i in range(6)) < mp.mpf(10) ** -30
+
+
+def test_span_residual_projects_correctly():
+    # the indeterminacy-span projection (pure C^6 linear algebra): a vector inside the span
+    # residuates to ~0; a fully-transverse vector residuates to its own norm; empty span
+    # returns the vector's norm and rank 0.
+    with mp.workdps(CP.DPS_E6):
+        e = [mp.matrix([mp.mpf(1) if i == j else mp.mpf(0) for i in range(6)]) for j in range(6)]
+        in_span = 3 * e[0] - 2 * e[1]
+        r_in, rank_in = M._span_residual(in_span, [e[0], e[1]])
+        assert r_in < 1e-30 and rank_in == 2
+        r_out, _ = M._span_residual(e[2], [e[0], e[1]])
+        assert abs(r_out - 1.0) < 1e-20          # e2 orthogonal to span -> residual = |e2|
+        r_empty, rank_empty = M._span_residual(e[0], [])
+        assert abs(r_empty - 1.0) < 1e-20 and rank_empty == 0
+
+
 @_SLOW
-def test_massey_m1_gates_vanish():
+def test_massey_m1_gates_vanish_and_class_is_trivial():
     # leg A, m=1 integrable control: z1 is a cocycle (P1~0), z2 solves order 2 (P2~0),
-    # and the order-3 ad-solve is clean. (The full transverse-residual verdict modulo the
-    # indeterminacy span is the opt-in `python -m ...massey` sweep.)
+    # the order-3 ad-solve is clean, AND the raw depth-3 Massey class vanishes -- the m=1
+    # direction is tangent to the actual A-poly curve, so it integrates to all orders and
+    # its class is already 0 before modding by the indeterminacy. This last assertion is the
+    # discriminating one: it exercises the full order-3 jet (the A^3/6, (AB+BA)/2 terms) ->
+    # q3 -> class_complex path, so a sign error in those terms (invisible to the P1/P2 gates,
+    # which are order 1/2) is caught here. The full transverse-residual verdict modulo the
+    # 6-dim indeterminacy span is the opt-in `python -m golden_gate.core.jets.massey` sweep
+    # (~10 min, not a suite test).
     z1 = CP.h1_line(1)
     wa, wb, first2, lsres = M.solve_z2(*z1)
     assert first2 < 1e-30                        # first-order residual (z1 a cocycle)
@@ -54,6 +91,21 @@ def test_massey_m1_gates_vanish():
     assert p1 < 1e-30                            # order-1 gate
     assert p2 < 1e-30                            # order-2 gate
     assert adres < 1e-30                         # order-3 ad-solve residual
+    assert q3n > 1.0                             # discriminating: q3 is genuinely nonzero...
+    c0 = M.class_complex(q3)
+    assert float(mp.norm(c0)) < 1e-30            # ...yet its H^2 class vanishes (integrable)
+
+
+@_SLOW
+def test_word_jet2_order2_solves_cleanly():
+    # covers word_jet2's ORDER-2 path (the c2 extraction M2 = P2 X0^-1 - A1^2/2), which the
+    # first-order tau test does not (it passes zero z2). A short word keeps it bounded; the
+    # ad-solve residuals of both c1 and c2 must be clean.
+    z1 = CP.h1_line(1)
+    wa, wb, _first, _ls = M.solve_z2(*z1)
+    c1, c2, r1, r2 = LB.word_jet2("ab", z1[0], z1[1], wa, wb)
+    assert r1 < 1e-30 and r2 < 1e-30
+    assert c1.rows == CP.DIM and c2.rows == CP.DIM
 
 
 @_SLOW

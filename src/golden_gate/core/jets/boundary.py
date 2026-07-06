@@ -11,11 +11,14 @@ via cup + the invariant pairing, block-diagonal over the six exponents.
 
 WHAT IS COMPUTED (per exponent m): (1) ``rank(r_m)`` -- does the ``H^1(M)`` class survive
 restriction to the cusp; (2) the slope / the leading Neumann-Zagier functionals
-``phi_mu = K(u, h)``, ``phi_lam = K(v, h)``; (3) the symplectic controls (MB12: ambient
-nondegeneracy, antisymmetry, coboundaries pair to zero); (4) the Lagrangian certificate
-(``rank = 6`` half of 12, block-orthogonal, each block-image a line in a symplectic plane).
-The universal-tau identity (:func:`tau_identity`): ``K(v,h) = tau K(u,h)`` on every cocycle,
-with a single ``tau`` (the SnapPy cusp shape ``2 sqrt(3) i``) independent of the exponent.
+``phi_mu = K(u, h)``, ``phi_lam = K(v, h)``; (3) the symplectic controls (MB12: K-invariance,
+antisymmetry, coboundaries pair to zero) -- the genuine nondegeneracy certificate is
+:func:`omega_on_h1`'s 2x2 determinant, NOT the E_mu/E_lam self-pairing (see the honesty note
+on :func:`symplectic_controls`); (4) the Lagrangian certificate (``rank = 6`` half of 12,
+block-orthogonal, each block-image a line in a symplectic plane). The universal-tau identity
+(:func:`tau_identity`): ``K(v,h) = tau K(u,h)`` on every cocycle, with a single ``tau``
+(magnitude ``2 sqrt(3)`` = the SnapPy cusp shape, sign convention noted on :func:`tau_identity`)
+independent of the exponent.
 
 **Precision (the port's surgery).** origin-axiom loaded B347 via ``importlib`` and set
 ``mp.mp.dps = 60`` at import; here the dependency is a real import (:mod:`..lie.rep`), the
@@ -211,8 +214,12 @@ def restriction(m):
 @at_precision(DPS_BOUNDARY)
 def tau_identity(m):
     """THE UNIVERSAL-tau IDENTITY: on every cocycle (u,v) in Z^1(T^2, Sym^{2m}),
-    K(v, h) = tau * K(u, h) with ONE constant tau (independent of m) = the cusp shape.
-    Returns (tau_estimate, max_deviation_over_the_Z1_basis)."""
+    K(v, h) = tau * K(u, h) with ONE constant tau (independent of m).
+
+    Sign convention (MB4, stated not hidden): under this rep's orientation the computed tau
+    comes out as ``-2*sqrt(3)*i = -CUSP_SHAPE`` (the conjugate of the SnapPy cusp shape
+    ``+2*sqrt(3)*i``); its MAGNITUDE ``2*sqrt(3)`` is the cusp shape's, and it is purely
+    imaginary. Returns (tau_estimate, max_deviation_over_the_Z1_basis)."""
     blk = block(m)
     dim = blk["dim"]
     K = pairing(dim)
@@ -251,8 +258,10 @@ def pairing(dim):
     return K
 
 
+@at_precision(DPS_BOUNDARY)
 def omega(blk, c1, c2):
-    """omega((u1,v1),(u2,v2)) = K(u1, U v2) - K(v1, V u2) (bar-resolution 2-cycle)."""
+    """omega((u1,v1),(u2,v2)) = K(u1, U v2) - K(v1, V u2) (bar-resolution 2-cycle).
+    Self-scoped so a standalone call at low ambient dps does not silently degrade."""
     K = pairing(blk["dim"])
     u1, v1 = c1
     u2, v2 = c2
@@ -261,8 +270,17 @@ def omega(blk, c1, c2):
 
 @at_precision(DPS_BOUNDARY)
 def symplectic_controls(m):
-    """(i) K is invariant under the block rep; (ii) omega(E_mu, E_lam) != 0 (MB12 ambient
-    nondegeneracy); (iii) omega antisymmetric on the E-basis; (iv) coboundaries pair to ~0."""
+    """The symplectic controls on the boundary block.
+
+    (i) ``K`` is invariant under the block rep; (iii) ``omega`` is antisymmetric on the
+    E-basis; (iv) coboundaries pair to ~0.
+
+    HONESTY NOTE (ii): the returned ``omega_mu_lam`` is the E_mu/E_lam self-pairing
+    ``h^T K h``, which is IDENTICALLY ~0 (h is a peripheral invariant weight vector paired
+    with itself), so the returned ``nondegenerate`` field is ALWAYS False. This is the
+    faithful-but-vacuous origin-axiom value, kept for reproduction -- it is NOT a passing
+    nondegeneracy control. The genuine symplectic-nondegeneracy certificate is
+    :func:`omega_on_h1`'s 2x2 determinant (nonzero: 0.64 at m=1, 1.2e-3 at m=4)."""
     blk = block(m)
     dim, R, h = blk["dim"], blk["R"], blk["h"]
     K = pairing(dim)

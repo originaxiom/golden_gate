@@ -30,17 +30,24 @@ def test_rep_assembly_is_faithful():
 
 
 def test_h1_line_is_a_unit_cocycle_per_block():
-    for m in CP.EXPONENTS:
-        za, zb = CP.h1_line(m)
-        assert za.rows == CP.DIM and zb.rows == CP.DIM
-        o, n = CP.OFFSET[m], CP.N_OF[m]
-        block = {o + k for k in range(n)}
-        # supported only on this block's chain coordinates (off-block entries are
-        # exactly 0 -- za/zb are embedded from the n-dim block cocycle)
-        in_block = sum(abs(za[o + k]) + abs(zb[o + k]) for k in range(n))
-        off_block = sum(abs(za[i]) + abs(zb[i]) for i in range(CP.DIM) if i not in block)
-        assert in_block > 0
-        assert off_block == 0
+    with mp.workdps(CP.DPS_E6):
+        for m in CP.EXPONENTS:
+            za, zb = CP.h1_line(m)
+            assert za.rows == CP.DIM and zb.rows == CP.DIM
+            o, n = CP.OFFSET[m], CP.N_OF[m]
+            block = {o + k for k in range(n)}
+            # supported only on this block's chain coordinates (off-block entries are
+            # exactly 0 -- za/zb are embedded from the n-dim block cocycle)
+            in_block = sum(abs(za[o + k]) + abs(zb[o + k]) for k in range(n))
+            off_block = sum(abs(za[i]) + abs(zb[i]) for i in range(CP.DIM) if i not in block)
+            assert in_block > 0
+            assert off_block == 0
+            # the genuine cocycle property (not just the embedding): d^1_m z = 0. Without
+            # this the off_block==0 check is tautological (h1_line writes only the block).
+            d1, _ = CP.FOX[m]
+            zblk = mp.matrix([za[o + k] for k in range(n)] + [zb[o + k] for k in range(n)])
+            resid = mp.norm(d1 * zblk) / mp.norm(zblk)
+            assert resid < mp.mpf(10) ** -30
 
 
 def test_h2_functional_annihilates_d1():
@@ -81,7 +88,11 @@ def test_m1_control_is_tangent_and_unobstructed():
     comps, diag = CP.obstruction_class(*z1)
     assert diag["first_order_residual"] < 1e-30   # z is a genuine cocycle
     assert diag["ad_solve_residual"] < 1e-30      # A2 = ad(q) solved cleanly
-    assert max(comps.values()) < 1e-20            # class = 0
+    # DISCRIMINATING control: the obstruction VECTOR q is genuinely nonzero (the 2nd-order
+    # deformation exists) -- so "class vanishes" means q is a coboundary, NOT that the
+    # pipeline silently produced q~0 (which would make every "unobstructed" pass falsely).
+    assert diag["q_norm"] > 1.0
+    assert max(comps.values()) < 1e-20            # class = 0 despite q != 0
 
 
 @_SLOW
@@ -98,5 +109,6 @@ def test_escape_direction_m4_is_unobstructed():
     z4 = CP.h1_line(4)
     comps, diag = CP.obstruction_class(*z4)
     assert diag["first_order_residual"] < 1e-30
+    assert diag["q_norm"] > 1.0                    # discriminating: q != 0 (see m=1 test)
     assert comps[4] < 1e-20 and comps[8] < 1e-20   # theta-parity: escape block silent
     assert max(comps.values()) < 1e-20             # unobstructed in every block
