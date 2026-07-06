@@ -113,3 +113,66 @@ Acting on a peer review's polish suggestions:
   `braid-group`.
 
 Suite 88 passed / 4 skipped; gates exit 0.
+
+## 2026-07-06 — M3: the heavy mpmath research core (core.lie / core.jets / core.harness)
+
+Ported the E6 cup-product / {4,8}-integrability engine stack (origin-axiom B351/B347/B352/
+B370/B357) into clean package subpackages, and built the gate-attack harness on top. All
+read-only-ported from `origin/main` via `git show`; origin-axiom never written.
+
+- **`core.precision`** — the scattered `_guard()` (`mp.mp.dps = …` at import) replaced by one
+  shared discipline: a `working_precision(dps)` context manager + `@at_precision(dps)`
+  decorator, and the named constants `DPS_E6=100`, `DPS_REP=70`, `DPS_BOUNDARY=60`. Nothing
+  in M3 mutates the global dps at import; every public entry point re-scopes and restores
+  (verified: the global stays at default after the whole suite — the MB3/MB13 lesson).
+
+- **M3a — `core.lie`** (subpackage; `run_all`/`_nullspace` name collisions namespaced apart):
+  - `e6` (ported B351) — exact Chevalley e6, integer structure constants, Jacobi-clean over
+    all 76,076 triples, principal sl2, the theta diagram involution. Stdlib-only.
+  - `rep` (ported B347) — the E6 character-variety tangent of 4_1, `H^1(Sym^{2m})=1` per
+    exponent, the two Z/2 gradings. **Surgery:** the geometric rep and the two involution
+    intertwiners `_AMPHI`/`_HYPER` were SVD-solved *at import* at the live global dps in
+    origin-axiom (fragile) — now lazy + memoized, each built under a scoped precision block;
+    `symrep` left undecorated so `cohomology` can reuse it at DPS_E6.
+  - `cohomology` (ported B352) — the two-basis cup-product obstruction. **Surgery:** the two
+    `importlib._load` shims → real imports; the heavy import-time assembly (`S`, `S_INV`,
+    `INTERTWINERS`, `BLK`, `FOX`) built once inside a scoped `working_precision(DPS_E6)` block.
+  - Banked (fast): `e6` Jacobi=0 + exponent weights `{2,8,10,14,16,22}`; `rep` residuals
+    `<1e-50`; `cohomology.rep_checks` relator `3.8e-54` / automorphism `1.6e-81`. Banked
+    (OA_SLOW): the m=1 curve control + the m=4 escape obstruction both vanish (max component
+    `7.2e-63`), with the MB12 positive-pairing control. Full 6-direction sweep is an opt-in
+    reproducer (`python -m golden_gate.core.lie.cohomology`).
+
+- **M3b — `core.jets`** (subpackage on top of `core.lie`):
+  - `boundary` (ported B357) — the E6 boundary restriction of 4_1: rank, the Neumann-Zagier
+    slopes, the universal-tau = cusp-shape identity (`|tau| = 2sqrt3`), the symplectic
+    controls. **Surgery:** two dead `if False` branches and an unused `_lstsq` dropped;
+    `block`/`pairing` made public **and self-scoped** (a calibration run caught them crashing
+    at ambient dps — the invariant-vector nullspace needs the working precision).
+  - `massey` / `massey_legB` (ported B370 A/B) — the depth-3 Massey obstruction (jet
+    arithmetic through the relator; m=1 gates `P1=6e-53`, `P2=2.3e-52`, class `2.5e-62`) and
+    the depth-2 tau-defect matrix. **Surgery:** the 3 `sys.path.insert` sites → real imports;
+    the two `massey_leg*.json` side-effects removed (`run`/`run_all` return dicts); the
+    vestigial `TAU` in leg B (overwritten from data) dropped.
+
+- **M3c — `core.harness`** (the gate-attack harness):
+  - `prereg.Preregistration` — a frozen (immutable) record of hypothesis / nulls / kill
+    conditions / banked identities, fixed before compute.
+  - `campaign.run_gated` — runs the banked-identity gate FIRST and **refuses to call the
+    computation past a failed gate** (the METHOD "never read verdicts past a failed gate"); a
+    sentinel test proves the gated-out computation is never run. A crashing gate is a failed
+    gate.
+  - `demo_e6` — the harness wired to a real gate: the E6 escape obstruction (m=4). Banked
+    identity = `cohomology.rep_checks`; computation = `obstruction_class`; verdict =
+    "unobstructed". (OA_SLOW end-to-end test.)
+
+- **Governance/plumbing:** `mpmath` moved back to runtime `dependencies`; a cheap `e6-exact`
+  banked-identity gate added to `core.gates` (Jacobi=0 + exponent weights); fixed a brittle
+  hygiene-gate test (`"0 files"` matched inside `"30 files"`).
+
+Firewall/honesty: this is exact/numeric research machinery (Lie theory + low-dim topology),
+not a physics claim — mirrors the origin-axiom firewall. **Honesty note:** the ported
+`boundary.symplectic_controls[...]['nondegenerate']` field (the E_mu/E_lam self-pairing
+`h^T K h`) is identically ~0 and thus always False — the genuine symplectic-nondegeneracy
+certificate is `omega_on_h1`'s 2x2 determinant (0.64 at m=1, 1.2e-3 at m=4); the tests assert
+that, and the field is documented as the faithful-but-misleading origin-axiom value.
