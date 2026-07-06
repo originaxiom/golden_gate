@@ -9,3 +9,8 @@ dist/
 venv/
 *.json.tmp
 .DS_Store
+
+# pytest-cov data (binary, not source)
+.coverage
+coverage.xml
+htmlcov/
