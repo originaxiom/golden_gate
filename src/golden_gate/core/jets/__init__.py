@@ -14,6 +14,7 @@ massey_legB  : the depth-2 tau-defect matrix on the boundary torus (mpmath, DPS_
                Depends on massey + boundary. (ported B370 leg B)
 """
 
+# boundary is a cheap import (depends only on core.lie.rep). massey / massey_legB pull in
+# core.lie.cohomology (the ~3 s dps-100 build), so they are left for explicit import
+# (`from golden_gate.core.jets import massey`) rather than paid on `import ...jets`.
 from . import boundary  # noqa: F401
-from . import massey  # noqa: F401
-from . import massey_legB  # noqa: F401
