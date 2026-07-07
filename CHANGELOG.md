@@ -21,6 +21,9 @@ history is in `PROGRESS_LOG.md`.
   quickstart, the three-layer architecture incl. the research core + harness, a result-label legend,
   prior-art citations), **`docs/MATH.md`** (the labeled mathematical tour + the research-core
   firewall), **`docs/API.md`** (the full public surface by module, each labeled).
+- **`docs/PAPER.md`** — an honest tools-paper draft (marked DRAFT, "not a novel-algorithm paper"):
+  contribution = exact/tested packaging + the research core, prior-art cited (Kliuchnikov et al.), no
+  novelty claim, reproducibility + firewall. Every figure labeled `[exact]`/`[numeric]`/`[ported]`.
 
 ### Changed — M4
 - `core.gates` `_TEXT_SUFFIXES` now includes `.html`/`.css` so web assets are hygiene-scanned.

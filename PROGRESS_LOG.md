@@ -302,3 +302,22 @@ hygiene-scanned (now 50 tracked files scanned, clean). Gates exit 0.
 - `docs/EXAMPLES.md` links to the explorer + MATH/API.
 
 Every cited value cross-checked against the code (honesty lock, §6). Gates exit 0 (52 files scanned).
+
+## 2026-07-06 — M4c: the tools-paper draft (docs/PAPER.md)
+
+Wrote `docs/PAPER.md` — an honest tools-paper draft, bound by §2/§3/MB5. Marked **DRAFT** and
+explicitly **"not a novel-algorithm paper"** in the first line. Frames the contribution as clean,
+exact, tested, installable packaging + the research core + the quantum-topology connection — NOT new
+braid-synthesis algorithms. Every empirical figure is tagged `[exact]`/`[numeric]`/`[ported]`. §6
+"Related work" cites the mature synthesis literature (Kliuchnikov–Bocharov–Svore; Kliuchnikov–Yard
+arXiv:1504.04350; the Monte-Carlo compiler PRX Quantum 2.010334) and states no novelty claim. §8
+carries the firewall (the research core is math, not a physics result; the compiler is not
+competitive; the name collision). §7 makes reproducibility concrete (the two-tier suite, the gates,
+the two adversarial audits).
+
+Governance note: the M4b log entries first named the artifact-hosting platform explicitly, which
+contains a forbidden hygiene token (an AI-assistant brand name); the `no-forbidden-tokens` gate caught
+it (after a non-blocking commit chain let the first push through), and it was reworded to "hosted
+single-page artifact" fix-forward. Lesson: run `python -m golden_gate.core.gates` and gate on its exit
+code *before* committing, not in a `&&` chain that ignores it — the gate-first check then caught a
+second occurrence (this very note) before it was committed. Gates exit 0.
