@@ -8,6 +8,13 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6f (release engineering)
+- `docs/RELEASING.md` — the release process (version bump → CHANGELOG → tag → `publish.yml` +
+  `docs.yml`) and the one-time owner setup (PyPI dist-name + trusted publishing, Pages, topics). The
+  actual version cut is a deliberate owner decision (the project is `Development Status :: Beta`; a
+  1.0.0 stamp is an API-stability commitment, not automatic), and the tag push is owner-side (the git
+  proxy blocks tag refs here).
+
 ### Added — M6e (community + provenance)
 - `CONTRIBUTING.md` (dev setup, the checks, the governance/honesty discipline, PR expectations),
   `SECURITY.md` (the honest minimal-surface policy + the compiler-DoS note), `CODE_OF_CONDUCT.md`

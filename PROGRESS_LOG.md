@@ -400,3 +400,22 @@ setuptools 68 emits; it passes on a normal runner, and `publish.yml` runs it the
 
 **Owner-actions:** pick a non-colliding PyPI **distribution name** (`golden-gate`/`golden-gates` taken)
 and set `[project].name`; create the PyPI project + `pypi` trusted-publisher environment.
+
+## 2026-07-06 — M6d/M6e/M6f: docs site, community files, release machinery (v1.0 track)
+
+- **M6d — docs site + public explorer.** MkDocs Material (`mkdocs.yml` + `docs/index.md`) rendering the
+  existing docs + an auto-generated demo reference (`mkdocstrings`); `docs.yml` builds the site, folds
+  in `web/explorer.html`, and deploys to GitHub Pages. `mkdocs build` verified locally.
+- **M6e — community + provenance.** `CONTRIBUTING.md`, `SECURITY.md` (honest minimal-surface),
+  `CODE_OF_CONDUCT.md`, `CITATION.cff`, GitHub issue + PR templates (the PR template encodes the
+  honesty checklist). Hygiene gate now scans 67 files, clean.
+- **M6f — release engineering.** `docs/RELEASING.md` documents the cut. **Deliberate honesty call:** I
+  did NOT unilaterally stamp `v1.0.0` — the trove status is `Beta` and the project is honestly a `v0.1`
+  prototype with no adoption yet; declaring 1.0 is an API-stability commitment that is the owner's to
+  make. Combined with the tag-push 403, the version cut + tag + GitHub Release + PyPI/Pages enablement
+  are the remaining owner-actions. The machinery (build, twine, trusted-publishing, Pages, the console
+  `golden-gate-verify`, the SemVer policy) is all in place and green.
+
+M6 status: **M6a–M6e delivered** (API contract + typing, lint/types/coverage CI, packaging + build
+dry-run, docs site, community files); **M6f is the owner-gated release cut**. Fast suite green;
+ruff + mypy clean; gates exit 0; origin-axiom untouched throughout.
