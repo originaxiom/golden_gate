@@ -8,6 +8,8 @@ import numpy as np
 
 from .braiding import evaluate_braid
 
+__all__ = ["golden_gate", "golden_gate_mirror", "golden_gate_word", "gate_properties", "gate_fidelity", "infidelity", "is_clifford"]
+
 # figure-eight knot as a 3-strand braid word
 _GOLDEN_WORD = [(1, -1), (2, 1), (1, -1), (2, 1)]
 _GOLDEN_MIRROR_WORD = [(1, 1), (2, -1), (1, 1), (2, -1)]
@@ -29,7 +31,7 @@ def golden_gate_mirror() -> np.ndarray:
     return evaluate_braid(_GOLDEN_MIRROR_WORD)
 
 
-def golden_gate_word():
+def golden_gate_word() -> list:
     """The braid word of the golden gate (a fresh copy)."""
     return list(_GOLDEN_WORD)
 

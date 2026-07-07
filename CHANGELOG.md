@@ -8,6 +8,15 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6a (public API contract + typing, toward v1.0)
+- **`py.typed`** marker (PEP 561) — the package now ships its type hints to downstream users.
+- **`__all__`** on the public modules (`demo.*`, `core.precision`, …) — the public/internal boundary is
+  now explicit (leading `_` = internal, may change without notice).
+- **Type hints** across the user-facing API (the `demo.compiler`/`jones`/`knots`/`gates` surface);
+  `CompilationResult.gate` is now `np.ndarray | None`.
+- **`[tool.mypy]`** config; the whole tree is `mypy`-clean.
+- **`docs/API.md`** gains a **public-API contract + SemVer/deprecation policy** section.
+
 ### Added — M5 (response to an external audit)
 - **CI** — `.github/workflows/ci.yml`: push/PR matrix (Python 3.11 + 3.12) running byte-compile →
   `pytest -q` → the banked-identity/hygiene gates; a manual/weekly `slow` job for the `OA_SLOW` sweeps

@@ -25,6 +25,11 @@ import numpy as np
 from .braiding import evaluate_braid, sigma1, sigma1_inv, sigma2, sigma2_inv
 from .gates import gate_fidelity, golden_gate
 
+__all__ = ["CompilationResult", "compile_gate", "brute_force", "golden", "compress_word"]
+
+# a braid word is a list of (generator, power) tuples
+Word = list
+
 # the four unit generators, as (gen, power) with their matrices
 _UNITS = [((1, 1), sigma1()), ((1, -1), sigma1_inv()),
           ((2, 1), sigma2()), ((2, -1), sigma2_inv())]
@@ -33,20 +38,20 @@ _INVERSE = {(1, 1): (1, -1), (1, -1): (1, 1), (2, 1): (2, -1), (2, -1): (2, 1)}
 
 @dataclass
 class CompilationResult:
-    word: list = field(default_factory=list)     # list[(gen, power)] unit steps
-    gate: np.ndarray = None
+    word: Word = field(default_factory=list)       # list[(gen, power)] unit steps
+    gate: np.ndarray | None = None
     fidelity: float = 0.0
-    length: int = 0                               # number of crossings
-    error: float = 1.0                            # 1 - fidelity
+    length: int = 0                                # number of crossings
+    error: float = 1.0                             # 1 - fidelity
 
     def __repr__(self):
         return (f"CompilationResult(length={self.length}, "
                 f"fidelity={self.fidelity:.6f}, word={compress_word(self.word)})")
 
 
-def compress_word(word):
+def compress_word(word: Word) -> Word:
     """Collapse a unit-step word to ``(gen, power)`` runs, e.g. [(1,1),(1,1)] -> [(1,2)]."""
-    out = []
+    out: Word = []
     for gen, p in word:
         if out and out[-1][0] == gen:
             out[-1] = (gen, out[-1][1] + p)
@@ -101,7 +106,8 @@ def _result(word, target):
                              length=len(word), error=1.0 - fid)
 
 
-def brute_force(target, max_length=14, tolerance=1e-3, max_nodes=_DEFAULT_MAX_NODES):
+def brute_force(target, max_length: int = 14, tolerance: float = 1e-3,
+                max_nodes: int = _DEFAULT_MAX_NODES) -> CompilationResult:
     """BFS over braid words; return the first word with fidelity >= 1 - tolerance, else the best
     found within ``max_length`` (or once ``max_nodes`` distinct gates have been visited).
 
@@ -113,7 +119,7 @@ def brute_force(target, max_length=14, tolerance=1e-3, max_nodes=_DEFAULT_MAX_NO
     if best.fidelity >= 1 - tolerance:
         return best
     seen = {_key(np.eye(2, dtype=complex))}
-    frontier = deque([([], np.eye(2, dtype=complex), None)])
+    frontier: deque = deque([([], np.eye(2, dtype=complex), None)])
     while frontier:
         if len(seen) >= max_nodes:
             break                                 # node budget exhausted -> return best so far
@@ -139,7 +145,7 @@ def brute_force(target, max_length=14, tolerance=1e-3, max_nodes=_DEFAULT_MAX_NO
     return best
 
 
-def golden(target, max_power=40, tolerance=1e-3, refine=6):
+def golden(target, max_power: int = 40, tolerance: float = 1e-3, refine: int = 6) -> CompilationResult:
     """Approximate ``target`` by a power of the golden gate G, then a short
     brute-force refinement of the residual.
 
@@ -158,7 +164,7 @@ def golden(target, max_power=40, tolerance=1e-3, refine=6):
     gword = golden_gate_word()
     best = _result([], target)
     U = np.eye(2, dtype=complex)
-    acc_word = []
+    acc_word: list = []
     best_power = best
     for n in range(1, max_power + 1):
         U = U @ G
@@ -183,8 +189,8 @@ def golden(target, max_power=40, tolerance=1e-3, refine=6):
 _METHODS = {"brute_force": brute_force, "golden": golden}
 
 
-def compile_gate(target, max_length=14, tolerance=1e-3, method="brute_force",
-                 max_nodes=_DEFAULT_MAX_NODES):
+def compile_gate(target, max_length: int = 14, tolerance: float = 1e-3,
+                 method: str = "brute_force", max_nodes: int = _DEFAULT_MAX_NODES) -> CompilationResult:
     """Compile ``target`` (a 2x2 unitary) into a braid word.
 
     Parameters

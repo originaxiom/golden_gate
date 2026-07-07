@@ -2,6 +2,8 @@
 
 from .compiler import compress_word
 
+__all__ = ["braid_diagram", "gate_summary"]
+
 # SVG geometry
 _COL = 44          # horizontal strand spacing (px)
 _ROW = 44          # vertical spacing per crossing (px)

@@ -12,6 +12,8 @@ import numpy as np
 
 from .constants import F_MATRIX, R_TAU, R_VACUUM
 
+__all__ = ["sigma1", "sigma2", "sigma1_inv", "sigma2_inv", "evaluate_braid"]
+
 
 def sigma1() -> np.ndarray:
     """Braiding sigma_1 (exchange anyons 1,2): diag(R_1, R_tau)."""

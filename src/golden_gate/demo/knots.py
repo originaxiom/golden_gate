@@ -5,6 +5,8 @@ import numpy as np
 from .braiding import evaluate_braid
 from .jones import jones_at_fibonacci
 
+__all__ = ["KNOT_BRAIDS", "knot_braid", "knot_to_gate", "jones_value"]
+
 # Standard knot braid words on 3 strands (generator, power).
 KNOT_BRAIDS = {
     "unknot": [],
@@ -14,7 +16,7 @@ KNOT_BRAIDS = {
 }
 
 
-def knot_braid(knot_name):
+def knot_braid(knot_name: str) -> list:
     """The braid word of a named knot (a fresh copy)."""
     if knot_name not in KNOT_BRAIDS:
         raise KeyError(f"unknown knot {knot_name!r}; known: {sorted(KNOT_BRAIDS)}")
@@ -26,7 +28,7 @@ def knot_to_gate(knot_name) -> np.ndarray:
     return evaluate_braid(knot_braid(knot_name))
 
 
-def jones_value(knot_name):
+def jones_value(knot_name: str) -> list:
     """The knot's Jones polynomial at the Fibonacci point ``zeta_5`` (exact,
     as a ``core.cyclo`` element). See ``golden_gate.demo.jones``."""
     return jones_at_fibonacci(knot_name)

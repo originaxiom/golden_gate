@@ -37,6 +37,8 @@ import functools
 
 import mpmath as mp
 
+__all__ = ["working_precision", "at_precision", "DPS_E6", "DPS_REP", "DPS_BOUNDARY"]
+
 # The engine precisions -- the single source of truth (see the table above).
 DPS_E6 = 100
 DPS_REP = 70

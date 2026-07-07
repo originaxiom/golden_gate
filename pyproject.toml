@@ -25,3 +25,14 @@ where = ["src"]
 # install step or PYTHONPATH.
 pythonpath = ["src", "."]
 testpaths = ["tests"]
+
+[tool.mypy]
+files = ["src/golden_gate"]
+python_version = "3.11"
+# numpy ships types; sympy and mpmath do not — don't fail on their missing stubs.
+ignore_missing_imports = true
+# The tree is type-consistent today; we do not (yet) require every def to be
+# annotated. The public API carries hints + a py.typed marker; internal numeric
+# helpers are hinted incrementally. Tighten here as annotation coverage grows.
+warn_unused_ignores = true
+warn_redundant_casts = true

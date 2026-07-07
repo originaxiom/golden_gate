@@ -38,6 +38,8 @@ import sympy as sp
 
 from ..core import cyclo as C
 
+__all__ = ["jones_polynomial", "jones_symbolic", "jones_at_fibonacci", "bracket_convention_factor", "figure_eight_is_one_minus_sqrt5"]
+
 # V(K; t) as {exponent: integer coefficient}. Right-handed representatives.
 JONES_POLYNOMIALS = {
     "unknot": {0: 1},
@@ -50,7 +52,7 @@ JONES_POLYNOMIALS = {
 _T_EXP = 12
 
 
-def jones_polynomial(knot_name):
+def jones_polynomial(knot_name: str) -> dict:
     """The standard Jones polynomial of a named knot, as ``{exponent: coeff}``."""
     if knot_name not in JONES_POLYNOMIALS:
         raise KeyError(f"unknown knot {knot_name!r}; "
@@ -64,7 +66,7 @@ def jones_symbolic(knot_name):
     return sum(c * t ** e for e, c in JONES_POLYNOMIALS[knot_name].items())
 
 
-def jones_at_fibonacci(knot_name):
+def jones_at_fibonacci(knot_name: str) -> list:
     """Evaluate the standard Jones polynomial at ``t = zeta_5``, EXACTLY.
 
     Returns the value as a ``core.cyclo`` field element (an exact vector in
@@ -78,7 +80,7 @@ def jones_at_fibonacci(knot_name):
     return acc
 
 
-def bracket_convention_factor():
+def bracket_convention_factor() -> list:
     """The algebraic factor between the standard Jones value and the brief's ``-phi``.
 
     The standard normalized Jones is ``1 - sqrt5``; the brief quotes ``-phi``. They

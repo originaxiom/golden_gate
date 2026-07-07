@@ -7,6 +7,23 @@ and banked by an identity check (`GOVERNANCE.md` §3).
 Import the mpmath research engines explicitly (`from golden_gate.core.lie import cohomology`) — they
 are not eagerly imported, to keep `import golden_gate.core.cyclo` cheap.
 
+## Public API contract & versioning policy
+
+- **Public vs internal.** A name is **public** iff it is listed in a module's `__all__` (equivalently:
+  it does not start with an underscore, and appears in this reference). Everything with a leading `_`
+  (`_key`, `_validate_target`, `ad_root_raw`, the import-time globals, …) is **internal** — it may
+  change or vanish in any release without notice.
+- **Typing.** The package ships a `py.typed` marker (PEP 561); the public API carries type hints, and
+  the whole tree is `mypy`-clean. Internal numeric helpers are annotated incrementally.
+- **Versioning (SemVer, from v1.0.0).** MAJOR = a breaking change to a public name/signature/documented
+  behavior; MINOR = additive (new public API, back-compatible); PATCH = fixes. Before v1.0.0 the API may
+  still shift. A public name to be removed is **deprecated** first (a `DeprecationWarning` for at least
+  one MINOR release) before removal in the next MAJOR.
+- **Result labels are part of the contract.** An `[exact]` result will not silently become `[numeric]`;
+  a convention (e.g. the Jones normalization) will not silently flip (`GOVERNANCE.md` §2).
+- **The research core** (`core.lie` / `core.jets`) is `[ported]` machinery: its *values* are banked and
+  stable, but its API is held to the same policy only from v1.0.0 onward.
+
 ---
 
 ## `core.cyclo` — exact ℚ(ζ₆₀) arithmetic  **[exact]**
