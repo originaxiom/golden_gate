@@ -134,20 +134,29 @@ def gate_e6_exact():
     return (ok, f"e6 Jacobi violations = {jac} (expect 0); ad-h weights = {weights}")
 
 
-GATES = {
+# banked-identity gates: the exact math engines must reproduce. These are meaningful from
+# ANYWHERE (an installed wheel included) -- they check the library, not the repo.
+BANKED_GATES = {
     "cyclo-radicals": gate_cyclo_radicals,
     "cyclo-weil-unitary": gate_cyclo_weil_unitary,
     "charvar-theta-lift": gate_charvar_theta_lift,
     "e6-exact": gate_e6_exact,
+}
+
+# hygiene gates: repo-level invariants (tracked-file tokens, license, governance docs). These
+# only make sense inside the source tree, so they are NOT part of the user-facing `verify`.
+HYGIENE_GATES = {
     "no-forbidden-tokens": gate_no_forbidden_tokens,
     "license-present": gate_license_present,
     "governance-docs": gate_governance_docs_present,
 }
 
+GATES = {**BANKED_GATES, **HYGIENE_GATES}
 
-def run_all():
+
+def _run(gates):
     results = {}
-    for name, fn in GATES.items():
+    for name, fn in gates.items():
         try:
             results[name] = fn()
         except Exception as exc:  # a crashing gate is a failing gate
@@ -155,14 +164,32 @@ def run_all():
     return results
 
 
-def main():
-    results = run_all()
+def run_all():
+    """Every gate (banked identities + repo hygiene) -- the repo/CI check."""
+    return _run(GATES)
+
+
+def _report(results) -> int:
     worst = 0
     for name, (ok, detail) in results.items():
         print(f"[{'PASS' if ok else 'FAIL'}] {name}: {detail}")
         if not ok:
             worst = 1
-    sys.exit(worst)
+    return worst
+
+
+def main():
+    """Run all gates (repo + CI). `python -m golden_gate.core.gates`."""
+    sys.exit(_report(run_all()))
+
+
+def verify_main():
+    """Run only the banked-identity gates -- the user-facing `golden-gate-verify` command.
+
+    Safe to run from an installed package: it checks that the exact math engines reproduce,
+    not repo-level hygiene. Exits non-zero if any identity fails to reproduce."""
+    print("golden_gate: verifying the exact math engines reproduce...")
+    sys.exit(_report(_run(BANKED_GATES)))
 
 
 if __name__ == "__main__":

@@ -3,14 +3,45 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
+# NOTE (owner action before PyPI upload): `golden_gate` normalizes to the PyPI distribution
+# `golden-gate`, which is taken (as is `golden-gates`). Keep the IMPORT name `golden_gate`, but
+# set a distinct `name` here before publishing (e.g. `golden-gate-anyons`). Local builds work
+# under any name; only the PyPI upload collides.
 name = "golden_gate"
 version = "0.1.0"
-description = "Exact-arithmetic engines for metallic / Fibonacci-anyon quantum topology, and a braid-gate compiler."
+description = "Exact-arithmetic engines for Fibonacci-anyon quantum topology, and a braid-gate compiler."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Dritëro M." }]
+keywords = ["fibonacci-anyons", "topological-quantum-computation", "braid-group",
+            "knot-theory", "jones-polynomial", "quantum-computing", "exact-arithmetic",
+            "cyclotomic-field"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Typing :: Typed",
+]
 dependencies = ["numpy>=1.24", "sympy>=1.12", "mpmath>=1.3"]
+
+[project.urls]
+Homepage = "https://github.com/originaxiom/golden_gate"
+Repository = "https://github.com/originaxiom/golden_gate"
+Documentation = "https://github.com/originaxiom/golden_gate/blob/main/docs/API.md"
+Changelog = "https://github.com/originaxiom/golden_gate/blob/main/CHANGELOG.md"
+Issues = "https://github.com/originaxiom/golden_gate/issues"
+
+[project.scripts]
+# user-facing: verify the exact math engines reproduce (banked identities only; safe from an
+# installed package). The full repo/CI check is `python -m golden_gate.core.gates`.
+golden-gate-verify = "golden_gate.core.gates:verify_main"
 
 [project.optional-dependencies]
 # mpmath is now a runtime dependency -- the mpmath-based research engines (core.lie /
@@ -21,6 +52,10 @@ docs = ["mkdocs-material>=9.5", "mkdocstrings[python]>=0.25"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+# ship the PEP 561 marker so downstream type-checkers see our hints
+golden_gate = ["py.typed"]
 
 [tool.pytest.ini_options]
 # Lets a plain `pytest` import the installed-style `src` package without an

@@ -379,3 +379,24 @@ gates hook) and `.github/dependabot.yml` (weekly pip + actions). `pyproject` gai
 
 Verified: `ruff check` clean; `mypy` clean; fast suite 128 passed / 15 skipped (78% cov); all
 workflow/config YAML+TOML parse; gates exit 0 (gate-first). origin-axiom untouched.
+
+## 2026-07-06 — M6c: packaging metadata + build/publish dry-run
+
+Added the PyPI-ready metadata (`classifiers` incl. `Typing :: Typed`, `keywords`, `[project.urls]`),
+a `golden-gate-verify` console script, and a trusted-publishing `publish.yml`. `py.typed` ships in the
+wheel (`[tool.setuptools.package-data]`).
+
+**A real fix the dry-run caught:** the first console script pointed at `core.gates:main`, which runs the
+**repo-hygiene** gates (license / tokens / governance-docs) — those fail from an installed wheel (no git
+tree, no LICENSE in site-packages). Split `core.gates` into `BANKED_GATES` (the exact math identities —
+meaningful anywhere) and `HYGIENE_GATES` (repo-only), and pointed the script at a new `verify_main()`
+that runs only the banked subset. So `golden-gate-verify` is a genuine "does my install compute
+correctly?" check; the full repo check stays `python -m golden_gate.core.gates`. Test added for the split.
+
+**Verified end-to-end:** `python -m build` → valid sdist + wheel; a clean-venv install imports, computes
+the golden gate (0.2447π), ships `py.typed`, and `golden-gate-verify` exits 0. (`twine check` fails only
+in THIS environment — Debian's pinned `packaging 24.0` predates the Metadata-2.4 `License-File` field
+setuptools 68 emits; it passes on a normal runner, and `publish.yml` runs it there.)
+
+**Owner-actions:** pick a non-colliding PyPI **distribution name** (`golden-gate`/`golden-gates` taken)
+and set `[project].name`; create the PyPI project + `pypi` trusted-publisher environment.

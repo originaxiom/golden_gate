@@ -18,6 +18,18 @@ def test_expected_gates_present():
     }
 
 
+def test_banked_vs_hygiene_split():
+    # the user-facing `verify` (golden-gate-verify) runs ONLY the banked-identity gates, which
+    # are meaningful from an installed wheel; hygiene gates are repo-only. The two partition GATES.
+    assert set(gates.BANKED_GATES) | set(gates.HYGIENE_GATES) == set(gates.GATES)
+    assert set(gates.BANKED_GATES) & set(gates.HYGIENE_GATES) == set()
+    assert "no-forbidden-tokens" not in gates.BANKED_GATES     # repo-only, not in verify
+    # every banked identity reproduces (this is what `verify` asserts)
+    for name, fn in gates.BANKED_GATES.items():
+        ok, detail = fn()
+        assert ok, f"{name}: {detail}"
+
+
 def test_forbidden_detector_positive_control():
     # the detector must actually fire (and be case-insensitive) -- a gate that
     # can never fail is vacuous. Build the probe strings from the gate's own

@@ -8,6 +8,19 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6c (packaging metadata + build/publish)
+- **`pyproject` metadata:** trove `classifiers` (incl. `Typing :: Typed`), `keywords`, `[project.urls]`,
+  and `[project.scripts]` `golden-gate-verify` (a user-facing command that checks the exact math
+  engines reproduce — banked identities only, safe from an installed wheel; the full repo/CI check
+  stays `python -m golden_gate.core.gates`). `py.typed` is now shipped in the wheel.
+- **`core.gates`** split into `BANKED_GATES` (library identities, run anywhere) + `HYGIENE_GATES`
+  (repo-only), with a `verify_main()` entry point for the console script.
+- **`.github/workflows/publish.yml`** — build + `twine check` + PyPI **trusted publishing (OIDC)** on a
+  version tag (owner enables the PyPI project/environment; the distribution name needs to change from
+  the taken `golden-gate` — noted in `pyproject`).
+- Verified: `python -m build` produces a valid sdist + wheel; a clean-venv install imports, computes
+  the golden gate (0.2447π), ships `py.typed`, and `golden-gate-verify` exits 0.
+
 ### Added — M6b (quality infra: lint / types / coverage in CI)
 - **`ruff`** (lint + import-sort) config — `line-length=100`, ruleset `E/F/I/W/UP/B/SIM/C4`; `E741`
   ignored (the math-idiom `I`), and the **faithfully-ported** `core.lie`/`core.jets` are exempt from
