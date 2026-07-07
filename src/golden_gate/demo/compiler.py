@@ -145,7 +145,8 @@ def brute_force(target, max_length: int = 14, tolerance: float = 1e-3,
     return best
 
 
-def golden(target, max_power: int = 40, tolerance: float = 1e-3, refine: int = 6) -> CompilationResult:
+def golden(target, max_power: int = 40, tolerance: float = 1e-3,
+           refine: int = 6) -> CompilationResult:
     """Approximate ``target`` by a power of the golden gate G, then a short
     brute-force refinement of the residual.
 
@@ -166,7 +167,7 @@ def golden(target, max_power: int = 40, tolerance: float = 1e-3, refine: int = 6
     U = np.eye(2, dtype=complex)
     acc_word: list = []
     best_power = best
-    for n in range(1, max_power + 1):
+    for _ in range(1, max_power + 1):
         U = U @ G
         acc_word = acc_word + gword
         fid = gate_fidelity(U, target)
@@ -190,7 +191,8 @@ _METHODS = {"brute_force": brute_force, "golden": golden}
 
 
 def compile_gate(target, max_length: int = 14, tolerance: float = 1e-3,
-                 method: str = "brute_force", max_nodes: int = _DEFAULT_MAX_NODES) -> CompilationResult:
+                 method: str = "brute_force",
+                 max_nodes: int = _DEFAULT_MAX_NODES) -> CompilationResult:
     """Compile ``target`` (a 2x2 unitary) into a braid word.
 
     Parameters

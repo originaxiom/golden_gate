@@ -1,0 +1,27 @@
+# Run `pre-commit install` once; hooks then run on every commit.
+# Mirrors the CI gates locally so a bad commit is caught before it is pushed.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.8
+    hooks:
+      - id: ruff            # lint (the same rules CI enforces)
+        args: [--fix]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: golden-gate-gates
+        name: banked-identity + hygiene gates
+        entry: python -m golden_gate.core.gates
+        language: system
+        pass_filenames: false
+        # runs the same checks as CI (incl. the no-forbidden-tokens hygiene gate that
+        # caught the M4b slip); language:system so it uses the installed package.

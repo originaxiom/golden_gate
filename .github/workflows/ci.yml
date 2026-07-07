@@ -10,6 +10,21 @@ on:
     - cron: "0 6 * * 1"   # Mondays 06:00 UTC — the slow sweeps + dependency audit
 
 jobs:
+  lint:
+    name: lint + types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: python -m pip install --upgrade pip && pip install -e ".[dev]"
+      - name: Ruff (lint)
+        run: ruff check .
+      - name: mypy
+        run: mypy
+
   test:
     name: test (py${{ matrix.python-version }})
     runs-on: ubuntu-latest
@@ -26,8 +41,10 @@ jobs:
         run: python -m pip install --upgrade pip && pip install -e ".[test]"
       - name: Byte-compile
         run: python -m compileall -q src tests
-      - name: Fast test suite
-        run: pytest -q
+      - name: Fast test suite (with coverage)
+        # 75% floor: the fast tier covers the exact core + demo well; the heavy research
+        # paths (obstruction / Massey sweeps) are exercised only under OA_SLOW (the `slow` job).
+        run: pytest -q --cov=golden_gate --cov-report=term-missing --cov-fail-under=75
       - name: Banked-identity + hygiene gates
         run: python -m golden_gate.core.gates
 

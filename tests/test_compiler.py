@@ -5,8 +5,7 @@ import numpy as np
 
 from golden_gate.demo import gates as G
 from golden_gate.demo.braiding import evaluate_braid
-from golden_gate.demo.compiler import (CompilationResult, compile_gate,
-                                        compress_word)
+from golden_gate.demo.compiler import CompilationResult, compile_gate, compress_word
 
 
 def test_identity_compiles_to_empty_word():

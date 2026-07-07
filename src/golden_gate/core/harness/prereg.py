@@ -10,7 +10,6 @@ campaign cannot be quietly re-specified after seeing a result it did not like.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Tuple
 
 
 @dataclass(frozen=True)
@@ -33,9 +32,9 @@ class Preregistration:
 
     name: str
     hypothesis: str
-    nulls: Tuple[str, ...] = field(default_factory=tuple)
-    kill_conditions: Tuple[str, ...] = field(default_factory=tuple)
-    banked_identities: Tuple[str, ...] = field(default_factory=tuple)
+    nulls: tuple[str, ...] = field(default_factory=tuple)
+    kill_conditions: tuple[str, ...] = field(default_factory=tuple)
+    banked_identities: tuple[str, ...] = field(default_factory=tuple)
 
     def __post_init__(self):
         # accept lists at construction; store immutable tuples (bypasses frozen setattr)

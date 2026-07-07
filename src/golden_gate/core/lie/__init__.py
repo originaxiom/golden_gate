@@ -18,5 +18,7 @@ cohomology : the two-basis cup-product obstruction [z u z] in H^2(4_1, e6)
 # NOT -- its import builds the dps-100 assembly (S / INTERTWINERS / BLK / FOX, ~3 s), so it is
 # left for explicit import (`from golden_gate.core.lie import cohomology`). This keeps the
 # cheap `e6-exact` banked gate cheap.
-from . import e6  # noqa: F401
-from . import rep  # noqa: F401
+from . import (
+    e6,  # noqa: F401
+    rep,  # noqa: F401
+)

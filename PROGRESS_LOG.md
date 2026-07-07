@@ -354,3 +354,28 @@ state. Verified each claim against the current tree and acted only on what is ge
 
 Net: the audit was useful external validation, and its CI + input-guard + tag recommendations were
 real and cheap; ~half its criticisms were pre-M4 stale. Fast suite green; gates exit 0 (gate-first).
+
+## 2026-07-06 — M6a/M6b: toward a publishable v1.0 (owner-chosen target)
+
+The owner set the "production readiness" target as a **publishable v1.0 library** (not a production
+quantum SDK, not a hosted service). First two sub-milestones:
+
+**M6a — the public API contract + typing.** Discovered the tree is already `mypy`-clean (27 files) —
+just under-annotated. So M6a was additive: a `py.typed` marker (ship the hints, PEP 561); `__all__` on
+the public modules (public = in `__all__` / no leading `_`; everything `_`-prefixed is internal and may
+change without notice); type hints across the user-facing API (`demo.compiler`/`jones`/`knots`/`gates`;
+`CompilationResult.gate -> np.ndarray | None`); a `[tool.mypy]` config; and a **public-API contract +
+SemVer/deprecation policy** section in `docs/API.md`.
+
+**M6b — quality infra.** `ruff` config (`line-length=100`, `E/F/I/W/UP/B/SIM/C4`; `E741` ignored as the
+math-idiom `I`). Notable governance call: the **faithfully-ported** `core.lie`/`core.jets` are exempted
+from *purely-cosmetic* rules (`C408`/`B008`/`B905`/`UP031`/`E501`) via `per-file-ignores`, so they stay
+line-for-line re-verifiable against origin-axiom — real errors (E/F) still apply. Cleaned my own code
+to zero findings. Chose **lint-only** in CI (`ruff check`, not `ruff format --check`) to avoid churning
+37 files / breaking the ported alignment — documented, not silent. Added `mypy` + a `pytest --cov`
+**75%** fast-tier floor to CI (a new `lint` job; the heavy research paths are covered under the OA_SLOW
+`slow` job — fast-tier coverage is 78%). Added `.pre-commit-config.yaml` (ruff + basic hooks + a local
+gates hook) and `.github/dependabot.yml` (weekly pip + actions). `pyproject` gained `dev`/`docs` extras.
+
+Verified: `ruff check` clean; `mypy` clean; fast suite 128 passed / 15 skipped (78% cov); all
+workflow/config YAML+TOML parse; gates exit 0 (gate-first). origin-axiom untouched.

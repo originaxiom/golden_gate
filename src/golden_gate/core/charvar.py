@@ -52,7 +52,7 @@ def matrix_order(W, cap=64):
     powers = [ident]
     P = W
     for k in range(1, cap + 1):
-        if P == ident:
+        if ident == P:
             return k, powers
         powers.append(P)
         P = C.mmul(P, W)

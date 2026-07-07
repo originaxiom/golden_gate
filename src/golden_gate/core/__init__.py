@@ -17,6 +17,8 @@ so `import golden_gate.core.cyclo` stays cheap; import them explicitly, e.g.
 `from golden_gate.core.lie import cohomology`.
 """
 
-from . import charvar  # noqa: F401
-from . import cyclo  # noqa: F401
-from . import precision  # noqa: F401
+from . import (
+    charvar,  # noqa: F401
+    cyclo,  # noqa: F401
+    precision,  # noqa: F401
+)

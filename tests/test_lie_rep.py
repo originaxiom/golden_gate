@@ -26,7 +26,7 @@ def test_symrep_is_a_homomorphism():
 
 def test_h1_dim_is_one_per_exponent():
     dims = {m: rep.H1_dim(m) for m in rep.EXPONENTS}
-    assert dims == {m: 1 for m in rep.EXPONENTS}
+    assert dims == dict.fromkeys(rep.EXPONENTS, 1)
     assert rep.e6_tangent_total() == 6      # = rank E6
 
 

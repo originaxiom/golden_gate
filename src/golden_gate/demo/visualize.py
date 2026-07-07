@@ -109,8 +109,7 @@ def braid_diagram(word, n_strands=3, fmt="text") -> str:
                              f"but n_strands={n_strands}")
     if fmt == "svg":
         return _braid_svg(units, n_strands)
-    header = "braid on %d strands (%d crossings): %s" % (
-        n_strands, len(units), compress_word(word))
+    header = f"braid on {n_strands} strands ({len(units)} crossings): {compress_word(word)}"
     if not units:
         return header + "\n" + "│ " * n_strands + "  (identity)"
 

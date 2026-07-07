@@ -38,7 +38,8 @@ import sympy as sp
 
 from ..core import cyclo as C
 
-__all__ = ["jones_polynomial", "jones_symbolic", "jones_at_fibonacci", "bracket_convention_factor", "figure_eight_is_one_minus_sqrt5"]
+__all__ = ["jones_polynomial", "jones_symbolic", "jones_at_fibonacci",
+           "bracket_convention_factor", "figure_eight_is_one_minus_sqrt5"]
 
 # V(K; t) as {exponent: integer coefficient}. Right-handed representatives.
 JONES_POLYNOMIALS = {

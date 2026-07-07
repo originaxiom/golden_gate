@@ -9,8 +9,9 @@ computed cannot be cherry-picked.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable, Optional
+from typing import Any
 
 from .prereg import Preregistration
 
@@ -29,17 +30,18 @@ class CampaignRecord:
     gate_passed: bool
     gate_detail: str
     computed: bool = False
-    verdict: Optional[Any] = None
+    verdict: Any | None = None
 
     def summary(self) -> str:
         head = f"campaign '{self.prereg.name}': gate {'PASS' if self.gate_passed else 'FAIL'}"
         if not self.gate_passed:
-            return f"{head}\n  {self.gate_detail}\n  computation REFUSED (never read past a failed gate)"
+            return (f"{head}\n  {self.gate_detail}\n"
+                    "  computation REFUSED (never read past a failed gate)")
         return f"{head} -- {self.gate_detail}\n  verdict: {self.verdict!r}"
 
 
 def run_gated(prereg: Preregistration,
-              banked_check: Callable[[], "tuple[bool, str]"],
+              banked_check: Callable[[], tuple[bool, str]],
               computation: Callable[[], Any]) -> CampaignRecord:
     """Run ``computation`` only if ``banked_check`` passes.
 

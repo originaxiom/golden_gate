@@ -7,7 +7,6 @@ from fractions import Fraction as Fr
 
 from golden_gate.core import cyclo as C
 
-
 # --- field structure -------------------------------------------------------
 
 def test_dimensions():

@@ -8,6 +8,17 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6b (quality infra: lint / types / coverage in CI)
+- **`ruff`** (lint + import-sort) config — `line-length=100`, ruleset `E/F/I/W/UP/B/SIM/C4`; `E741`
+  ignored (the math-idiom `I`), and the **faithfully-ported** `core.lie`/`core.jets` are exempt from
+  purely-cosmetic rewrites (kept line-for-line with origin-axiom). The tree is `ruff`-clean.
+- **CI extended** (`.github/workflows/ci.yml`): a `lint` job (`ruff check` + `mypy`) and coverage on the
+  test job (`pytest --cov` with a **75%** fast-tier floor; the heavy research paths are covered under
+  the OA_SLOW `slow` job). `[tool.coverage]` excludes the `__main__` opt-in reproducers.
+- **`.pre-commit-config.yaml`** (ruff, whitespace/EOF/YAML/TOML checks, and a local hook running the
+  banked-identity/hygiene gates) and **`.github/dependabot.yml`** (weekly pip + actions updates).
+- **`pyproject`** `dev` (ruff+mypy) and `docs` (mkdocs) optional-dependency extras; `pytest-cov` in `test`.
+
 ### Added — M6a (public API contract + typing, toward v1.0)
 - **`py.typed`** marker (PEP 561) — the package now ships its type hints to downstream users.
 - **`__all__`** on the public modules (`demo.*`, `core.precision`, …) — the public/internal boundary is

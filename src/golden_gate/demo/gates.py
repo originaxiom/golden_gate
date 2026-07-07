@@ -8,7 +8,8 @@ import numpy as np
 
 from .braiding import evaluate_braid
 
-__all__ = ["golden_gate", "golden_gate_mirror", "golden_gate_word", "gate_properties", "gate_fidelity", "infidelity", "is_clifford"]
+__all__ = ["golden_gate", "golden_gate_mirror", "golden_gate_word", "gate_properties",
+           "gate_fidelity", "infidelity", "is_clifford"]
 
 # figure-eight knot as a 3-strand braid word
 _GOLDEN_WORD = [(1, -1), (2, 1), (1, -1), (2, 1)]
