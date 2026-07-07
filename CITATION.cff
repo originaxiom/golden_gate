@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use golden_gate in your research, please cite it."
+title: "golden_gate: exact-arithmetic engines for Fibonacci-anyon quantum topology and a braid-gate compiler"
+abstract: >-
+  A Python library for computing with Fibonacci anyons: it turns quantum gates into anyon braids and
+  braids into gates, backed by exact arithmetic in the cyclotomic field Q(zeta_60) rather than floating
+  point, so identities such as F^2 = I, Yang-Baxter, and Jones(4_1; e^{2*pi*i/5}) = 1 - sqrt(5) are
+  proved as symbolic equalities. Includes a consolidated high-precision research core (an E6
+  cup-product deformation study) and a pre-registration + banked-identity research harness.
+type: software
+authors:
+  - given-names: "Dritëro"
+    family-names: "M."
+repository-code: "https://github.com/originaxiom/golden_gate"
+url: "https://github.com/originaxiom/golden_gate"
+license: MIT
+version: "0.1.0"
+keywords:
+  - Fibonacci anyons
+  - topological quantum computation
+  - braid group
+  - Jones polynomial
+  - exact arithmetic
+  - cyclotomic fields

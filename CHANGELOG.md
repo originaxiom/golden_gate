@@ -8,6 +8,11 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6e (community + provenance)
+- `CONTRIBUTING.md` (dev setup, the checks, the governance/honesty discipline, PR expectations),
+  `SECURITY.md` (the honest minimal-surface policy + the compiler-DoS note), `CODE_OF_CONDUCT.md`
+  (Contributor Covenant 2.1), `CITATION.cff`, and GitHub issue + PR templates.
+
 ### Added — M6d (docs site + public explorer)
 - **MkDocs Material site** (`mkdocs.yml` + `docs/index.md`) rendering the existing docs (MATH / EXAMPLES
   / API / PAPER) with an **auto-generated demo reference** (`docs/reference.md` via `mkdocstrings`).
