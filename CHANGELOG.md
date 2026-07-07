@@ -18,7 +18,8 @@ history is in `PROGRESS_LOG.md`.
   the approximate 6-digit dedup key is now documented (a collision can only miss a shorter word).
 - **README** — a plain-language one-liner, a "research prototype, not a production compiler" scope
   note, and a relationship-to-mainstream-tooling (Qiskit/Cirq) paragraph.
-- **`v0.1.0`** annotated git tag.
+- **`v0.1.0`** annotated git tag (created locally; the remote tag push is blocked by the environment's
+  git proxy — publishing the tag/release is an owner-action).
 
 ### Added — M4 (outward polish: the community shopfront)
 - **`web/explorer.html`** — a self-contained interactive Fibonacci-anyon braid-gate explorer (no

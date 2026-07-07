@@ -341,8 +341,12 @@ state. Verified each claim against the current tree and acted only on what is ge
     (default 200k) that returns best-effort instead of hanging. Tests: each rejection path + positive
     controls. Documented the approximate 6-digit dedup key (a collision can only *miss* a shorter word;
     the returned fidelity is always recomputed, never trusted from the key).
-  - **Release** — an annotated `v0.1.0` git tag; README gains a plain-language one-liner, a "research
-    prototype, not a production compiler" scope note, and a relationship-to-Qiskit/Cirq paragraph.
+  - **Release** — an annotated `v0.1.0` git tag created locally; README gains a plain-language
+    one-liner, a "research prototype, not a production compiler" scope note, and a
+    relationship-to-Qiskit/Cirq paragraph. **Owner-action:** pushing the tag from this environment is
+    blocked by the git proxy (HTTP 403 on tag refs; branch pushes are fine), so publishing the
+    `v0.1.0` tag / GitHub release must be done by the owner (`git push origin v0.1.0`, or via the
+    GitHub UI) — same category as setting the repo topics.
 - **Declined, with rationale (honest response):** PyPI publish (API not stable — the reviewer agrees);
   Dockerfile (a library, not an app); advanced synthesis algorithms (an explicit non-goal, MB5); a
   heavy benchmark suite (deferred); a lockfile (lower-bounds are correct for a library); broad
