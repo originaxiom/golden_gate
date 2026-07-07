@@ -10,7 +10,7 @@ history is in `PROGRESS_LOG.md`.
 
 ### Added — M4 (outward polish: the community shopfront)
 - **`web/explorer.html`** — a self-contained interactive Fibonacci-anyon braid-gate explorer (no
-  build, no external requests; works as a repo file and as a claude.ai Artifact). Build braids with
+  build, no external requests; works as a repo file and as a hosted single-page artifact). Build braids with
   σ1/σ2, watch the live SVG diagram and the 2×2 gate (rotation angle, Clifford check, determinant),
   measure fidelity to a target, compile a gate → braid (bounded brute-force), and read Jones values
   (the exact `1−√5` for the figure-eight). Float64 JS transcribed faithfully from `demo` and

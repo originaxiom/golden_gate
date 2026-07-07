@@ -262,7 +262,7 @@ re-seeded without the ~10-min sweep (structurally a generic-position property). 
 ## 2026-07-06 — M4a: the interactive explorer (the community shopfront)
 
 Built `web/explorer.html` — a single self-contained page (inline CSS+JS, no build, no external
-requests, so it works both as a repo file and as a claude.ai Artifact under its strict CSP). It
+requests, so it works both as a repo file and as a hosted single-page artifact under a strict CSP). It
 **reimplements the `demo` braid math in float64 JS**, transcribed exactly from
 `demo/constants.py`+`braiding.py`+`gates.py`+`jones.py`+`compiler.py`+`visualize.py`:
 
