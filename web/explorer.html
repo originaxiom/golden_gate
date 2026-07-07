@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Golden Gate Explorer — Fibonacci-anyon braids</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%E2%99%BE%EF%B8%8F%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<!-- BODY-CONTENT-START -->
+<style>
+  :root{
+    /* light theme (default) — warm ivory ground, deep gold accent */
+    --ground:#f6f3ea; --surface:#fffdf7; --raised:#f1ecdf;
+    --ink:#1b1d22; --muted:#6b6555; --faint:#938c79;
+    --line:rgba(30,28,20,.12); --line-strong:rgba(30,28,20,.22);
+    --gold:#a9812a; --gold-soft:#c39a3e; --gold-ghost:rgba(169,129,42,.10);
+    --tau:#2f7d76;                 /* the tau channel / secondary strand */
+    --good:#3f9d63; --mid:#c98a1e; --bad:#c8503f;
+    --strand:#403a2c;             /* braid strand ink */
+    --over:#a9812a;               /* over-strand (gold) */
+    --shadow:0 1px 2px rgba(40,34,18,.06), 0 8px 24px rgba(40,34,18,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#0e1016; --surface:#161922; --raised:#1d212c;
+      --ink:#e9e7df; --muted:#9aa0ae; --faint:#6a7180;
+      --line:rgba(220,224,235,.10); --line-strong:rgba(220,224,235,.20);
+      --gold:#e6c25c; --gold-soft:#d8b24d; --gold-ghost:rgba(230,194,92,.10);
+      --tau:#54b7ae;
+      --good:#5bc07d; --mid:#e0a83c; --bad:#e56d5b;
+      --strand:#c3c6d0; --over:#e6c25c;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.34);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0e1016; --surface:#161922; --raised:#1d212c;
+    --ink:#e9e7df; --muted:#9aa0ae; --faint:#6a7180;
+    --line:rgba(220,224,235,.10); --line-strong:rgba(220,224,235,.20);
+    --gold:#e6c25c; --gold-soft:#d8b24d; --gold-ghost:rgba(230,194,92,.10);
+    --tau:#54b7ae; --good:#5bc07d; --mid:#e0a83c; --bad:#e56d5b;
+    --strand:#c3c6d0; --over:#e6c25c;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.34);
+  }
+  :root[data-theme="light"]{
+    --ground:#f6f3ea; --surface:#fffdf7; --raised:#f1ecdf;
+    --ink:#1b1d22; --muted:#6b6555; --faint:#938c79;
+    --line:rgba(30,28,20,.12); --line-strong:rgba(30,28,20,.22);
+    --gold:#a9812a; --gold-soft:#c39a3e; --gold-ghost:rgba(169,129,42,.10);
+    --tau:#2f7d76; --good:#3f9d63; --mid:#c98a1e; --bad:#c8503f;
+    --strand:#403a2c; --over:#a9812a;
+    --shadow:0 1px 2px rgba(40,34,18,.06), 0 8px 24px rgba(40,34,18,.06);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
+  .mono{font-family:"SF Mono","JetBrains Mono",Menlo,Consolas,ui-monospace,monospace;
+        font-variant-numeric:tabular-nums}
+  .wrap{max-width:1120px; margin:0 auto; padding:26px 20px 60px}
+
+  /* ---- masthead ---- */
+  header.mast{display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap}
+  .eyebrow{font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold);
+           font-weight:600}
+  h1{font-size:clamp(30px,5vw,46px); line-height:1.02; margin:.18em 0 .12em; font-weight:600;
+     text-wrap:balance; letter-spacing:-.01em}
+  h1 em{font-style:italic; color:var(--gold)}
+  .tagline{color:var(--muted); max-width:56ch; margin:.1em 0 0; font-size:15.5px}
+  .toggle{border:1px solid var(--line-strong); background:var(--surface); color:var(--muted);
+          border-radius:999px; padding:7px 13px; font-size:12.5px; cursor:pointer; white-space:nowrap}
+  .toggle:hover{color:var(--ink); border-color:var(--gold)}
+  .toggle:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+  .banner{margin:18px 0 24px; border:1px solid var(--line); background:var(--gold-ghost);
+          border-radius:12px; padding:11px 15px; font-size:13.2px; color:var(--muted);
+          display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+  .banner b{color:var(--ink); font-weight:600}
+  .banner a{color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-ghost)}
+  .banner a:hover{border-bottom-color:var(--gold)}
+
+  /* ---- layout ---- */
+  .grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:20px; align-items:start}
+  @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:16px;
+        padding:18px; box-shadow:var(--shadow)}
+  .card + .card{margin-top:18px}
+  .card h2{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);
+           margin:0 0 14px; font-weight:600}
+  .stack{display:flex; flex-direction:column; gap:18px}
+
+  /* ---- braid stage ---- */
+  .stage{display:flex; flex-direction:column; align-items:center; gap:4px;
+         background:var(--raised); border-radius:12px; padding:16px 8px; min-height:220px;
+         max-height:min(58vh,520px); overflow-y:auto; overflow-x:hidden}
+  .stage svg{display:block}
+  .stage .empty{color:var(--faint); font-size:14px; text-align:center; margin:auto; padding:40px 12px}
+  .stage .empty span{display:block; font-size:26px; margin-bottom:8px; opacity:.5}
+  .wordline{margin-top:12px; font-size:13px; color:var(--muted); text-align:center; word-break:break-word}
+  .wordline b{color:var(--ink)}
+
+  /* ---- controls ---- */
+  .controls{margin-top:16px}
+  .btnrow{display:flex; flex-wrap:wrap; gap:8px}
+  .gen{font-size:15px; padding:9px 0; min-width:60px; flex:1 1 60px; border-radius:10px;
+       border:1px solid var(--line-strong); background:var(--surface); color:var(--ink);
+       cursor:pointer; transition:transform .06s ease, border-color .12s ease, background .12s ease}
+  .gen:hover{border-color:var(--gold); background:var(--gold-ghost)}
+  .gen:active{transform:translateY(1px)}
+  .gen:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .gen .sub{font-size:11px; color:var(--muted)}
+  .util{display:flex; gap:8px; margin-top:8px}
+  .util button{flex:1; font-size:13px; padding:8px 0; border-radius:10px; cursor:pointer;
+               border:1px solid var(--line); background:transparent; color:var(--muted)}
+  .util button:hover{color:var(--ink); border-color:var(--line-strong)}
+  .presets{margin-top:14px; display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-size:12.5px; padding:6px 11px; border-radius:999px; cursor:pointer;
+        border:1px solid var(--line-strong); background:transparent; color:var(--muted)}
+  .chip:hover{border-color:var(--tau); color:var(--ink)}
+  .chip.gold{border-color:var(--gold); color:var(--gold)}
+  .presets .lbl{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint);
+                align-self:center; margin-right:2px}
+
+  /* ---- matrix ---- */
+  .matrix{overflow-x:auto}
+  table.mat{border-collapse:collapse; margin:0 auto; font-size:14px}
+  table.mat td{padding:7px 14px; text-align:center; white-space:nowrap; color:var(--ink)}
+  .mat-wrap{position:relative; display:inline-block; padding:0 14px}
+  .mat-wrap::before,.mat-wrap::after{content:""; position:absolute; top:2px; bottom:2px; width:9px;
+        border:1.6px solid var(--line-strong)}
+  .mat-wrap::before{left:0; border-right:none; border-radius:5px 0 0 5px}
+  .mat-wrap::after{right:0; border-left:none; border-radius:0 5px 5px 0}
+  .matholder{display:flex; justify-content:center}
+
+  /* ---- readout rows ---- */
+  .rows{display:flex; flex-direction:column; gap:2px}
+  .row{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:9px 2px;
+       border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--muted); font-size:13.5px}
+  .row .v{font-size:14px; text-align:right}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:600;
+        border:1px solid transparent}
+  .pill.yes{color:var(--tau); border-color:color-mix(in srgb,var(--tau) 45%, transparent);
+            background:color-mix(in srgb,var(--tau) 12%, transparent)}
+  .pill.no{color:var(--gold); border-color:color-mix(in srgb,var(--gold) 45%, transparent);
+           background:var(--gold-ghost)}
+
+  /* ---- fidelity meter ---- */
+  .selrow{display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap}
+  select{font-family:inherit; font-size:13.5px; padding:7px 10px; border-radius:9px;
+          border:1px solid var(--line-strong); background:var(--surface); color:var(--ink); cursor:pointer}
+  select:focus-visible{outline:2px solid var(--gold); outline-offset:1px}
+  .meter{height:9px; border-radius:999px; background:var(--raised); overflow:hidden; border:1px solid var(--line)}
+  .meter > i{display:block; height:100%; width:0; border-radius:999px; transition:width .35s ease, background .35s ease}
+  .fidnum{display:flex; justify-content:space-between; margin-top:8px; font-size:13px; color:var(--muted)}
+  .fidnum b{color:var(--ink)}
+
+  /* ---- compile ---- */
+  .btn-primary{font-size:13.5px; font-weight:600; padding:8px 16px; border-radius:10px; cursor:pointer;
+        border:1px solid var(--gold); background:var(--gold); color:#1b1508}
+  :root[data-theme="dark"] .btn-primary{color:#17130a}
+  @media (prefers-color-scheme:dark){ .btn-primary{color:#17130a} }
+  .btn-primary:hover{background:var(--gold-soft)}
+  .btn-primary:disabled{opacity:.55; cursor:progress}
+  .btn-primary:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+  .compile-out{margin-top:14px; font-size:13.5px; color:var(--muted); min-height:20px}
+  .compile-out .word{color:var(--ink)}
+
+  /* ---- jones ---- */
+  .jones-val{font-size:20px; margin:2px 0 4px}
+  .jones-val .exact{color:var(--gold)}
+  .jones-note{font-size:12.8px; color:var(--muted)}
+  .jones-note code{background:var(--raised); padding:1px 5px; border-radius:5px; font-size:12px}
+
+  footer{margin-top:34px; padding-top:20px; border-top:1px solid var(--line); color:var(--faint);
+         font-size:13px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  footer a{color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--gold); border-bottom-color:var(--gold)}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">Fibonacci-anyon braid compiler</div>
+      <h1 class="serif">The <em>Golden Gate</em> Explorer</h1>
+      <p class="tagline">Braid two anyons and watch the quantum gate they weave. The figure-eight
+        braid <span class="mono">σ₁⁻¹σ₂σ₁⁻¹σ₂</span> — the golden gate — is a non-Clifford rotation
+        of exactly <span class="mono">0.2447π</span>.</p>
+    </div>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ Theme</button>
+  </header>
+
+  <div class="banner">
+    <span>⚖︎</span>
+    <span><b>Everything here is float64</b> (≈1e-12). The <code class="mono">golden_gate</code> library
+      proves the same identities <b>exactly</b> in ℚ(ζ₆₀) — e.g. Jones(4₁)=1−√5 as an equality, not a
+      tolerance. <a href="https://github.com/originaxiom/golden_gate" target="_blank" rel="noopener">See the repo →</a></span>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT: the braid instrument -->
+    <div>
+      <div class="card">
+        <h2>The braid</h2>
+        <div class="stage" id="stage"></div>
+        <div class="wordline" id="wordline"></div>
+
+        <div class="controls">
+          <div class="btnrow" id="gens"></div>
+          <div class="util">
+            <button id="undo">↶ Undo</button>
+            <button id="clear">Clear</button>
+          </div>
+          <div class="presets">
+            <span class="lbl">Load</span>
+            <button class="chip gold" data-preset="golden">golden gate</button>
+            <button class="chip" data-preset="figure_eight">figure-8 (4₁)</button>
+            <button class="chip" data-preset="trefoil">trefoil (3₁)</button>
+            <button class="chip" data-preset="cinquefoil">cinquefoil (5₁)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Compile a gate → braid</h2>
+        <div class="selrow">
+          <select id="compTarget">
+            <option value="H">Hadamard (H)</option>
+            <option value="X">Pauli X</option>
+            <option value="S">Phase (S)</option>
+            <option value="T">π/8 (T)</option>
+          </select>
+          <button class="btn-primary" id="compileBtn">Compile</button>
+        </div>
+        <div class="compile-out mono" id="compileOut">Search braid words for a target gate — a
+          brute-force walk over σ₁, σ₂ and their inverses. The result loads onto the stage above.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: the readouts -->
+    <div class="stack">
+      <div class="card">
+        <h2>The gate it weaves</h2>
+        <div class="matholder"><div class="mat-wrap"><table class="mat mono" id="mat"></table></div></div>
+        <div class="rows" style="margin-top:16px">
+          <div class="row"><span class="k">Rotation angle</span><span class="v mono" id="r-angle"></span></div>
+          <div class="row"><span class="k">Determinant</span><span class="v mono" id="r-det"></span></div>
+          <div class="row"><span class="k">Clifford gate?</span><span class="v" id="r-cliff"></span></div>
+          <div class="row"><span class="k">Crossings</span><span class="v mono" id="r-len"></span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Fidelity to a target</h2>
+        <div class="selrow">
+          <span class="k" style="color:var(--muted);font-size:13.5px">Compare to</span>
+          <select id="fidTarget">
+            <option value="H">Hadamard (H)</option>
+            <option value="X">Pauli X</option>
+            <option value="Z">Pauli Z</option>
+            <option value="S">Phase (S)</option>
+            <option value="T">π/8 (T)</option>
+            <option value="golden">the golden gate</option>
+          </select>
+        </div>
+        <div class="meter"><i id="fidBar"></i></div>
+        <div class="fidnum"><span>process fidelity <span class="mono">|tr(U†V)|²/4</span></span><b class="mono" id="fidNum"></b></div>
+      </div>
+
+      <div class="card">
+        <h2>Jones polynomial at the Fibonacci point</h2>
+        <div class="jones-val mono" id="jonesVal"></div>
+        <div class="jones-note" id="jonesNote"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>The golden gate is the axiom object's quantum-topology face: <span class="mono">σ:a→ab</span>,
+      the figure-eight braid, the golden ℚ(√5) end of Fibonacci anyons.</span>
+    <span><a href="https://github.com/originaxiom/golden_gate" target="_blank" rel="noopener">originaxiom/golden_gate</a> · MIT</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ============================================================================
+   Faithful float64 reimplementation of golden_gate.demo (constants/braiding/
+   gates/jones/knots/compiler/visualize). The Python library proves these same
+   facts EXACTLY in Q(zeta_60); this page computes them numerically to ~1e-12.
+   ========================================================================== */
+
+/* ---- complex as [re, im] ---- */
+const cadd=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const csub=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+const cmul=(a,b)=>[a[0]*b[0]-a[1]*b[1], a[0]*b[1]+a[1]*b[0]];
+const cconj=a=>[a[0],-a[1]];
+const cabs=a=>Math.hypot(a[0],a[1]);
+const cdiv=(a,b)=>{const d=b[0]*b[0]+b[1]*b[1]; return [(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];};
+const csqrt=a=>{const r=cabs(a); let re=Math.sqrt(Math.max(0,(r+a[0])/2)), im=Math.sqrt(Math.max(0,(r-a[0])/2)); if(a[1]<0)im=-im; return [re,im];};
+const expi=t=>[Math.cos(t),Math.sin(t)];
+
+/* ---- 2x2 complex matrices: [[a,b],[c,d]] ---- */
+const mmul=(M,N)=>[
+  [cadd(cmul(M[0][0],N[0][0]),cmul(M[0][1],N[1][0])), cadd(cmul(M[0][0],N[0][1]),cmul(M[0][1],N[1][1]))],
+  [cadd(cmul(M[1][0],N[0][0]),cmul(M[1][1],N[1][0])), cadd(cmul(M[1][0],N[0][1]),cmul(M[1][1],N[1][1]))]
+];
+const mdag=M=>[[cconj(M[0][0]),cconj(M[1][0])],[cconj(M[0][1]),cconj(M[1][1])]];
+const mtr=M=>cadd(M[0][0],M[1][1]);
+const mdet=M=>csub(cmul(M[0][0],M[1][1]),cmul(M[0][1],M[1][0]));
+const diag=(a,b)=>[[a,[0,0]],[[0,0],b]];
+
+/* ---- constants (transcribed from demo/constants.py) ---- */
+const PHI=(1+Math.sqrt(5))/2, PHI_INV=PHI-1, SQPI=Math.sqrt(PHI_INV);
+const R_VAC=expi(-4*Math.PI/5), R_TAU=expi(3*Math.PI/5);
+const F=[[[PHI_INV,0],[SQPI,0]],[[SQPI,0],[-PHI_INV,0]]];
+const I2=[[[1,0],[0,0]],[[0,0],[1,0]]];
+
+const S1 = diag(R_VAC,R_TAU);
+const S2 = mmul(mmul(F,diag(R_VAC,R_TAU)),F);
+const S1i= diag(cconj(R_VAC),cconj(R_TAU));
+const S2i= mmul(mmul(F,diag(cconj(R_VAC),cconj(R_TAU))),F);
+const UNIT={"1,1":S1,"1,-1":S1i,"2,1":S2,"2,-1":S2i};
+const INV ={"1,1":"1,-1","1,-1":"1,1","2,1":"2,-1","2,-1":"2,1"};
+
+/* ---- braid evaluation (right-multiply in reading order) ---- */
+function evaluate(word){
+  let U=I2;
+  for(const [g,p] of word){
+    const step=UNIT[g+","+(p>=0?1:-1)];
+    for(let k=0;k<Math.abs(p);k++) U=mmul(U,step);
+  }
+  return U;
+}
+
+/* ---- Pauli matrices + gate metrics (demo/gates.py) ---- */
+const PA={
+  I:[[[1,0],[0,0]],[[0,0],[1,0]]],
+  X:[[[0,0],[1,0]],[[1,0],[0,0]]],
+  Y:[[[0,0],[0,-1]],[[0,1],[0,0]]],
+  Z:[[[1,0],[0,0]],[[0,0],[-1,0]]]
+};
+function rotationAngle(U){
+  const sd=csqrt(mdet(U));
+  const su2=[[cdiv(U[0][0],sd),cdiv(U[0][1],sd)],[cdiv(U[1][0],sd),cdiv(U[1][1],sd)]];
+  const tr=mtr(su2);
+  return 2*Math.acos(Math.min(1,Math.max(0,Math.abs(tr[0])/2)));
+}
+function isClifford(U,tol=1e-9){
+  const Ud=mdag(U);
+  for(const pn of ["X","Y","Z"]){
+    const C=mmul(mmul(U,PA[pn]),Ud);
+    let hits=[];
+    for(const qn of ["I","X","Y","Z"]){
+      const c=cmul(mtr(mmul(mdag(PA[qn]),C)),[0.5,0]);
+      if(cabs(c)>tol) hits.push([qn,cabs(c)]);
+    }
+    if(hits.length!==1) return false;
+    if(hits[0][0]==="I") return false;
+    if(Math.abs(hits[0][1]-1)>tol) return false;
+  }
+  return true;
+}
+function fidelity(U,V){const t=mtr(mmul(mdag(U),V)); return (t[0]*t[0]+t[1]*t[1])/4;}
+
+/* ---- named targets ---- */
+const RT=1/Math.SQRT2;
+const TARGETS={
+  H:[[[RT,0],[RT,0]],[[RT,0],[-RT,0]]],
+  X:[[[0,0],[1,0]],[[1,0],[0,0]]],
+  Z:[[[1,0],[0,0]],[[0,0],[-1,0]]],
+  S:[[[1,0],[0,0]],[[0,0],[0,1]]],
+  T:[[[1,0],[0,0]],[[0,0],expi(Math.PI/4)]],
+  golden:evaluate([[1,-1],[2,1],[1,-1],[2,1]])
+};
+
+/* ---- knots (demo/knots.py) + Jones (demo/jones.py, numeric) ---- */
+const KNOTS={
+  golden:[[1,-1],[2,1],[1,-1],[2,1]],
+  figure_eight:[[1,-1],[2,1],[1,-1],[2,1]],
+  trefoil:[[1,3]],
+  cinquefoil:[[1,5]]
+};
+const JONES_POLY={
+  unknot:{0:1},
+  trefoil:{"-1":1,"-3":1,"-4":-1},
+  figure_eight:{2:1,1:-1,0:1,"-1":-1,"-2":1},
+  cinquefoil:{"-2":1,"-4":1,"-5":-1,"-6":1,"-7":-1}
+};
+function cpow(a,n){let r=[1,0]; const b=n<0?cdiv([1,0],a):a; for(let k=0;k<Math.abs(n);k++)r=cmul(r,b); return r;}
+function jonesAt(knot){
+  const poly=JONES_POLY[knot]; if(!poly) return null;
+  const t=expi(2*Math.PI/5); let acc=[0,0];
+  for(const e in poly) acc=cadd(acc, cmul([poly[e],0], cpow(t,parseInt(e,10))));
+  return acc;
+}
+
+/* ---- compiler (demo/compiler.py brute_force; bounded for the browser) ---- */
+function compress(word){
+  const out=[];
+  for(const [g,p] of word){
+    if(out.length && out[out.length-1][0]===g){ out[out.length-1][1]+=p; if(out[out.length-1][1]===0) out.pop(); }
+    else out.push([g,p]);
+  }
+  return out;
+}
+function keyOf(U){let s=""; for(const row of U) for(const z of row) s+=z[0].toFixed(6)+","+z[1].toFixed(6)+";"; return s;}
+function bruteForce(target,maxLen=13,tol=1e-2,nodeCap=220000){
+  let best={word:[],fid:fidelity(I2,target)};
+  let frontier=[{word:[],U:I2,last:null}];
+  const visited=new Set([keyOf(I2)]);
+  for(let depth=0; depth<maxLen; depth++){
+    const next=[];
+    for(const node of frontier){
+      for(const u of ["1,1","1,-1","2,1","2,-1"]){
+        if(node.last && INV[node.last]===u) continue;
+        const U=mmul(node.U,UNIT[u]); const k=keyOf(U);
+        if(visited.has(k)) continue; visited.add(k);
+        const [g,s]=u.split(",").map(Number);
+        const word=node.word.concat([[g,s]]);
+        const fid=fidelity(U,target);
+        if(fid>best.fid) best={word,fid};
+        if(fid>=1-tol) return {word,fid,length:word.length,exact:true};
+        next.push({word,U,last:u});
+      }
+    }
+    frontier=next;
+    if(visited.size>nodeCap) break;
+  }
+  return {word:best.word,fid:best.fid,length:best.word.length,exact:false};
+}
+
+/* ============================================================================
+   Braid diagram — SVG port of demo/visualize.py geometry
+   ========================================================================== */
+const COL=44,ROW=44,PAD=22,GAP_HALF=0.001,STROKE=3.0,GOLD="var(--over)";
+function expandUnits(word){const u=[]; for(const [g,p] of word){const s=p>=0?1:-1; for(let k=0;k<Math.abs(p);k++)u.push([g,s]);} return u;}
+const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t];
+function subcurve(P,ta,tb){
+  const sl=(Q,t)=>{const[p0,p1,p2,p3]=Q,a=lerp(p0,p1,t),b=lerp(p1,p2,t),c=lerp(p2,p3,t),d=lerp(a,b,t),e=lerp(b,c,t);return[p0,a,d,lerp(d,e,t)];};
+  const sr=(Q,t)=>{const[p0,p1,p2,p3]=Q,a=lerp(p0,p1,t),b=lerp(p1,p2,t),c=lerp(p2,p3,t),d=lerp(a,b,t),e=lerp(b,c,t);return[lerp(d,e,t),e,c,p3];};
+  return sr(sl(P,tb), ta/tb);
+}
+const pathD=P=>`M ${P[0][0].toFixed(1)} ${P[0][1].toFixed(1)} C ${P[1][0].toFixed(1)} ${P[1][1].toFixed(1)} ${P[2][0].toFixed(1)} ${P[2][1].toFixed(1)} ${P[3][0].toFixed(1)} ${P[3][1].toFixed(1)}`;
+function braidSVG(word,nStrands=3){
+  const units=expandUnits(word);
+  const nRows=Math.max(units.length,1);
+  const W=PAD*2+(nStrands-1)*COL, H=PAD*2+nRows*ROW;
+  const x=pos=>PAD+pos*COL;
+  let paths=[];
+  for(let r=0;r<nRows;r++){
+    const y0=PAD+r*ROW, y1=PAD+(r+1)*ROW, my=(y0+y1)/2;
+    const unit = r<units.length?units[r]:null;
+    const gen = unit?unit[0]:null, sign=unit?unit[1]:1;
+    const left = gen!==null ? gen-1 : -1;
+    for(let pos=0;pos<nStrands;pos++){
+      if(pos===left){
+        const Plr=[[x(left),y0],[x(left),my],[x(left+1),my],[x(left+1),y1]];
+        const Prl=[[x(left+1),y0],[x(left+1),my],[x(left),my],[x(left),y1]];
+        const over = sign>0?Plr:Prl, under = sign>0?Prl:Plr;
+        paths.push(`<path d="${pathD(subcurve(under,0.001,0.4))}" class="under"/>`);
+        paths.push(`<path d="${pathD(subcurve(under,0.6,0.999))}" class="under"/>`);
+        paths.push(`<path d="${pathD(over)}" class="over"/>`);
+      } else if(pos===left+1){ continue; }
+      else {
+        const v=[[x(pos),y0],[x(pos),my],[x(pos),my],[x(pos),y1]];
+        paths.push(`<path d="${pathD(v)}" class="strand"/>`);
+      }
+    }
+  }
+  const css=`.strand,.under,.over{fill:none;stroke-width:${STROKE};stroke-linecap:round}`
+    +`.strand,.under{stroke:var(--strand)}.over{stroke:var(--over)}`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="braid diagram on ${nStrands} strands">`
+    +`<style>${css}</style>${paths.join("")}</svg>`;
+}
+
+/* ============================================================================
+   UI wiring
+   ========================================================================== */
+let word=[];  // compressed [[gen,power],...]
+
+const $=id=>document.getElementById(id);
+function fmtC(z){
+  const re=Math.abs(z[0])<5e-5?0:z[0], im=Math.abs(z[1])<5e-5?0:z[1];
+  const rs=re.toFixed(3);
+  if(im===0) return rs;
+  const is=Math.abs(im).toFixed(3);
+  return `${rs} ${im<0?"−":"+"} ${is}i`;
+}
+function pushUnit(g,s){
+  if(word.length && word[word.length-1][0]===g){ word[word.length-1][1]+=s; if(word[word.length-1][1]===0) word.pop(); }
+  else word.push([g,s]);
+  render();
+}
+
+function render(){
+  // braid stage
+  const stage=$("stage");
+  if(word.length===0){
+    stage.innerHTML=`<div class="empty"><span>♾️</span>Add a crossing, or load the golden gate.</div>`;
+  } else {
+    stage.innerHTML=braidSVG(word,3);
+  }
+  const units=expandUnits(word);
+  $("wordline").innerHTML = word.length
+    ? `braid word <b class="mono">${wordStr(word)}</b> · ${units.length} crossing${units.length===1?"":"s"}`
+    : "";
+
+  // gate
+  const U=evaluate(word);
+  const mat=$("mat");
+  mat.innerHTML=`<tr><td>${fmtC(U[0][0])}</td><td>${fmtC(U[0][1])}</td></tr>`
+               +`<tr><td>${fmtC(U[1][0])}</td><td>${fmtC(U[1][1])}</td></tr>`;
+  const ang=rotationAngle(U);
+  $("r-angle").textContent=(ang/Math.PI).toFixed(4)+" π";
+  $("r-det").textContent=fmtC(mdet(U));
+  const cliff=isClifford(U);
+  $("r-cliff").innerHTML = cliff
+    ? `<span class="pill yes">Clifford</span>`
+    : `<span class="pill no">non-Clifford</span>`;
+  $("r-len").textContent=units.length;
+
+  updateFidelity(U);
+}
+function wordStr(w){
+  return w.map(([g,p])=>{
+    const base="σ"+(g===1?"₁":"₂");
+    if(p===1) return base;
+    if(p===-1) return base+"⁻¹";
+    const sup=(""+Math.abs(p)).split("").map(d=>"⁰¹²³⁴⁵⁶⁷⁸⁹"[+d]).join("");
+    return base+(p<0?"⁻":"")+sup;
+  }).join(" ");
+}
+function fidColor(f){ return f>=0.99?"var(--good)":f>=0.8?"var(--mid)":"var(--bad)"; }
+function updateFidelity(U){
+  const V=TARGETS[$("fidTarget").value];
+  const f=fidelity(U,V);
+  const bar=$("fidBar");
+  bar.style.width=(Math.max(0,Math.min(1,f))*100).toFixed(1)+"%";
+  bar.style.background=fidColor(f);
+  $("fidNum").textContent=f.toFixed(6);
+}
+
+/* generators */
+const GENS=[["σ₁","1","1"],["σ₂","2","1"],["σ₁⁻¹","1","-1"],["σ₂⁻¹","2","-1"]];
+$("gens").innerHTML=GENS.map(([lab,g,s],i)=>
+  `<button class="gen" data-g="${g}" data-s="${s}">${lab}<div class="sub">${(+s>0)?"over":"under"}</div></button>`
+).join("");
+$("gens").addEventListener("click",e=>{const b=e.target.closest(".gen"); if(!b)return; pushUnit(+b.dataset.g,+b.dataset.s);});
+$("undo").onclick=()=>{ const u=expandUnits(word); u.pop(); word=compress(u.map(([g,s])=>[g,s])); render(); };
+$("clear").onclick=()=>{ word=[]; render(); };
+document.querySelectorAll(".chip[data-preset]").forEach(c=>c.onclick=()=>{ word=KNOTS[c.dataset.preset].map(x=>x.slice()); render(); });
+$("fidTarget").onchange=()=>updateFidelity(evaluate(word));
+
+/* compile */
+$("compileBtn").onclick=function(){
+  const tgt=$("compTarget").value, out=$("compileOut"), btn=this;
+  btn.disabled=true; out.textContent="Searching braid words…";
+  setTimeout(()=>{
+    const r=bruteForce(TARGETS[tgt], 13, 1e-2);
+    const pct=(r.fid*100).toFixed(2);
+    const near=r.fid>=0.99?"✓":"≈";
+    out.innerHTML = r.word.length
+      ? `${near} <span class="word">${wordStr(compress(r.word))}</span><br>`
+        +`<span style="color:var(--muted)">${r.length} crossings · fidelity ${pct}%`
+        +(r.exact?"":" (best found in-browser; the library searches deeper)")+"</span>"
+      : "No braid found.";
+    // also load it onto the stage
+    word=compress(r.word.map(x=>x.slice())); render();
+    btn.disabled=false;
+  },30);
+};
+
+/* jones */
+function renderJones(){
+  const knot=word.length?matchKnot(word):null;
+  const jv=$("jonesVal"), jn=$("jonesNote");
+  const show = knot||"figure_eight";
+  const val=jonesAt(show);
+  const re=Math.abs(val[0])<1e-6?0:val[0];
+  if(show==="figure_eight"){
+    jv.innerHTML=`V(4₁; ζ₅) = <span class="exact">${re.toFixed(6)}</span>`;
+    jn.innerHTML=`= <code>1 − √5</code> exactly (proved in ℚ(ζ₆₀)). Some sources quote <code>−φ ≈ −1.618</code> — that's the unnormalized Kauffman bracket, related by <code>−φ = (1−√5)·φ²/2</code>.`;
+  } else {
+    const names={trefoil:"3₁",cinquefoil:"5₁"};
+    jv.innerHTML=`V(${names[show]}; ζ₅) = <span class="exact">${fmtC(val)}</span>`;
+    jn.innerHTML=`evaluated at the Fibonacci point <code>t = e^{2πi/5}</code>.`;
+  }
+}
+function matchKnot(w){
+  const c=JSON.stringify(compress(w.map(x=>x.slice())));
+  for(const k of ["figure_eight","trefoil","cinquefoil"]) if(JSON.stringify(KNOTS[k])===c) return k;
+  return null;
+}
+const _origRender=render;
+render=function(){ _origRender(); renderJones(); };
+
+/* theme toggle */
+$("themeBtn").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const isDark = cur ? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", isDark?"light":"dark");
+};
+
+/* boot: load the golden gate */
+word=KNOTS.golden.map(x=>x.slice());
+render();
+</script>
+<!-- BODY-CONTENT-END -->
+</body>
+</html>

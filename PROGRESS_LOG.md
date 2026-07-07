@@ -258,3 +258,29 @@ Noted, not changed (deliberate / out of the E6 verdict's path): the m=1 first-or
 would thin below ~dps 90 (irrelevant at the pinned 100); the massey `mb12` control could not be
 re-seeded without the ~10-min sweep (structurally a generic-position property). Fast suite
 125 pass / 15 skip; gates exit 0; origin-axiom untouched.
+
+## 2026-07-06 — M4a: the interactive explorer (the community shopfront)
+
+Built `web/explorer.html` — a single self-contained page (inline CSS+JS, no build, no external
+requests, so it works both as a repo file and as a claude.ai Artifact under its strict CSP). It
+**reimplements the `demo` braid math in float64 JS**, transcribed exactly from
+`demo/constants.py`+`braiding.py`+`gates.py`+`jones.py`+`compiler.py`+`visualize.py`:
+
+- **Braid builder** (σ1/σ2/inverses, undo, clear, knot presets) → a live SVG braid diagram (the
+  `visualize.py` geometry ported to JS: cubic-Bézier over/under, gold over-strand, dark-mode).
+- **Live gate readout:** the 2×2 matrix, rotation angle (in π), Clifford check, determinant, crossings.
+- **Fidelity meter** to a selectable target (H/X/Z/S/T/golden), `|tr(U†V)|²/4`.
+- **Compile tool:** a bounded brute-force BFS mirroring `compiler.brute_force` (loads the found braid
+  onto the stage; honest "best found in-browser" when it can't hit tolerance).
+- **Jones panel** with the exact `1−√5` for the figure-eight + the `−φ` Kauffman convention note.
+- Theme-aware (dark-primary "quantum instrument" + warm-ivory light), responsive, a11y focus states,
+  `prefers-reduced-motion`. An honesty banner (§2): float64 ~1e-12 here vs proved-exactly in ℚ(ζ₆₀).
+
+**Verified:** a Node harness runs the page's own (DOM-free) math half and checks 11 identities against
+the Python `demo` — golden matrix `−0.927051−0.224514i`, angle `0.24467π`, det 1, non-Clifford,
+Yang–Baxter `4.7e-16`, `Jones(4₁)=1−√5`, `F²=I`, and compile H → **11 crossings @ 0.9906** (matching
+Python exactly). Rendered headless (Chromium) in both themes — layout balanced (braid + compile left;
+matrix / fidelity / Jones right). Published as a live Artifact.
+
+Governance: extended `core.gates` `_TEXT_SUFFIXES` to `.html`/`.css` so `web/explorer.html` is
+hygiene-scanned (now 50 tracked files scanned, clean). Gates exit 0.

@@ -28,7 +28,7 @@ _FORBIDDEN_TOKENS = [base64.b64decode("Y2xhdWRl").decode(),              # "clau
                      base64.b64decode("Q2xhdWRlLVNlc3Npb24=").decode()]  # "Claude-Session"
 
 _TEXT_SUFFIXES = {".py", ".md", ".txt", ".toml", ".cfg", ".ini", ".rst", ".jsx",
-                  ".js", ".ts", ".json", ".yaml", ".yml"}
+                  ".js", ".ts", ".json", ".yaml", ".yml", ".html", ".css"}
 
 
 def _tracked_files():

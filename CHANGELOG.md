@@ -8,6 +8,18 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M4 (outward polish: the community shopfront)
+- **`web/explorer.html`** — a self-contained interactive Fibonacci-anyon braid-gate explorer (no
+  build, no external requests; works as a repo file and as a claude.ai Artifact). Build braids with
+  σ1/σ2, watch the live SVG diagram and the 2×2 gate (rotation angle, Clifford check, determinant),
+  measure fidelity to a target, compile a gate → braid (bounded brute-force), and read Jones values
+  (the exact `1−√5` for the figure-eight). Float64 JS transcribed faithfully from `demo` and
+  cross-checked against the Python library (11 identities, incl. compile H → 11 crossings @ 0.9906).
+  Theme-aware, responsive, with an honesty banner (float64 here vs proved-exactly in ℚ(ζ₆₀)).
+
+### Changed — M4
+- `core.gates` `_TEXT_SUFFIXES` now includes `.html`/`.css` so web assets are hygiene-scanned.
+
 ### Added — M3 (the heavy mpmath research core)
 - **`core.precision`** — centralized mpmath working-precision discipline: a
   `working_precision(dps)` context manager, an `@at_precision(dps)` decorator, and the named
