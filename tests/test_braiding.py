@@ -45,3 +45,12 @@ def test_bad_generator_rejected():
     import pytest
     with pytest.raises(ValueError):
         B.evaluate_braid([(3, 1)])
+
+
+def test_absurd_power_rejected():
+    # a stray huge power would spin the |power|-fold product loop; it must be refused, while a
+    # normal small power still evaluates.
+    import pytest
+    with pytest.raises(ValueError):
+        B.evaluate_braid([(1, B._MAX_ABS_POWER + 1)])
+    assert B.evaluate_braid([(1, 5)]).shape == (2, 2)   # positive control

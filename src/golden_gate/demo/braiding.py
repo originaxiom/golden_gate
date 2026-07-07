@@ -36,6 +36,11 @@ def sigma2_inv() -> np.ndarray:
 
 _GEN = {1: sigma1, 2: sigma2}
 
+# A single generator raised to this many powers is already absurd for any real braid
+# (evaluating it is |power| matrix products); reject beyond it so a stray large integer
+# can't spin the loop. Real braid words use small powers (the knots here go up to 5).
+_MAX_ABS_POWER = 10_000
+
 
 def evaluate_braid(word) -> np.ndarray:
     """Evaluate a braid word to a 2x2 unitary.
@@ -55,8 +60,13 @@ def evaluate_braid(word) -> np.ndarray:
     for gen, power in word:
         if gen not in _GEN:
             raise ValueError(f"generator must be 1 or 2, got {gen!r}")
+        p = int(power)
+        if abs(p) > _MAX_ABS_POWER:
+            raise ValueError(
+                f"braid power {p} exceeds the cap {_MAX_ABS_POWER}; a real braid word uses "
+                "small powers (compress the word, or raise braiding._MAX_ABS_POWER deliberately)")
         base = _GEN[gen]()
-        step = base if power >= 0 else np.linalg.inv(base)
-        for _ in range(abs(int(power))):
+        step = base if p >= 0 else np.linalg.inv(base)
+        for _ in range(abs(p)):
             U = U @ step
     return U

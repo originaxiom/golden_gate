@@ -8,6 +8,18 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M5 (response to an external audit)
+- **CI** — `.github/workflows/ci.yml`: push/PR matrix (Python 3.11 + 3.12) running byte-compile →
+  `pytest -q` → the banked-identity/hygiene gates; a manual/weekly `slow` job for the `OA_SLOW` sweeps
+  + `pip-audit`. README CI badge.
+- **Input guards** — `braiding.evaluate_braid` rejects absurd powers (`_MAX_ABS_POWER`);
+  `compiler.{compile_gate,brute_force,golden}` validate the target is a finite 2×2 matrix, bound
+  `max_length` (`_MAX_LENGTH`), and honor a `max_nodes` BFS budget (best-effort, no hang). Tests added;
+  the approximate 6-digit dedup key is now documented (a collision can only miss a shorter word).
+- **README** — a plain-language one-liner, a "research prototype, not a production compiler" scope
+  note, and a relationship-to-mainstream-tooling (Qiskit/Cirq) paragraph.
+- **`v0.1.0`** annotated git tag.
+
 ### Added — M4 (outward polish: the community shopfront)
 - **`web/explorer.html`** — a self-contained interactive Fibonacci-anyon braid-gate explorer (no
   build, no external requests; works as a repo file and as a hosted single-page artifact). Build braids with

@@ -1,7 +1,13 @@
 # golden_gate
 
+[![CI](https://github.com/originaxiom/golden_gate/actions/workflows/ci.yml/badge.svg)](https://github.com/originaxiom/golden_gate/actions/workflows/ci.yml)
+
 **Exact-arithmetic engines for Fibonacci-anyon quantum topology — and a braid-gate compiler
 that proves its identities exactly, not to a tolerance.**
+
+> **In one sentence:** most quantum software talks about *circuits*; topological quantum computation
+> talks about *braids*. `golden_gate` is a small Python lab for turning Fibonacci-anyon braids into
+> quantum gates (and back), and checking the identities **exactly**.
 
 Fibonacci anyons are a candidate for topological quantum computation: you compute by *braiding*
 them, and each braid is a quantum gate. `golden_gate` turns gates into braids and braids into
@@ -82,12 +88,22 @@ Every public result carries one epistemic status (`GOVERNANCE.md` §3), and the 
 Convention honesty is enforced: e.g. the standard Jones value is `1−√5`; the `−φ` some sources quote
 is the *unnormalized Kauffman bracket*, related by `−φ = (1−√5)·φ²/2` — the library documents both.
 
+## Scope
+
+`golden_gate` is a **research / education prototype** (v0.1), not a production quantum compiler. It is
+complementary to the mainstream circuit-model SDKs (Qiskit, Cirq, PennyLane, …): those target the gate/
+circuit model on real and simulated hardware; this is a specialized **exact-arithmetic lab for the
+braid / topological model**. If you want to run circuits, use those. If you want to compute and *verify*
+Fibonacci-anyon braid gates and quantum-topology identities exactly, use this.
+
 ## Prior art
 
 Fibonacci-anyon braid synthesis is a mature literature (Kliuchnikov–Bocharov–Svore; Kliuchnikov–Yard,
 *A framework for exact synthesis*, arXiv:1504.04350; the Monte-Carlo compiler, PRX Quantum 2.010334).
 `golden_gate`'s contribution is **clean, exact, tested, installable packaging + integration** (and the
-research core + the axiom quantum-topology connection) — **not** new synthesis algorithms.
+research core + the axiom quantum-topology connection) — **not** new synthesis algorithms. The
+`demo.compiler` is a straightforward bounded brute-force search, deliberately not competitive with the
+cited synthesis algorithms.
 
 ## Install & test
 

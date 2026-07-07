@@ -321,3 +321,32 @@ it (after a non-blocking commit chain let the first push through), and it was re
 single-page artifact" fix-forward. Lesson: run `python -m golden_gate.core.gates` and gate on its exit
 code *before* committing, not in a `&&` chain that ignores it — the gate-first check then caught a
 second occurrence (this very note) before it was committed. Gates exit 0.
+
+## 2026-07-06 — M5: response to an external audit (verified triage + hardening)
+
+An external reviewer audited the public repo (a fair, competent pass) — but against the **pre-M4**
+state. Verified each claim against the current tree and acted only on what is genuinely still-open:
+
+- **Already resolved by M4** (the reviewer didn't see): "no quickstart / thin docs / no examples
+  gallery / no start-here API / README too dense / pitched as a compiler" → the M4 README rewrite +
+  `docs/{API,MATH,PAPER}.md` + `web/explorer.html` + the label discipline. **No action; noted stale.**
+- **Acted on (confirmed absent):**
+  - **CI** — added `.github/workflows/ci.yml`: a push/PR job (Python 3.11 + 3.12) running
+    `compileall` → `pytest -q` → `python -m golden_gate.core.gates`, and a manual/weekly `slow` job
+    for the `OA_SLOW` sweeps + `pip-audit`. This mechanically enforces the discipline run by hand (and
+    would have caught the M4b hygiene slip). README gets a CI badge.
+  - **Input guards** — `braiding.evaluate_braid` now rejects an absurd `abs(power)` (cap `_MAX_ABS_POWER
+    = 10_000`); `compiler.{compile_gate,brute_force,golden}` validate the target is a finite 2×2 matrix,
+    reject `max_length < 0`, cap `max_length` (`_MAX_LENGTH = 24`), and honor a `max_nodes` BFS budget
+    (default 200k) that returns best-effort instead of hanging. Tests: each rejection path + positive
+    controls. Documented the approximate 6-digit dedup key (a collision can only *miss* a shorter word;
+    the returned fidelity is always recomputed, never trusted from the key).
+  - **Release** — an annotated `v0.1.0` git tag; README gains a plain-language one-liner, a "research
+    prototype, not a production compiler" scope note, and a relationship-to-Qiskit/Cirq paragraph.
+- **Declined, with rationale (honest response):** PyPI publish (API not stable — the reviewer agrees);
+  Dockerfile (a library, not an app); advanced synthesis algorithms (an explicit non-goal, MB5); a
+  heavy benchmark suite (deferred); a lockfile (lower-bounds are correct for a library); broad
+  secret-scanning (no secrets; the hygiene gate covers provenance); a full typing pass (low value).
+
+Net: the audit was useful external validation, and its CI + input-guard + tag recommendations were
+real and cheap; ~half its criticisms were pre-M4 stale. Fast suite green; gates exit 0 (gate-first).

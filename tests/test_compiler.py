@@ -72,3 +72,28 @@ def test_bad_method_rejected():
     import pytest
     with pytest.raises(ValueError):
         compile_gate(np.eye(2, dtype=complex), method="quantum_magic")
+
+
+def test_input_guards():
+    import pytest
+
+    from golden_gate.demo import compiler as CO
+    # target shape + finiteness are validated
+    with pytest.raises(ValueError):
+        compile_gate(np.eye(3, dtype=complex))
+    with pytest.raises(ValueError):
+        compile_gate(np.array([[np.inf, 0], [0, 1]], dtype=complex))
+    # max_length is bounded (negative and explosive both refused)
+    with pytest.raises(ValueError):
+        CO.brute_force(np.eye(2, dtype=complex), max_length=-1)
+    with pytest.raises(ValueError):
+        CO.brute_force(np.eye(2, dtype=complex), max_length=CO._MAX_LENGTH + 1)
+
+
+def test_max_nodes_budget_returns_best_effort():
+    # a tiny node budget must terminate quickly with a valid (best-effort) result, not hang.
+    from golden_gate.demo import compiler as CO
+    H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+    r = CO.brute_force(H, max_length=20, tolerance=1e-9, max_nodes=500)
+    assert isinstance(r, CompilationResult)
+    assert 0.0 <= r.fidelity <= 1.0 and r.length == len(r.word)

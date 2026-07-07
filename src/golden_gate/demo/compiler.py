@@ -57,7 +57,40 @@ def compress_word(word):
     return out
 
 
+# BFS at depth d explores O(3^d) words even after inverse-pruning + dedup, so bound both the
+# depth and the number of distinct gates visited. These are generous for the short words this
+# demo compiler targets; raise them deliberately if you know what you're asking for.
+_MAX_LENGTH = 24
+_DEFAULT_MAX_NODES = 200_000
+
+
+def _validate_target(target):
+    """Coerce ``target`` to a finite 2x2 complex array; raise ValueError otherwise."""
+    M = np.asarray(target, dtype=complex)
+    if M.shape != (2, 2):
+        raise ValueError(f"target must be a 2x2 matrix, got shape {M.shape}")
+    if not np.all(np.isfinite(M)):
+        raise ValueError("target has non-finite entries")
+    return M
+
+
+def _check_length(max_length):
+    if max_length < 0:
+        raise ValueError(f"max_length must be >= 0, got {max_length}")
+    if max_length > _MAX_LENGTH:
+        raise ValueError(
+            f"max_length {max_length} exceeds the cap {_MAX_LENGTH}; BFS at that depth is "
+            "explosive (raise compiler._MAX_LENGTH deliberately if you mean it)")
+
+
 def _key(U, ndigits=6):
+    """Dedup key: the flattened matrix rounded to ``ndigits``, viewed as floats.
+
+    Approximate by design -- two distinct gates within 1e-6 collide. That can only make the
+    search MISS a shorter word for an already-seen gate; the reported ``fidelity`` is always
+    recomputed exactly on the returned word (never trusted from the key), so a collision never
+    yields a wrong fidelity.
+    """
     return tuple(np.round([U[0, 0], U[0, 1], U[1, 0], U[1, 1]], ndigits).view(float))
 
 
@@ -68,15 +101,22 @@ def _result(word, target):
                              length=len(word), error=1.0 - fid)
 
 
-def brute_force(target, max_length=14, tolerance=1e-3):
-    """BFS over braid words; return the first word with fidelity >= 1 - tolerance,
-    else the best found within ``max_length``."""
+def brute_force(target, max_length=14, tolerance=1e-3, max_nodes=_DEFAULT_MAX_NODES):
+    """BFS over braid words; return the first word with fidelity >= 1 - tolerance, else the best
+    found within ``max_length`` (or once ``max_nodes`` distinct gates have been visited).
+
+    ``max_length`` is capped (see ``_MAX_LENGTH``) and ``max_nodes`` bounds runtime; both refuse
+    explosive searches rather than hang."""
+    target = _validate_target(target)
+    _check_length(max_length)
     best = _result([], target)
     if best.fidelity >= 1 - tolerance:
         return best
     seen = {_key(np.eye(2, dtype=complex))}
     frontier = deque([([], np.eye(2, dtype=complex), None)])
     while frontier:
+        if len(seen) >= max_nodes:
+            break                                 # node budget exhausted -> return best so far
         word, U, last = frontier.popleft()
         if len(word) >= max_length:
             continue
@@ -112,6 +152,8 @@ def golden(target, max_power=40, tolerance=1e-3, refine=6):
     for general single-qubit targets.
     """
     from .gates import golden_gate_word
+    target = _validate_target(target)
+    _check_length(refine)
     G = golden_gate()
     gword = golden_gate_word()
     best = _result([], target)
@@ -141,21 +183,24 @@ def golden(target, max_power=40, tolerance=1e-3, refine=6):
 _METHODS = {"brute_force": brute_force, "golden": golden}
 
 
-def compile_gate(target, max_length=14, tolerance=1e-3, method="brute_force"):
+def compile_gate(target, max_length=14, tolerance=1e-3, method="brute_force",
+                 max_nodes=_DEFAULT_MAX_NODES):
     """Compile ``target`` (a 2x2 unitary) into a braid word.
 
     Parameters
     ----------
-    target : np.ndarray        2x2 unitary to approximate.
-    max_length : int           max braid word length. For ``brute_force`` this is
-                               the search depth; for ``golden`` it bounds the
-                               residual-refinement search.
+    target : np.ndarray        2x2 unitary to approximate (validated: shape + finite).
+    max_length : int           max braid word length (capped; see ``_MAX_LENGTH``). For
+                               ``brute_force`` this is the search depth; for ``golden`` it
+                               bounds the residual-refinement search.
     tolerance : float          required error ``1 - fidelity``.
     method : str               'brute_force' (general workhorse) or 'golden'
                                (special-case; best only near powers of G).
+    max_nodes : int            BFS gate-visit budget (brute_force only); bounds runtime.
     """
     if method not in _METHODS:
         raise ValueError(f"method must be one of {sorted(_METHODS)}, got {method!r}")
+    target = _validate_target(target)
     if method == "brute_force":
-        return brute_force(target, max_length=max_length, tolerance=tolerance)
+        return brute_force(target, max_length=max_length, tolerance=tolerance, max_nodes=max_nodes)
     return golden(target, tolerance=tolerance, refine=max_length)
