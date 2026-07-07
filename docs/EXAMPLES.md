@@ -1,6 +1,8 @@
 # Worked examples
 
-Three things a newcomer runs first. Each is copy-pasteable after `pip install -e .`.
+Three things a newcomer runs first. Each is copy-pasteable after `pip install -e .`. For a
+no-install tour, open [`../web/explorer.html`](../web/explorer.html) in a browser; the mathematics
+behind it is in [`MATH.md`](MATH.md) and the full API in [`API.md`](API.md).
 
 ---
 

@@ -284,3 +284,21 @@ matrix / fidelity / Jones right). Published as a live Artifact.
 
 Governance: extended `core.gates` `_TEXT_SUFFIXES` to `.html`/`.css` so `web/explorer.html` is
 hygiene-scanned (now 50 tracked files scanned, clean). Gates exit 0.
+
+## 2026-07-06 — M4b: docs (README rewrite, MATH.md, API.md)
+
+- **`README.md`** rewritten outward-first: the pitch (exact arithmetic, not tolerance), a "try it"
+  link to the explorer, a 30-second quickstart (verified to run exactly as written: `0.2447`,
+  `Jones==1−√5` True, compile H `11 @ 0.9906`), the three-layer architecture updated to include the
+  M3 research core + harness, a result-label legend, and the prior-art paragraph (§2/MB5:
+  contribution = packaging, not new algorithms; Kliuchnikov et al. cited).
+- **`docs/MATH.md`** — the conceptual tour, every claim tagged `[exact]`/`[numeric]`/`[ported]`:
+  Fibonacci anyons (d_τ=φ, the R/F data), braiding + Yang–Baxter, the golden gate = figure-eight,
+  why exact ℚ(ζ₆₀) beats float, `Jones(4₁)=1−√5` with the `−φ` convention note, and an honest
+  research-core section with the firewall (Lie-theory/topology machinery, not a physics claim; the
+  "unobstructed to 2nd/3rd order" scope stated precisely).
+- **`docs/API.md`** — the full public surface by module (core.cyclo/charvar/precision/lie/jets/
+  harness/gates + demo.*), each with its epistemic label; transcribed from the code.
+- `docs/EXAMPLES.md` links to the explorer + MATH/API.
+
+Every cited value cross-checked against the code (honesty lock, §6). Gates exit 0 (52 files scanned).

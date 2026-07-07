@@ -17,6 +17,11 @@ history is in `PROGRESS_LOG.md`.
   cross-checked against the Python library (11 identities, incl. compile H → 11 crossings @ 0.9906).
   Theme-aware, responsive, with an honesty banner (float64 here vs proved-exactly in ℚ(ζ₆₀)).
 
+- **`README.md` rewrite** (outward-first: the exact-arithmetic pitch, the explorer, a verified
+  quickstart, the three-layer architecture incl. the research core + harness, a result-label legend,
+  prior-art citations), **`docs/MATH.md`** (the labeled mathematical tour + the research-core
+  firewall), **`docs/API.md`** (the full public surface by module, each labeled).
+
 ### Changed — M4
 - `core.gates` `_TEXT_SUFFIXES` now includes `.html`/`.css` so web assets are hygiene-scanned.
 
