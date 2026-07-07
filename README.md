@@ -29,6 +29,9 @@ Open **[`web/explorer.html`](web/explorer.html)** in any browser (no install, no
 watch the gate they weave, compile a target gate to a braid, and read exact Jones values. It is a
 single self-contained page — host it anywhere, or open the file directly.
 
+Docs site (MkDocs) + the hosted explorer publish to GitHub Pages via CI:
+**https://originaxiom.github.io/golden_gate/** (once the owner enables Pages).
+
 ## Quickstart
 
 ```bash

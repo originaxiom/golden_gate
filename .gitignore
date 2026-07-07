@@ -14,3 +14,6 @@ venv/
 .coverage
 coverage.xml
 htmlcov/
+
+# mkdocs build output
+site/

@@ -8,6 +8,13 @@ history is in `PROGRESS_LOG.md`.
 
 ## [Unreleased]
 
+### Added — M6d (docs site + public explorer)
+- **MkDocs Material site** (`mkdocs.yml` + `docs/index.md`) rendering the existing docs (MATH / EXAMPLES
+  / API / PAPER) with an **auto-generated demo reference** (`docs/reference.md` via `mkdocstrings`).
+- **`.github/workflows/docs.yml`** — builds the site, copies `web/explorer.html` into it, and deploys to
+  **GitHub Pages** (owner enables Pages: Settings → Pages → Source = GitHub Actions). The hosted
+  explorer replaces the private-artifact reference.
+
 ### Added — M6c (packaging metadata + build/publish)
 - **`pyproject` metadata:** trove `classifiers` (incl. `Typing :: Typed`), `keywords`, `[project.urls]`,
   and `[project.scripts]` `golden-gate-verify` (a user-facing command that checks the exact math
