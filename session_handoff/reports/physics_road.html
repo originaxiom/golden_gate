@@ -1,0 +1,100 @@
+<title>A Road Through the ALE Fiber</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F7F3; --ink:#1F201D; --muted:#5C5E57; --rule:#D9D9D1;
+  --ok:#2E6B4F; --ok-bg:#E7F0EA; --bad:#A03A2E; --bad-bg:#F5E9E6; --open:#8A6D2F; --open-bg:#F2EDDF;
+  --card:#FFFFFF; --code-bg:#EFEFEA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+    --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+    --card:#1E1F22; --code-bg:#242520;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+  --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+  --card:#1E1F22; --code-bg:#242520;
+}
+html{font-size:17px}
+body{background:var(--paper); color:var(--ink); font-family:"STIX Two Text",Georgia,serif; line-height:1.55; margin:0; padding:2.2rem 1.2rem 5rem}
+main{max-width:46rem; margin:0 auto}
+h1{font-size:1.9rem; font-weight:700; line-height:1.2; text-wrap:balance; margin:0 0 .4rem}
+h2{font-size:1.32rem; font-weight:700; margin:2.6rem 0 .8rem; padding-top:1.1rem; border-top:1px solid var(--rule)}
+p{margin:.65rem 0}
+.eyebrow{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem}
+.meta{color:var(--muted); font-size:.92rem; margin-bottom:1.6rem}
+.box{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1.1rem 1.3rem; margin:1.6rem 0}
+.chip{display:inline-block; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; border-radius:3px; padding:.12rem .5rem; vertical-align:.12em; margin-right:.5rem}
+.chip.ok{color:var(--ok); background:var(--ok-bg)}
+.chip.bad{color:var(--bad); background:var(--bad-bg)}
+.chip.open{color:var(--open); background:var(--open-bg)}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.85em; background:var(--code-bg); border-radius:3px; padding:.06em .3em}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse; font-size:.9rem; margin:.8rem 0; min-width:100%}
+th{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.35rem .8rem .35rem 0; border-bottom:1px solid var(--rule)}
+td{padding:.42rem .8rem .42rem 0; border-bottom:1px solid var(--rule); vertical-align:top}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+.finding{margin:1.5rem 0; padding-left:1rem; border-left:3px solid var(--rule)}
+.finding.bad{border-left-color:var(--bad)}
+.finding.open{border-left-color:var(--open)}
+.finding.ok{border-left-color:var(--ok)}
+h3{font-size:1.02rem; font-weight:600; margin:1.2rem 0 .3rem}
+.finding h3{margin-top:0}
+.small{font-size:.88rem; color:var(--muted)}
+</style>
+<main>
+<div class="eyebrow">Research note · sequel to the referee report</div>
+<h1>A Road Through the ALE Fiber</h1>
+<p class="meta">Can the figure-eight/E₆ paper be connected to actual physics? This note records the one road I consider defensible, the dictionary it induces, two computations performed today that make the dictionary concrete — one of which verifies a claim the paper left uncited — and the named obstructions that keep this a proposal rather than a result. Nothing here claims a unification of anything.</p>
+
+<h2>1 · The construction</h2>
+<p>The McKay step of the paper — 2T ↦ E₆ — has a standard physical home: ℂ²/2T is the E₆ ALE singularity, and gauge symmetry of type E₆ lives on such a singularity in M-theory. The proposal is therefore:</p>
+<div class="box">
+<p><strong>Take the 7-dimensional internal geometry X = (ℂ²/2T-fiber) over Q, with Q = S³∖4₁ the figure-eight knot complement.</strong> M-theory on ℝ^{3,1} × X, near the singular locus, is 7-dimensional E₆ super-Yang–Mills on ℝ^{3,1} × Q, partially twisted along Q. In the twisted theory the three normal-bundle scalars combine with the gauge field into a <em>complexified</em> connection, and the BPS vacuum equations say: <strong>vacua = flat E₆(ℂ) connections on Q</strong>.</p>
+</div>
+<p>The paper already possesses the canonical such vacuum: ρ₀ = principal ∘ ρ_geo, the hyperbolic holonomy pushed through the principal SL₂ — the exact analogue of the “geometric connection” that dominates the 3d–3d correspondence for M5-branes on the same manifold. Note what this does to the paper’s ledger: the principal placement (C6), a priced stipulation there, becomes here a candidate <em>physical</em> datum — the twist homomorphism of the compactification.</p>
+
+<h2>2 · The dictionary</h2>
+<div class="tablewrap"><table>
+<tr><th>Paper quantity</th><th>Physics reading in this frame</th><th>Status</th></tr>
+<tr><td>ρ₀ = principal∘ρ_geo</td><td>the geometric BPS vacuum (flat E₆(ℂ) connection on Q)</td><td>exists by construction</td></tr>
+<tr><td>non-reality of terminus; “no real form hosts the holonomy”</td><td><strong>dissolves</strong>: the twisted theory’s natural variable is A + iΦ; a non-real holonomy means the vacuum has non-zero normal-scalar VEV, not an inconsistency</td><td>conceptual, standard</td></tr>
+<tr><td>dim H¹(Q; 𝔢₆∘ρ₀) = 6 (paper’s Prop. 8.4, verified)</td><td>six massless neutral moduli of the vacuum</td><td>computed ✓</td></tr>
+<tr><td>h¹(Q; 27∘ρ₀) = 3 (paper’s uncited rider)</td><td>three zero-modes in the 27 — “three generations”-shaped</td><td><strong>computed today ✓ (see §3)</strong></td></tr>
+<tr><td>rank ceiling (Thm. 10.28)</td><td>the textbook GUT fact “adjoint/Cartan breaking preserves rank; reaching the rank-4 SM needs a 27 VEV”; the paper’s “missing direction in the 27” <em>is</em> the 27 Higgs, and the spectrum above now contains three 27’s to do it with</td><td>exact translation</td></tr>
+<tr><td>cascade E₆ → D₅ → D₄ → A₂⊕A₁</td><td>adjoint-breaking chains of E₆ GUTs (Slansky), read as unbroken commutants of holonomy data</td><td>exact translation</td></tr>
+<tr><td>Vol(Q) = 2.02988…</td><td>finite 4d gauge coupling: 1/g₄² ∝ Vol(Q) — the cusp does not spoil finiteness</td><td>trivial ✓</td></tr>
+<tr><td>Vol + i·CS</td><td>on-shell action of the complexified Chern–Simons / 2+1-gravity saddle on Q — the one genuine (but 3d, topological) gravity contact</td><td>standard</td></tr>
+</table></div>
+
+<h2>3 · What was computed today</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>The 27 under the principal sl₂: Sym¹⁶ ⊕ Sym⁸ ⊕ Sym⁰</h3>
+<p>Enumerating the 27 minuscule weights of E₆ and their principal-h levels gives level multiplicities that peel into exactly three strings, of highest weights 16, 8, 0 (dims 17+9+1=27). Two remarks. First, the nontrivial string weights <strong>8 and 16 are precisely the degrees of the paper’s measurement plane</strong> ⟨x₈,x₁₆⟩ = 𝔢₆^{2O} — the fundamental representation is “made of” the same two degrees the object measures on; recorded as an observation, no mechanism claimed. Second, this decomposition is what makes the next computation three lines long.</p></div>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>h¹(Q; 27∘ρ₀) = 3 — the paper’s uncited claim is true, with a mechanism</h3>
+<p>Independent Fox calculus on the relator a·w·b⁻¹·w⁻¹ (w = ba⁻¹b⁻¹a), with the parabolic representation over ℚ(√−3), block by block:</p>
+<div class="tablewrap"><table>
+<tr><th>Block</th><th>dim H⁰</th><th>dim H¹</th></tr>
+<tr><td>Sym¹⁶</td><td>0</td><td>1</td></tr>
+<tr><td>Sym⁸</td><td>0</td><td>1</td></tr>
+<tr><td>Sym⁰ (trivial)</td><td>1</td><td>1 (= b₁ of a knot complement)</td></tr>
+</table></div>
+<p>Total: <strong>h¹ = 3</strong>, one unit per principal-sl₂ string. So the paper’s rider “a three is object-forced, as h¹(M; 27)=3” — stated there with no proof, script, or citation — is correct, and the “3” is structural: it is the number of irreducible strings of the 27 under the twist, not an accident of this manifold. (Consistent with the paper’s own honest caveat: this is a multiplicity, not a generation <em>triple</em> — no ℤ/3 acts.)</p></div>
+
+<h2>4 · The obstructions, named</h2>
+<div class="finding bad"><h3><span class="chip bad">O-1</span>No G₂ metric</h3>
+<p>A hyperbolic Q is negatively curved; the naive product or flat-twist of the ALE fiber over Q is not Ricci-flat, and no G₂-holonomy metric fibering ℂ²/2T over a <em>hyperbolic</em> 3-manifold is known. What survives without it is the partially twisted field theory (well-defined on any Q, which is how the BPS counting above makes sense) — a supergravity-exact background does not currently exist. This is genuine open research, not a computation.</p></div>
+<div class="finding bad"><h3><span class="chip bad">O-2</span>Chirality — and the paper’s own Niven theorem is the roadblock</h3>
+<p>Matter from flat-bundle cohomology on Q is vector-like: the twisted Euler characteristic vanishes, so h² = h¹ and every 27 zero-mode is paired. Genuinely chiral 4d matter in this class of compactifications comes from isolated points where the singularity <em>enhances</em> — for 27’s of E₆, points of local E₇ enhancement. And the paper proves (Cor. 7.5) that the E₇ end is arithmetically impossible for this manifold: ℚ(√2) would require the irrational meridian trace x=√2. In this frame the paper’s celebrated “E₇ exclusion” reads as: <strong>this object refuses the standard mechanism for chiral generations at its rational ends</strong>. Any road to a chiral spectrum must enter through different, unbuilt geometry.</p></div>
+<div class="finding bad"><h3><span class="chip bad">O-3</span>Gravity is ambient, not derived</h3>
+<p>In this frame 4d gravity is the ordinary supergravity zero-mode of the ambient theory. The knot would be the origin of the <em>gauge/matter</em> sector at best; nothing about it unifies or explains gravitation. “SM ⊗ GR from the figure-eight knot” is not on this road — “gauge sector engineered on a distinguished manifold, gravity as usual” is.</p></div>
+<div class="finding open"><h3><span class="chip open">O-4</span>The cusp, and a tension with the arithmetic</h3>
+<p>Q is noncompact (one cusp); a compact model needs a Dehn filling or an end condition, and the paper’s own §6 records that the surveyed fillings destroy exactly the arithmetic (the V₄ of fields) that produced 2T and E₆. The entrance and compactness pull in opposite directions; whether an end condition exists that keeps both is open.</p></div>
+
+<h2>5 · Sober summary</h2>
+<p>The road exists and is ordinary physics: geometric engineering of an E₆ gauge sector on the E₆ ALE singularity, with the figure-eight complement as the defect locus, its hyperbolic holonomy (through the principal twist) as the canonical vacuum, six neutral moduli, and three vector-like 27 multiplets — the last number verified today and structural. Three of the paper’s worst self-diagnosed pathologies become features in this frame (non-reality → complexified connection; rank ceiling → the 27-Higgs necessity, with the 27’s present; C6 → the twist datum). What blocks the road is equally sharp: no G₂ metric over a hyperbolic base (open geometry), no chirality — with the paper’s own E₇-exclusion theorem sitting exactly on the standard chirality mechanism — and gravity untouched. As unification, no. As a well-posed research question — <em>does any G₂ background realize the E₆ ALE fibration over a hyperbolic homology-sphere-like base, and can its enhancement points evade the Niven obstruction?</em> — it is real, currently unanswered, and the only version of “physics from this paper” I would defend.</p>
+<p class="small">Computations in this note: minuscule-orbit string decomposition of the 27 (exact, from the E₆ Cartan matrix) and block-wise Fox calculus for H⁰/H¹ over ℚ(√−3) (exact); both scripts retained alongside the referee-report suite. Everything labeled “standard” is textbook string/M-theory material (Acharya–Witten, Slansky, 3d–3d literature) invoked as context, not re-derived.</p>
+</main>

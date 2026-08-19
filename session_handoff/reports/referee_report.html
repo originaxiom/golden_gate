@@ -1,0 +1,173 @@
+<title>Golden Gate Referee Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F7F3; --ink:#1F201D; --muted:#5C5E57; --rule:#D9D9D1;
+  --ok:#2E6B4F; --ok-bg:#E7F0EA; --bad:#A03A2E; --bad-bg:#F5E9E6; --open:#8A6D2F; --open-bg:#F2EDDF;
+  --card:#FFFFFF; --code-bg:#EFEFEA;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+    --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+    --card:#1E1F22; --code-bg:#242520;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+  --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+  --card:#1E1F22; --code-bg:#242520;
+}
+html{font-size:17px}
+body{background:var(--paper); color:var(--ink); font-family:"STIX Two Text",Georgia,serif; line-height:1.55; margin:0; padding:2.2rem 1.2rem 5rem}
+main{max-width:46rem; margin:0 auto}
+h1{font-size:1.9rem; font-weight:700; line-height:1.2; text-wrap:balance; margin:0 0 .4rem}
+h2{font-size:1.32rem; font-weight:700; margin:2.6rem 0 .8rem; padding-top:1.1rem; border-top:1px solid var(--rule)}
+h3{font-size:1.05rem; font-weight:600; margin:1.6rem 0 .4rem}
+p{margin:.65rem 0}
+.eyebrow{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem}
+.meta{color:var(--muted); font-size:.92rem; margin-bottom:1.6rem}
+.verdict{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1.1rem 1.3rem; margin:1.6rem 0}
+.verdict p{margin:.45rem 0}
+.chip{display:inline-block; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; border-radius:3px; padding:.12rem .5rem; vertical-align:.12em; margin-right:.5rem}
+.chip.ok{color:var(--ok); background:var(--ok-bg)}
+.chip.bad{color:var(--bad); background:var(--bad-bg)}
+.chip.open{color:var(--open); background:var(--open-bg)}
+code, .fn{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.85em; background:var(--code-bg); border-radius:3px; padding:.06em .3em}
+.block{background:var(--code-bg); border-radius:5px; padding:.7rem .9rem; overflow-x:auto; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8rem; line-height:1.5; margin:.7rem 0; white-space:pre}
+table{border-collapse:collapse; font-size:.9rem; margin:.8rem 0; min-width:100%}
+.tablewrap{overflow-x:auto}
+th{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.35rem .7rem .35rem 0; border-bottom:1px solid var(--rule)}
+td{padding:.42rem .7rem .42rem 0; border-bottom:1px solid var(--rule); vertical-align:top}
+td.num{font-variant-numeric:tabular-nums}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+.finding{margin:1.5rem 0; padding-left:1rem; border-left:3px solid var(--rule)}
+.finding.bad{border-left-color:var(--bad)}
+.finding.open{border-left-color:var(--open)}
+.finding.ok{border-left-color:var(--ok)}
+.finding h3{margin-top:0}
+em{font-style:italic}
+.small{font-size:.88rem; color:var(--muted)}
+a{color:inherit}
+</style>
+<main>
+<div class="eyebrow">Referee report · verified scrutiny</div>
+<h1>Golden Gate Referee Report</h1>
+<p class="meta">On: “From minimal description to E₆: a chain through the figure-eight knot complement” (D. Mehmetaj, dated 19 Aug 2026; <code>main.tex</code>, 3 343 lines, + <code>verify/</code> suite, 19 scripts).<br>
+Method: every criticism below was verified before being written. The full shipped suite was executed (19/19 pass), and the central claims were re-derived <em>independently</em> — from the E₆ Cartan matrix, the quaternion groups, the knot-group relator, and the number field, without reusing the paper’s code, except where explicitly noted.</p>
+
+<div class="verdict">
+<p><strong>Verdict: the mathematics that can be checked is essentially all correct — I found no false theorem — but the paper has one genuine unproved proposition (Prop. 7.7, “2880”), one internal contradiction, an unshipped third of its own verification table, and a serious genre problem: roughly half the text is meta-commentary about its own drafting history rather than mathematics.</strong></p>
+<p>Recommendation: <em>major revision</em>. The theorems survive hostile checking remarkably well; the manuscript as a document does not.</p>
+</div>
+
+<h2>1 · What was verified independently and stands</h2>
+<p>Each item below was recomputed from scratch in exact arithmetic (Fraction/sympy), not by running the paper’s scripts.</p>
+
+<div class="finding ok"><h3><span class="chip ok">Verified</span>Symbolic / matrix layer (§§3–5)</h3>
+<ul>
+<li>R<sup>m</sup>L<sup>m</sup> = φ<sub>m</sub> = [[m²+1, m],[m, 1]]; collapse lemma χ<sub>m</sub>(1) = −m², χ<sub>m</sub>(−1) = m²+4, tr = m²+2 (m ≤ 9); Smith form of φ<sub>m</sub>−I is diag(m, m), so H₁ = ℤ⊕(ℤ/m)².</li>
+<li>Theorem 4.2 (period-one ⇔ det −1) sound under its stated hypotheses; the m = 6 witness A = [[1,2],[3,5]] checks completely: det −1, tr 6, λ = 3+√10 = [6̄], and A is <em>not</em> GL(2,ℤ)-conjugate to X₆ — the form argument is right ((1,−6,−1) ∼ x²−10y², which does not represent ±3; (3,4,−2) represents 3), corroborated by brute-force conjugator search.</li>
+<li>|SL(2,ℤ/N)| = 6, 24, 48, 120 at N = 2…5 and never 24/48/120 for 6 ≤ N ≤ 12; the telescoping bound is correct. SL(2,ℤ/4) has exactly 7 involutions and no element of order 8, so ≇ 2O — verified by full enumeration.</li>
+<li>φ₁ mod 5 generates a cyclic group of order 10 — the paper’s own deflation of Selection II (Scope 5.12) is accurate.</li>
+<li>Fricke: tr[φ<sub>m</sub>,φ<sub>n</sub>] = 2−(mn(n−m))² for all m,n ≤ 6; [φ₁,φ₂] = [[11,−24],[6,−13]], trace −2; and tr[X₁,X₂] = 1, confirming the identity genuinely fails for the X’s.</li>
+<li>tr φ₁ⁿ − 2 is a square exactly for odd n (Lucas identity), and φ₁³ ≁ φ₄ despite equal trace, det, and torsion.</li>
+<li>Amphichirality: R<sup>m</sup>J centralizes φ<sub>m</sub> with det −1 (m ≤ 5); the RLLR counterexample matrix [[3,4],[2,3]] is correct and non-symmetric.</li>
+</ul></div>
+
+<div class="finding ok"><h3><span class="chip ok">Verified</span>The entrance (§7): character variety, Niven, trace sets</h3>
+<ul>
+<li>I re-derived the 4₁ character-variety relation from the relator AW = WB, W = BA⁻¹B⁻¹A: the result is exactly the paper’s u² + (5−x²)u + (5−x²) = 0 under the standard Riley sign convention (u = −w); at the cusp x = 2 it gives u² + u + 1 = 0, i.e. u = ω exactly as Prop. 7.4 states, and B reduces to [[1,0],[2,1]] mod (√−3). The reduced generators do generate SL(2,𝔽₃), order 24.</li>
+<li>The “only if” of Theorem 7.1: [ℚ(2cos π/n):ℚ] = φ(2n)/2 confirmed for n ≤ 12; the discriminant values −3, 0, 5, −3, (−1−3√5)/2, −4 at n = ∞,3,2,4,5,6 all confirmed; the E₇-exclusion logic is sound.</li>
+<li>2T and 2I trace sets built from the Hurwitz units and icosians (group of 120 generated and closed): {−2,−1,0,1,2} and the nine values {0,±1,±2,±φ,±1/φ}; the rational locus of the nine is exactly the 2T set (Cor. 7.10).</li>
+</ul></div>
+
+<div class="finding ok"><h3><span class="chip ok">Verified</span>The Lie-theoretic half (§§9–10) — including the paper’s <em>unshipped</em> claims</h3>
+<ul>
+<li><strong>All six charge brackets vanish.</strong> The shipped script certifies only [x₁₄,x₂₂] = 0 and delegates the other five to a prose “transvectant reduction”. I extended the paper’s Chevalley construction and computed all six pairwise brackets exactly over ℚ: every one is zero, and dim z(C) = 12. C is abelian, full stop — the certificate is even stronger than what the authors shipped.</li>
+<li>Molien: dim(Sym<sup>n</sup>ℂ²)<sup>2T</sup> = 0,1,1,0,1,1,1 at n = 2,6,8,10,14,16,22 and dim(Sym<sup>n</sup>ℂ²)<sup>2O</sup> = 1 at 8,16 and 0 at 2,10,14,22 — both by direct character sums over the 24 and 48 quaternions, and independently by the syzygy arithmetic in the ring generated by t, Φ, Ψ. So Prop. 9.1 (four charges) and Prop. 10.3 (𝔢₆<sup>2O</sup> = ⟨x₈,x₁₆⟩) hold.</li>
+<li>The toral lemma’s proof is correct line by line, and both counterexamples in its scope check out (the 𝔽₃ unipotent fixed line; the 𝔤𝔩₃ Killing corank).</li>
+<li>Levi subsystems of E₆, from the Cartan matrix alone: root counts exactly {0,2,4,6,8,10,12,14,20,22,24,30,40,72}; 8 roots → A₂+A₁ uniquely; 20 → A₄; 22 → A₄+A₁; 24 → D₄; 30 → A₅; 40 → D₅; ambiguity exactly at 6, 12, 14 with the stated pairs. Every “gap” claim (no 22, 24, 32, 34, 38–44; nothing between 46 and 78) confirmed.</li>
+<li><strong>Rung spectrum, independently:</strong> modeling C as the annihilator of an A₂ subsystem (forced, given dim z(C) = 12), the 72 roots restrict to 30 nonzero weights with multiplicity profile 12×1 + 18×3 on 15 lines; the flat enumeration yields <em>exactly</em> the eleven values {12,14,16,18,20,26,28,30,36,46,78} and <em>109 flats</em> — matching the paper’s numbers precisely.</li>
+<li><strong>Theorem 10.13 (smtfull), whose shipped verification is missing (block (b)), verified independently:</strong> at any 46-wall the vanishing weight-lines have root-counts (2,2,6,6,6,6,6) — seven classes of sizes (2,2,6,6,6,6,6); the induced stratification of ℙ(C/⟨x₁⟩) has values {12,14,16,18,20,26,30,46}, exactly two 30-points, four 26-points, one 16-point, two 20-points, six triple + three double points, and no 24. Figure 2 of the paper is combinatorially exact.</li>
+<li>The charge field: disc(x³−12x−5) = 6237 = 3⁴·7·11; Dedekind at 3 correct; the printed Tschirnhaus element satisfies ρ³−12ρ−5 ≡ 0 mod μ exactly; disc μ = 2³²·3¹⁰·5²·7³·11·13⁶ confirmed; splitting mod 13/17/19 (inert), 2/5/953/1129/421493 (one linear + one quadratic), 7/11 (𝔭𝔮²) all confirmed; Minkowski bound &lt; 18; <strong>h = 1 verified independently</strong> by exhibiting elements of norm ±2, ±3, ±5 and generators for <em>both</em> degree-one primes above 7 and above 11.</li>
+<li>Prop. 10.18: the kernel ℤ/6 with the stated generator — checked. No-go 11.8 (no cyclic cubic trace field), Lemma 7.17 (quaternionic 2-dims), involution counts (A₄:3, S₄:9, A₅:15), and the 2O-normalizer argument all check.</li>
+</ul></div>
+
+<div class="finding ok"><h3><span class="chip ok">Verified</span>Citations spot-checked</h3>
+<ul>
+<li>Goodman–Heard–Hodgson (arXiv:0801.4815) is real and is indeed about <em>non-arithmetic</em> cusped manifolds — the paper’s twice-reversed self-correction (Scope 11.3) is accurate as it now stands.</li>
+<li>Reutenauer–Shallit, “Christoffel matrices and Sturmian determinants” (arXiv:2409.09824) exists and matches the description (Burrows–Wheeler matrix, Zolotareff symbol).</li>
+<li>Stuebner (arXiv:2502.06488) exists, concerns integral homology spheres and 2I — the paper’s caution that it does not apply to S³∖4₁ is correct.</li>
+<li>BMR, Math. Ann. 302 (1995) 31–60 exists; see finding D-9 on what still rests on it.</li>
+</ul></div>
+
+<div class="finding ok"><h3><span class="chip ok">Verified</span>The shipped suite itself</h3>
+<p>All 19 <code>check_*.py</code> scripts pass (sympy 1.14, Python 3.12). Spot-audits confirm they test what they claim — <code>check_charge_bracket.py</code> really does build 𝔢₆ by reflection closure and verify antisymmetry and Jacobi on all 76 076 triples before computing the bracket. Notably, several scripts print caveats <em>against</em> the paper’s own phrasing (see D-2, D-3): the suite is more candid than the prose.</p></div>
+
+<h2>2 · Defects — each one verified before being asserted</h2>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-1</span>Proposition 7.7 (“2880”) and the coupling law are not established in characteristic zero</h3>
+<p>This is the sharpest genuine gap. Prop. 7.7 asserts |⟨ρ(R),ρ(L)⟩| = 2880 for the level-2 SU(3) modular representation, “verified by enumeration at two unramified primes together with a Serre injectivity argument”, and the proof of Theorem 7.9 claims the θ-eigenspace decomposition is “verified in ℚ(ζ₆₀) arithmetic”. Neither is what is shipped: <code>check_rho.py</code> works <em>entirely mod p</em> (four primes ≡ 1 mod 60), and its own JSON note admits “the group order and the class match are enumerations at those primes”. The “Serre injectivity argument” appears nowhere in the paper or the scripts — and injectivity alone would not suffice: one must first know the characteristic-zero image is <em>finite</em>, which the modular relations do not give (SL(2,ℤ)/⟨⟨T¹⁵⟩⟩ is infinite; the quotients SL(2,ℤ)/⟨⟨Tⁿ⟩⟩ are finite only for n ≤ 5). Finiteness needs the congruence property of modular data (Ng–Schauenburg), which is neither cited nor proved. As certified, Prop. 7.7 and Thm. 7.9 are statements about mod-p images. <em>Fixable:</em> the congruence property gives the image as a quotient of SL(2,ℤ/15), and |SL(2,ℤ/15)| = 2880 — combined with the mod-p lower bound this would close the gap in three lines, but those lines must be written.</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-2</span>Internal contradiction: Scope 7.6 vs. Scope 7.16 (and the shipped suite)</h3>
+<p>Scope 7.6 (“the two ends are not symmetric”) says the non-surjection of π₁(4₁) onto 2I and A₅ is a <em>conjecture</em>, with “neither proof nor supporting citation”, “(It should be decidable cheaply by enumerating quotients; we have not done so.)”, and calls the count of two 2T-quotients “read off the same unshipped enumeration”. But Scope 7.16 states the same enumeration as <em>done</em> (“48 surjections onto 2T, and none onto A₅ or 2I, over all 3600 and 14400 pairs”), and the shipped <code>check_quotients.py</code> performs it. One of these passages is stale; as printed the paper simultaneously claims and disclaims the same result. Relatedly, “exactly two such quotients” is true up to Aut(2T) (2 classes) and false up to conjugacy (4 classes) — the shipped script itself prints: “The paper does not state which equivalence it means; it should.”</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-3</span>The abstract overstates Theorem 4.2</h3>
+<p>The abstract: “the hyperbolic unimodular classes whose dominant eigenvalue has purely periodic continued fraction of period one are exactly those of determinant −1”. The theorem carries the hypothesis <em>non-negative entries</em>; the abstract drops it, and without it the statement is false in the ⇐ direction: a det = −1 class of trace −m has dominant eigenvalue negative, with no purely periodic period-one expansion. (The ⇒ direction survives, since the eigenvalue’s minimal polynomial forces det = −1.) The abstract also asserts “their traces are exactly the integers m ≥ 1”, which silently excludes the trace −m classes the abstract’s own hypotheses admit.</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-4</span>Block (b) of the verification table is not deposited</h3>
+<p>Seven rows — including the SnapPy arithmeticity computations behind Scope 5.17’s degree table (m = 3…10), the independent word-to-field dictionary (“also verified independently rather than taken on authority” — but not shipped), the general amphichirality census, and Theorem 10.13’s stratification, which the paper itself notes is a <em>floating-point</em> computation. The paper flags this honestly, but for a manuscript whose central methodological claim is runnable verification, promising a table one third of which cannot be run is the single largest structural defect. Mitigation the authors should adopt: the smtfull stratification is decidable <em>exactly over ℚ</em> from the rational weight arrangement — I did it (Part 1) in ~100 lines; ship that instead of the floating-point version.</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-5</span>The census is still a count of statements the referee cannot read — and its labels collide with the input ledger</h3>
+<p>Census 7.21 counts 43 “links” from <code>verify/chain_links.md</code>. Two problems, both verified against the shipped file. (i) <em>Label collision:</em> the ledger’s links are numbered C1–C43 with “axioms at C3, C4, C5, C18”, while the paper’s declared inputs are (C1)–(C9) — and the same tags denote different things (ledger-C3 = “inexhaustible description” = paper-(C1); ledger-C4 = the carrier = paper-(C2); ledger-C5 = orientation = paper-(C3)). A reader who conflates the two numbering systems — as the paper’s own text invites by using the same typography — will mis-map every axiom. (ii) <em>Content opacity:</em> ledger rows cite objects that appear nowhere in the paper (“the weld’s θ-odd block”, “the hearing multiplication law”, “the SM record”, “the voice”, “GSWZ symmetrized product”). The earlier admitted defect (“counted a ledger a referee could not see”) is only half-repaired: the <em>labels</em> now travel; the <em>statements</em> still do not, so the six figures remain unreviewable in content. The ledger also confirms the programme’s Standard-Model ambitions (“the SM record”, “no-SM-value wall”), which the paper’s Gate-5 framing keeps offstage.</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-6</span>Undefined symbol Σ at the point of a load-bearing definition</h3>
+<p>Prop. 7.7 defines ρ by “R ↦ T and L ↦ Σ⁻¹T⁻¹Σ”. Σ is never defined; its unique occurrence in the paper is that line. (It is evidently the modular S-matrix — I verified S⁻¹T⁻¹S = L in SL(2,ℤ) — but a definition that the reader must reverse-engineer from a computation is not a definition.)</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Defect D-7</span>Figure 1 contradicts the theorem it illustrates</h3>
+<p>Theorem 7.1 warns, correctly and at length, that x = −2 (n = 1) “is the same end, reached at the other parabolic trace” and <em>not</em> a second cusp. Figure 1 labels that very point “hyperbolic (the other cusp)”. The label reinstates exactly the misreading Theorem 7.1’s last paragraph exists to forbid.</p></div>
+
+<div class="finding open"><h3><span class="chip open">Unverifiable D-8</span>Assertions of fact with no shipped or citable basis</h3>
+<p>Each of the following is presented as fact but cannot be checked from the submission; a referee must either see the evidence or see the claim demoted:</p>
+<ul>
+<li>“Roughly one hyperbolic 3-manifold in three, and five of seven grammars … arrive at it” (§1.4) — no census shipped.</li>
+<li>The provenance claim that the torsion sign law was “computed and recorded three weeks before the measurement” (Rmk. 10.6) — unverifiable by construction, and doing rhetorical work (“not post-hoc”).</li>
+<li>tr Ad ρ(a) = 37437270 + 38799960√3 i (Scope 10.34) — “the source material banks an argument”; no script, no derivation.</li>
+<li>“The group of M₁ is a congruence subgroup of the relevant Bianchi group” and the closed-filling slope-grid survey (§6) — uncited and unshipped respectively.</li>
+<li>h¹(M; 27) = 3 (§11.2, the riders) — uncited, unshipped, and load-bearing for the “object-forced three”.</li>
+<li>The “two mixed directions tested” of Scope 10.7 — unshipped.</li>
+</ul></div>
+
+<div class="finding open"><h3><span class="chip open">Dependence D-9</span>Theorem 5.15 (arithmeticity) rests on a precise reading of BMR that the submission cannot corroborate</h3>
+<p>The proof needs: (a) BMR’s “precisely three” cyclic commensurability classes for the once-punctured torus, and (b) the implication “arithmetic ⇒ conjugate to a <em>power</em> of one of RL, RRLL, RRL”. The downstream block-sequence argument is verified (their positivity lemma is checked exhaustively to length 10 by the shipped script, and the cyclic-word calculus is standard), and the citation exists; but the paper’s only independent corroboration — SnapPy trace fields for m = 3…10 — is unshipped block (b). A referee with library access must check the exact BMR statement; the submission alone does not allow it.</p></div>
+
+<div class="finding bad"><h3><span class="chip bad">Minor defects D-10</span>Bibliography, structure, terminology</h3>
+<ul>
+<li>Five of thirty bibliography entries are never cited: <code>Riley</code>, <code>McKay</code>, <code>Hurwitz</code>, <code>Molien</code>, <code>Reid91</code> — including Riley, to whom a theorem is attributed by name, and McKay, on whose correspondence the paper turns. <code>\begin{thebibliography}{9}</code> is wrong for 30 entries.</li>
+<li>Proposition 4.4 and two Scopes are nested <em>inside</em> the environment of Corollary 4.3 — a structural error that scrambles the document tree.</li>
+<li>The glossary entry “metallic family … Not a chosen subfamily” sits uneasily beside ledger row (C5), which prices period one as a declared input; the body’s own position (“characterized, not ad hoc, and not forced”) is right and the glossary should match it.</li>
+<li>Theorem 5.14’s statement mixes theorem, disclaimer, and commentary in one environment; several “theorems” (e.g. 7.7) are certificates and say so only in the adjoining scope.</li>
+</ul></div>
+
+<h2>3 · The genre problem</h2>
+<p>Substantively: by the paper’s own collapse lemma, Selections I and II reduce to m² = 1 — two evaluations of one quadratic; Selection III is a one-line inequality plus a citation of Jones; Selection IV is BMR. The Lie-theoretic half is a finite exact computation plus the classical Levi classification, correctly executed and now independently confirmed. What is genuinely the paper’s own is the toral-lemma route to “rungs are Levi” (a nice observation), the 𝔢₆<sup>2O</sup> identification of the measurement plane, the rational weight-arrangement finiteness argument behind the rung spectrum, and the conjunction/framing. That is a respectable but modest mathematical core.</p>
+<p>Around it sits an apparatus that is not mathematics: an append-only ledger of the paper’s own drafting errors, quantified self-exposure (“20 steps”, “43 links”, “four stipulations at this version”), and per-theorem accounts of what earlier drafts got wrong. Appendix C is valuable and should stay. But in the body this apparatus inverts the burden of proof — page after page anticipates the referee, concedes a weaker claim, and then argues the concession is itself a strength. A referee cannot referee a text whose primary mode is refereeing itself; the constant self-indictment functions, whatever its intent, as armor. The fix is mechanical: state each theorem, its proof, its certificate status — once — and move every “an earlier draft said” to Appendix C. My estimate is that this halves the paper at no mathematical cost.</p>
+<p>Finally, the physics question. The paper’s Gate-5 discipline (“no physical identification is made in the body”) is formally kept. But the architecture — “charges”, “measurement”, a ℤ/6-kernel SU(5) aside, chirality/vacuum/generation “riders”, a Chern–Simons “level” action, and a ledger whose hidden rows include “the SM record” — is only intelligible as a Standard-Model derivation programme, and the disclaimers do real load-bearing work. That is not misconduct; it is a tension the referee should name: the paper wants the credit of the destination while disclaiming the journey, and the repeated “we make no physical claim” is itself a rhetorical device the abstract deploys five times.</p>
+
+<h2>4 · Requirements for revision</h2>
+<ol>
+<li>Close D-1: prove or properly cite finiteness (congruence property) + reduction injectivity for Prop. 7.7/Thm. 7.9, or restate both as mod-p results.</li>
+<li>Resolve the D-2 contradiction; state the equivalence for “exactly two quotients”.</li>
+<li>Restore the non-negativity hypothesis in the abstract (D-3).</li>
+<li>Deposit block (b), replacing the floating-point stratification with the exact rational-arrangement computation (D-4).</li>
+<li>Renumber the ledger links or the input labels so the two C-systems cannot be confused; either include the 43 statements or stop reporting their census as a result (D-5).</li>
+<li>Define Σ (D-6); fix Figure 1’s label (D-7).</li>
+<li>Demote or evidence every D-8 item; cite BMR’s statement verbatim at the point of use (D-9).</li>
+<li>Cut the drafting-history commentary from the body into Appendix C; prune the bibliography (D-10).</li>
+</ol>
+
+<p class="small">Basis of this report: full read of <code>main.tex</code>; execution of all 19 shipped scripts (19/19 pass); ~90 independent checks in exact arithmetic covering §§3–11 (all pass; two initial mismatches resolved as convention artifacts on my side); extension of the shipped Chevalley model to all six brackets; independent reconstruction of the Levi enumeration, weight arrangement (109 flats), rung spectrum, and the Theorem 10.13 stratification; web verification of four citations. The PDF was assumed identical to the submitted <code>main.tex</code>.</p>
+</main>

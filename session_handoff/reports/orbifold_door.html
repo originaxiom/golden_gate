@@ -1,0 +1,164 @@
+<title>The Orbifold Door</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F7F3; --ink:#1F201D; --muted:#5C5E57; --rule:#D9D9D1;
+  --ok:#2E6B4F; --ok-bg:#E7F0EA; --bad:#A03A2E; --bad-bg:#F5E9E6; --open:#8A6D2F; --open-bg:#F2EDDF;
+  --card:#FFFFFF; --code-bg:#EFEFEA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+    --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+    --card:#1E1F22; --code-bg:#242520;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#17181A; --ink:#E4E3DD; --muted:#A2A39B; --rule:#33342F;
+  --ok:#7FBE9E; --ok-bg:#1D2B24; --bad:#D98A7C; --bad-bg:#2E1F1C; --open:#C2A868; --open-bg:#2A2519;
+  --card:#1E1F22; --code-bg:#242520;
+}
+html{font-size:17px}
+body{background:var(--paper); color:var(--ink); font-family:"STIX Two Text",Georgia,serif; line-height:1.55; margin:0; padding:2.2rem 1.2rem 5rem}
+main{max-width:46rem; margin:0 auto}
+h1{font-size:1.9rem; font-weight:700; line-height:1.2; text-wrap:balance; margin:0 0 .4rem}
+h2{font-size:1.32rem; font-weight:700; margin:2.6rem 0 .8rem; padding-top:1.1rem; border-top:1px solid var(--rule)}
+h3{font-size:1.02rem; font-weight:600; margin:1.2rem 0 .3rem}
+p{margin:.65rem 0}
+.eyebrow{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem}
+.meta{color:var(--muted); font-size:.92rem; margin-bottom:1.6rem}
+.box{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1.1rem 1.3rem; margin:1.6rem 0}
+.chip{display:inline-block; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; border-radius:3px; padding:.12rem .5rem; vertical-align:.12em; margin-right:.5rem}
+.chip.ok{color:var(--ok); background:var(--ok-bg)}
+.chip.bad{color:var(--bad); background:var(--bad-bg)}
+.chip.open{color:var(--open); background:var(--open-bg)}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.85em; background:var(--code-bg); border-radius:3px; padding:.06em .3em}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse; font-size:.9rem; margin:.8rem 0; min-width:100%}
+th{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.35rem .8rem .35rem 0; border-bottom:1px solid var(--rule)}
+td{padding:.42rem .8rem .42rem 0; border-bottom:1px solid var(--rule); vertical-align:top}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+.finding{margin:1.5rem 0; padding-left:1rem; border-left:3px solid var(--rule)}
+.finding.bad{border-left-color:var(--bad)}
+.finding.open{border-left-color:var(--open)}
+.finding.ok{border-left-color:var(--ok)}
+.finding h3{margin-top:0}
+.small{font-size:.88rem; color:var(--muted)}
+svg{max-width:100%; height:auto}
+.svgwrap{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1rem; margin:1.2rem 0}
+</style>
+<main>
+<div class="eyebrow">Research note · the chirality door, computed</div>
+<h1>The Orbifold Door</h1>
+<p class="meta">Sequel to “A Road Through the ALE Fiber.” The proposal there stalled on chirality: matter from the flat E₆ fibration over Q = S³∖4₁ is vector-like, and the standard fix — points where the singularity type jumps — seemed blocked. The clever exit proposed was to quotient Q by its own isometries and let the fixed loci supply the jump structure. This note carries that out. Everything below the fold is <em>computed, exactly</em>, except where marked open.</p>
+
+<div class="box"><p><strong>Result. The door is open, and the floor plan is explicit.</strong> Q/Isom⁺ is an orbifold whose singular graph has exactly two trivalent vertices; the two involutions whose axes run to the cusp act on the 2T fiber through the <em>outer</em> class w ∈ 2O∖2T — the paper’s own measurement involution — making their axes E₆-folding walls, while the third involution’s axis (a closed geodesic of trace exactly 4) preserves E₆. At the two vertices the fiber group closes up to 2O, the binary group of E₇. <strong>The E₇ that the paper’s Niven theorem banished from the cone-angle family re-enters at the symmetry vertices, carried by the same w that defines the paper’s measurement plane.</strong> E₈ is provably unreachable through this door.</p></div>
+
+<h2>1 · The symmetry group, verified</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>Isom(m004) = D₄; Isom⁺ = ℤ₂×ℤ₂</h3>
+<p>SnapPy: symmetry group D₄ of order 8 (this also verifies the paper’s uncited “Isom(4₁)=D₄”), amphichiral; the four orientation-preserving isometries act on the cusp torus by ±I — two involutions by −I, one by a pure translation. All three nontrivial ones are realized explicitly on the knot group ⟨a,b | awb⁻¹w⁻¹, w=ba⁻¹b⁻¹a⟩ and verified as exact homomorphisms in the faithful ℚ(√−3) representation:</p>
+<div class="tablewrap"><table>
+<tr><th>Involution</th><th>Action on (a,b)</th><th>Cusp action</th><th>Fixed set in Q</th></tr>
+<tr><td>τ (swap)</td><td>a↦b, b↦a</td><td>translation (+I)</td><td>closed geodesic (see §2)</td></tr>
+<tr><td>σ (inversion)</td><td>a↦a⁻¹, b↦b⁻¹</td><td>−I</td><td>2 arcs, cusp to cusp</td></tr>
+<tr><td>στ</td><td>a↦b⁻¹, b↦a⁻¹</td><td>−I</td><td>2 arcs, cusp to cusp</td></tr>
+</table></div></div>
+
+<div class="finding ok"><h3><span class="chip ok">Forced</span>τ’s axis must be a closed geodesic — by volume minimality</h3>
+<p>τ acts freely near the cusp (translation), so if it acted freely everywhere, Q/τ would be an orientable cusped hyperbolic manifold of volume 2.0299/2 = 1.0149 — below the Cao–Meyerhoff minimum, which is Vol(m004) itself. Contradiction; so Fix(τ) is nonempty and, being cusp-avoiding, a closed geodesic. Found explicitly: the element <strong>γ = a b a⁻¹ b a has trace exactly 4</strong>, commutes with the swap-realizing isometry, and its axis is the fixed geodesic — real length 2·arccosh 2 ≈ 2.6339 (purely hyperbolic, no torsion of rotation — not the systole, whose complex length is 1.0871 ± 1.7228i).</p></div>
+
+<h2>2 · The fiber twist: inner or outer?</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>σ and στ act through w ∈ 2O∖2T; τ stays inside 2T</h3>
+<p>Each symmetry descends to an automorphism of the paper’s arithmetic quotient 2T = SL(2,𝔽₃). Deciding conjugator determinants in GL(2,3):</p>
+<div class="tablewrap"><table>
+<tr><th>Involution</th><th>Conjugator det</th><th>Class in Out(2T)=ℤ₂</th><th>Wall type in the ALE fibration</th></tr>
+<tr><td>τ (swap)</td><td>1 (PSL)</td><td><strong>inner</strong></td><td>E₆ preserved along the closed geodesic</td></tr>
+<tr><td>σ (inversion)</td><td>2 (PGL∖PSL)</td><td><strong>outer = w</strong></td><td>folding wall: diagram involution of E₆</td></tr>
+<tr><td>στ</td><td>2 (PGL∖PSL)</td><td><strong>outer = w</strong></td><td>folding wall: diagram involution of E₆</td></tr>
+</table></div>
+<p>Geometrically N(2T)/2T = ℤ₂ acts on the resolved E₆ ALE by permuting exceptional cycles through the <em>E₆ diagram involution</em>. So the σ- and στ-arcs are non-simply-laced walls: the gauge symmetry seen on the wall is the folded algebra (F₄-type), and the local double cover exhibits ℂ²/⟨2T,w⟩ = ℂ²/2O — the <strong>E₇ singularity</strong>. This is the same w whose fixed plane ⟨x₈,x₁₆⟩ = 𝔢₆<sup>2O</sup> the paper measures on: the measurement involution and the folding wall are one element.</p></div>
+
+<h2>3 · The vertices — where the door actually opens</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>Exactly two trivalent vertices, exhibited exactly</h3>
+<p>Solving the normalizer conditions linearly gives the isometries in closed form: n_σ = diag(1,−1) and n_τ = [[0,1],[q,0]] with q = (1+i√3)/2. Verified exactly: both are involutions, they commute, and tr(n_σn_τ) = 0 — so ⟨n_σ,n_τ⟩ ≅ ℤ₂² fixes the point p₀ = (0,1) ∈ H³ (the apex of n_τ’s axis, which lies on n_σ’s vertical axis). And tr(n_σ·γ) = 0 exactly as well, so σγ is another involution whose axis crosses the closed geodesic at the half-translation point p₁ — a second ℤ₂²-fixed point. The cusp cross-section of the quotient is the pillowcase S²(2,2,2,2), giving exactly 4 wall-ends at the cusp; two trivalent vertices supply exactly the 6 edge-germs needed (4 cusp edges + 1 connecting edge), so the count forces the graph:</p>
+<div class="svgwrap">
+<svg viewBox="0 0 640 240" role="img" aria-label="Singular graph of the quotient orbifold">
+<defs></defs>
+<ellipse cx="320" cy="34" rx="220" ry="20" fill="none" stroke="var(--muted)" stroke-dasharray="4 4"/>
+<text x="320" y="20" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Sans" font-size="12">cusp · cross-section S²(2,2,2,2)</text>
+<path d="M 150 40 C 160 110 200 150 250 168" fill="none" stroke="var(--bad)" stroke-width="3"/>
+<path d="M 240 46 C 240 100 245 140 252 164" fill="none" stroke="var(--bad)" stroke-width="3"/>
+<path d="M 400 46 C 400 100 395 140 388 164" fill="none" stroke="var(--bad)" stroke-width="3"/>
+<path d="M 490 40 C 480 110 440 150 390 168" fill="none" stroke="var(--bad)" stroke-width="3"/>
+<path d="M 255 170 C 290 190 350 190 385 170" fill="none" stroke="var(--ok)" stroke-width="3"/>
+<circle cx="253" cy="168" r="6" fill="var(--ink)"/>
+<circle cx="387" cy="168" r="6" fill="var(--ink)"/>
+<text x="253" y="196" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">V₁ = p₀, group ℤ₂², fiber 2O</text>
+<text x="387" y="214" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">V₂ = p₁, group ℤ₂², fiber 2O</text>
+<text x="180" y="120" font-family="IBM Plex Sans" font-size="12" fill="var(--bad)">folding walls (outer, w)</text>
+<text x="320" y="176" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--ok)">E₆ edge (inner), ℓ = arccosh 2</text>
+</svg>
+</div>
+<p>At each vertex the fiber automorphisms generate ⟨2T, w-lifts⟩ = 2O: the vertices are isolated points where the E₆ locus passes through two folding walls and the local (double-cover) singularity is E₇’s. These are precisely the type-jump conical points that the chirality mechanism in G₂ compactifications requires — the structure the un-quotiented Q provably lacked. One caveat: the edge count cannot exclude additional <em>free</em> inner circles of Fix(τ)-type disjoint from the walls; they would carry no new vertices.</p></div>
+
+<div class="finding ok"><h3><span class="chip ok">Proved</span>The ceiling of this door is E₇; E₈ is unreachable</h3>
+<p>Any fiber enhancement through symmetry must extend 2T inside SU(2) by the vertex group. Isom⁺ is a 2-group, N(2T) = 2O (the paper’s Prop. 10.3, verified), ⟨2T, anything in 2O∖2T⟩ = 2O, and 2O ⊄ 2I (48 ∤ 120). Reaching 2I/E₈ would need an order-5 symmetry, and D₄ has none. So the orbifold door tops out at 2O — E₇’s binary group — and the E₆ → E₇ → (no E₈) hierarchy of this construction is a theorem about Isom(4₁), not a choice.</p></div>
+
+<div class="finding open"><h3><span class="chip open">Open</span>What remains research</h3>
+<ul>
+<li>The actual M-theory spectrum at a (ℂ²/2T × ℝ³)/ℤ₂² twisted cone — whether the two vertices emit chiral 27s (or F₄-representation matter) — needs the local conical analysis à la Acharya–Witten; nothing here settles it.</li>
+<li>The G₂ metric question from the previous note is unchanged; all statements here are equivariant-topological and exact, metric-free.</li>
+<li>Amphichiral (orientation-reversing) elements of D₄ paired with antiholomorphic fiber involutions are a further, unexplored door.</li>
+</ul></div>
+
+<h2>4 · The equivariant spectrum — the projection, computed</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>How ℤ₂² acts on every zero mode</h3>
+<p>The vertex group acts on each one-dimensional H¹ block through an intertwiner that is scalar-ambiguity-free on even blocks (the SL₂-normalization square roots cancel), and inner automorphisms act trivially on group cohomology, so both vertices impose the same characters. Exact Fox-calculus computation over ℚ[q]/(q²−q+1), with the product law σ·τ = στ verified on every block, and two independent analytic anchors (Sym²: the trace coordinate of the character variety is inversion-invariant, so +1; Sym⁰: inversion reverses the meridian, so −1):</p>
+<div class="tablewrap"><table>
+<tr><th>Block</th><th>Appears in</th><th>τ (inner)</th><th>σ (outer)</th><th>Survives?</th></tr>
+<tr><td>Sym²</td><td>adjoint modulus</td><td>+1</td><td>+1</td><td>yes</td></tr>
+<tr><td>Sym⁸</td><td>adjoint modulus <em>and</em> generation</td><td>+1</td><td><strong>−1</strong></td><td>no</td></tr>
+<tr><td>Sym¹⁰</td><td>adjoint modulus</td><td>+1</td><td>+1</td><td>yes</td></tr>
+<tr><td>Sym¹⁴</td><td>adjoint modulus</td><td>+1</td><td>+1</td><td>yes</td></tr>
+<tr><td>Sym¹⁶</td><td>adjoint modulus <em>and</em> generation</td><td>+1</td><td><strong>−1</strong></td><td>no</td></tr>
+<tr><td>Sym²²</td><td>adjoint modulus</td><td>+1</td><td>+1</td><td>yes</td></tr>
+<tr><td>Sym⁰</td><td>generation (trivial string)</td><td>+1</td><td><strong>−1</strong></td><td>no</td></tr>
+</table></div>
+<p>Three conclusions. <strong>(i) The inner involution τ is invisible: it acts trivially on every zero mode.</strong> <strong>(ii) Four of the six vacuum moduli survive the orbifold</strong> — and the two that are frozen are exactly the degree-8 and degree-16 directions: <em>the orbifold rigidifies precisely the measurement-plane degrees</em>. <strong>(iii) All three 27-generation modes are σ-odd</strong>: in the inner-lift convention none survives as a 27-invariant. In the geometric (folding) picture, where σ exchanges 27 ↔ 27̄, the three modes are not destroyed but reorganized into folded F₄-type matter (one multiplet per block, in the σ-twisted combination) — still vector-like.</p>
+<p>The pattern is now impossible to ignore: the degrees <strong>{8, 16}</strong> have appeared three independent ways — as the paper’s measurement plane 𝔢₆<sup>2O</sup>, as the nontrivial principal-sl₂ strings of the 27, and now as the σ-odd blocks of the equivariant spectrum. Indeed on the four invariant-line degrees the H¹ character of σ is exactly the <em>negative</em> of the paper’s Ad(w) eigenvalue pattern: (−,+,−,+) against (+,−,+,−) on (8,14,16,22). Recorded as an observation; no mechanism claimed.</p></div>
+<div class="finding open"><h3><span class="chip open">Verdict</span>Chirality at zero-mode level: no — and now we know exactly where it must come from, if anywhere</h3>
+<p>The equivariant projection is sign-balanced between the 27 and 27̄ sectors (both decompose into the same blocks with the same characters), so the orbifolded field-theory spectrum remains vector-like: the chirality index at zero-mode level is zero. This closes the field-theoretic route decisively. What the computation cannot see — and what therefore becomes the sole remaining source of chirality for this construction — are intrinsically M-theoretic states localized at the two vertices themselves (twisted-sector physics of the (ℂ²/2T × ℝ³)/ℤ₂² cone, the analogue of frozen-singularity states). That is a well-posed question about one specific 7d orbifold cone, and it is genuinely open.</p></div>
+
+<h2>5 · Through the door: the vertex cone exists, and the chirality question closes to one bit</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>The vertex cone is a genuine flat G₂ orbifold — supersymmetry is exact</h3>
+<p>Modeling ℝ⁷ = ℝ³ ⊕ ℍ with 2T acting by left quaternion multiplication (which fixes the hyperkähler triplet — verified, not assumed), base rotations paired with right multiplication (which rotates the triplet identically with the ℝ³ rotation), and σ carrying the extra left factor w = (1+i)/√2 ∈ 2O∖2T: the group Ĝ = ⟨2T, ĝ_τ, ĝ_σ⟩ closes with <strong>order 96</strong>, sits in SO(7), and <strong>every generator preserves the associative 3-form φ exactly</strong>. The fixed-space census over all 95 nontrivial elements (53 with 3-dimensional fixed sets — the ADE locus and edge stabilizers — and 42 with 1-dimensional, the wall axes) reproduces the singular graph of §3. Consequence: the metric obstruction (O-1 of the previous note) <em>dissolves at the vertex</em> — the cone (ℂ²×ℝ³)/Ĝ is an exact, flat, supersymmetric M-theory background, and “what does M-theory do at the vertex?” is now a completely specified finite question: the massless spectrum of M-theory on ℝ⁷/Ĝ for one explicit Ĝ ⊂ G₂ of order 96.</p></div>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>No-go III: wall-charged matter lives in F₄, and F₄ has no complex representations</h3>
+<p>The diagram involution genuinely folds E₆: projecting the 72 roots to the involution-invariant subspace yields exactly 48 roots, 24 long and 24 short — an F₄ system — whose Weyl group, generated from the folded simples, has order 1152 and <strong>contains −1</strong> (both verified by explicit generation). So every representation of the wall gauge symmetry is self-dual: <em>no state charged only under the folding walls can be chiral, as a matter of Lie theory.</em></p></div>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>No-go IV: the abelian branch is empty at unitary holonomy, and index-zero always — by the Alexander polynomial</h3>
+<p>On the abelian (Wilson-line) branch of vacua, where the unbroken gauge group is a Levi subgroup — this is where the paper’s entire rung spectrum acquires its physics meaning, since every Levi is the centralizer of a torus element — charged matter is counted by H¹(Q; ℂ_χ), which by Milnor’s theorem is nonzero exactly at roots of the Alexander polynomial. For the figure-eight, Δ(t) = t²−3t+1 has roots <strong>φ² and φ⁻²</strong> (verified exactly): the golden ratio again — real, and <em>off the unit circle</em>. So compact (unitary) Wilson lines meet no matter at all; charged zero modes exist only at non-unitary holonomy — the paper’s non-reality theme materialized as physics. And since Δ is palindromic (t²Δ(1/t) = Δ(t), verified — and true for every knot by duality), the roots pair as λ ↔ λ⁻¹, so h¹(χ) = h¹(χ⁻¹) and the chirality index vanishes identically on the whole branch. <strong>This no-go covers every knot complement, not just 4₁.</strong></p></div>
+<div class="finding ok"><h3><span class="chip ok">Closed</span>No-go V: anomaly inflow — the mechanism that forces chirality everywhere else in the G₂ landscape is inert here</h3>
+<p>In every known chirality-bearing G₂ background, the chiral states at a conical point are not optional: they are <em>required</em>, point by point, by cancellation of the C-field’s anomalous variation (Witten, <em>Anomaly cancellation on manifolds of G₂ holonomy</em>, hep-th/0205184; the states themselves from Acharya–Witten, hep-th/0109152). Nonzero inflow ⟺ forced net chirality — and inflow needs a symmetry with a cubic anomaly, i.e. complex representations: U(1)s, SU(n≥3), SO(4k+2), or E₆ seeing the point. At our vertices, every ingredient of that anomaly polynomial vanishes identically: the symmetry surviving at the vertex is of F₄ type (all representations self-dual — −1 ∈ W(F₄), verified by generating all 1152 elements); the E₆ arriving along the inner edge does so as a 5d theory on an interval whose gauge multiplet content is the adjoint — real — so its folding boundary conditions produce only real F₄ content; and no U(1) survives (H⁰ = 0, verified). <strong>The required inflow at each vertex is exactly zero, and the non-chiral spectrum computed above satisfies M-theory consistency on the nose.</strong> Where Acharya–Witten’s cones are compelled to emit chiral fermions, this cone is compelled to emit none.</p></div>
+<div class="finding ok"><h3><span class="chip ok">Closed</span>No-go VI: all eight discrete-torsion variants inherit the same obstruction</h3>
+<p>The torsion group is computed, not recalled: H³(ℤ₂², U(1)) ≅ H₃(ℤ₂², ℤ) = <strong>ℤ₂³</strong> by exact Smith normal form on the bar resolution — so the construction admits 8 C-field variants, not the 2 an earlier phrasing of this note guessed. By the frozen-singularity results (de Boer–Dijkgraaf et al., <em>Triples, fluxes, and strings</em>, §4.6.2; Tachikawa, arXiv:1508.06679 and <em>Frozen singularities in M and F theory</em>), fractional C-field flux on an ADE locus <em>freezes</em> it: the gauge symmetry is reduced toward non-simply-laced algebras — Sp, SO(odd), F₄, G₂ — every one of which has only self-dual representations. Freezing removes complex representations; it never creates them. All eight variants therefore land inside the same reality obstruction as no-gos III and V.</p></div>
+<div class="finding open"><h3><span class="chip open">Verdict</span>The conclusion, and its epistemic register</h3>
+<p><strong>M-theory on the D₄-orbifold of the ALE-fibered figure-eight geometry produces no chiral matter, in any of its eight discrete-torsion variants, through any known mechanism.</strong> Six independent closures, each for a structural reason: 27/27̄ pairing at the geometric vacuum; sign-balance of the equivariant projection; F₄ reality on the walls; Alexander palindromy on the abelian branch (valid for every knot); vanishing anomaly inflow at the vertices; and reality of all frozen variants. The first four are mathematics; the last two are physics at the standard rigor of the G₂ literature (inflow consistency and the frozen-singularity classification taken as established). What would overturn the verdict is not a better computation but a <em>new M-theory mechanism</em> — one that manufactures complex representations where reality theorems forbid them. Until such a mechanism exists, the honest summary is: <strong>the figure-eight knot does not make chiral matter.</strong> The paper under review prized exactly this kind of result — a negative established structurally rather than by exhaustion — and it is fitting that its physics shadow ends in one.</p></div>
+
+<h2>6 · The hole, tested: non-geometric vacua</h2>
+<div class="finding ok"><h3><span class="chip ok">Computed</span>All irreducible SL(3) vacua with unipotent boundary, found and tested</h3>
+<p>The no-gos above quantified over the vacua analyzed, not all vacua — the honest hole was the non-geometric components of the flat-connection variety. Solving the figure-eight relator for SL(3,ℂ) pairs with regular-unipotent meridians (Riley-style slice, Gröbner over ℚ) yields exactly four irreducible families: the geometric Sym² (field ℚ(√−3)), a second ℚ(√−3) component <em>not</em> of Sym² type, and two Falbel-type components over <strong>ℚ(√−7)</strong> — the field known from spherical-CR representations of this knot. At <em>every</em> one, computed exactly over the relevant field:</p>
+<div class="tablewrap"><table>
+<tr><th>Component</th><th>Field</th><th>h¹(3)</th><th>h¹(3̄)</th><th>Index</th><th>Fixed by</th><th>Dualized by</th></tr>
+<tr><td>Sym²-geometric</td><td>ℚ(√−3)</td><td colspan="2">(paired blockwise)</td><td>0</td><td>τ</td><td>σ (via w)</td></tr>
+<tr><td>p = 1 component</td><td>ℚ(√−3)</td><td>1</td><td>1</td><td>0</td><td>τ</td><td>σ, στ</td></tr>
+<tr><td>Falbel p = (5±√−7)/4</td><td>ℚ(√−7)</td><td>1</td><td>1</td><td>0</td><td>σ</td><td>τ, στ</td></tr>
+<tr><td>p = −1 component</td><td>ℚ(√−7)</td><td>1</td><td>1</td><td>0</td><td>στ</td><td>σ, τ</td></tr>
+</table></div>
+<p>Three structural facts, uniform across all components. <strong>(i) The chirality index vanishes at every vacuum</strong> — and not vacuously: the non-geometric vacua carry genuine charged matter (h¹ = 1 in both the 3 and the 3̄), an honest vector-like pair each. <strong>(ii) Some element of the knot’s own symmetry group ℤ₂² realizes dualization (ρ∘φ ≅ ρ*) on every component</strong> — the earlier guess that inversion always does it was refuted (inversion <em>fixes</em> the Falbel vacuum); the corrected statement is that the three involutions distribute the roles fix/dualize/dualize differently on each component, realizing all three possible patterns. <strong>(iii) ρ* ≅ ρ̄ (Galois conjugate) on every component</strong>: each vacuum is conjugate-self-dual. Since complex conjugation on the character variety is what the knot’s <em>amphichirality</em> implements geometrically, the mechanism killing chirality is the object’s oldest property in this story: <em>the amphichiral knot yields achiral matter — duality of representations is realized by the mirror symmetry of the knot itself.</em></p>
+<p>Scope that remains open, stated exactly: components with non-unipotent boundary holonomy (deformations away from the parabolic locus), representations with non-regular unipotent meridians (a second slice, unsearched), and E₆ flat connections factoring through nothing smaller — plus every construction outside this compactification family. Within everything searched: six no-gos, four component families, one mechanism, zero chirality.</p></div>
+
+<h2>7 · One consistency ornament</h2>
+<p>Vol(Q)/|D₄| = 2.0298832/8 = 0.2537354 = exactly 3 × 0.0845782 = 3 × Vol(H³/PGL(2,O₃)) — the quotient sits at integer height over the minimal ℚ(√−3) Bianchi orbifold, as an arithmetic commensurability check demands.</p>
+
+<p class="small">Everything marked Computed is exact: relator and homomorphism checks in ℚ(q)/(q²−q+1); conjugator determinants in GL(2,3); n_σ, n_τ in closed form; tr(n_σn_τ) = tr(n_σγ) = 0 and tr γ = 4 as identities, not numerics. SnapPy 3.3.2 supplied the symmetry group, cusp maps, volume, and length spectrum. Scripts retained with the session’s suite.</p>
+</main>
