@@ -1,0 +1,4 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+variant A (id-type): dims 36/42; EXACT sig (40+,38-,00); character 2 -> E6(2)
+variant B (-1): dims 38/40; EXACT sig (34+,44-,00); character -10 -> INVALID

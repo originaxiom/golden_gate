@@ -1,0 +1,6 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+variant A (phi|3 = id-type): bracket check 600 pairs: PASS
+variant A (phi|3 = id-type): dims 36/42, sig (40+,38-,00), character 2 -> E6(2)
+variant B (phi|3 = -1): bracket check 600 pairs: PASS
+variant B (phi|3 = -1): dims 38/40, sig (34+,44-,00), character -10 -> INVALID

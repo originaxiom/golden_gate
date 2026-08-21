@@ -1,0 +1,5 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+tau=id (expect split, +6): dims 78/0; sig (42+,36-); character 6
+Chevalley involution automorphy (300 pairs): FAIL 75
+tau=Chevalley (expect compact, -78): dims 36/42; sig (0+,78-); character -78

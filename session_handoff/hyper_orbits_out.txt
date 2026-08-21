@@ -1,0 +1,14 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+weight classes: [3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1] (expect 3x6, 1x9)
+solutions found: 18 (B1102 banked: 18)
+Weyl group order: 36 (expect 36 = S3 x S3)
+W-orbit structure: [9, 9]
+solution-preserving factor swaps: [(3, 2, 1, 0)]
+extended-orbit structure: [18]
+
+REPRICING: bare choice log2(18) = 4.17 bits; after the residual symmetry quotient:
+  2 W-orbit(s) -> log2(2) = 1.000 bits
