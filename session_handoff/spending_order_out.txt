@@ -1,0 +1,24 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+joint (h1,h2) bi-weight table of the 27:
+   (-2, -2) : 1
+   (-2, 0) : 4
+   (-2, 2) : 1
+   (0, -2) : 4
+   (0, 0) : 7
+   (0, 2) : 4
+   (2, -2) : 1
+   (2, 0) : 4
+   (2, 2) : 1
+matches trinification prediction: True
+ALL bi-weights even (integer Lorentz spin): True
+
+Lorentz-reading content of the 27 (realified so(3,1) = the pair):
+  (j1,j2)=(1,1) x color-singlet: 9 states  — THE SPIN-2 SLOT (metric rep)
+  (j1,j2)=(1,0) x color-3:       9 states  — self-dual colored vectors
+  (j1,j2)=(0,1) x color-3bar:    9 states  — anti-self-dual colored vectors
+  NO half-integer spins anywhere: fermionicity requires the spin bit,
+  the one purchase the object refuses (the projective hatch).
