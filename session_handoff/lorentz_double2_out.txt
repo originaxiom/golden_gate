@@ -1,0 +1,13 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+components: 4 6 6
+ideal dims after closure: 8 9 (expect 8, 8)
+[I1,I2]=0: True
+rank(I1) = 1  rank(I2) = 3 (expect 2, 2: two sl3's)
+
+VERIFIED: z(A2 triple) = I1 (+) I2 = sl3 (+) sl3, both defined OVER Q.
+Q-RATIONALITY => the object's coefficient Galois (q -> 1-q, = the mirror, VII.1)
+FIXES each su(3) factor. The antilinear involution that would glue the A2 sl2
+with a partner sl2 into so(3,1) = sl(2,C)_R is NOT supplied by the object's
+own arithmetic: the real structure — the signature — is the observer's input,
+now exhibited at the Lie-algebra level (B716/B155, made algebraic).

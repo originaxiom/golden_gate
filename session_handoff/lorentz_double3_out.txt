@@ -1,0 +1,13 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+A2 triple on Levi nodes (0, 2) verified
+roots orthogonal to the A2: 12 (expect 12 = A2+A2)
+orthogonal subsystem components: [6, 6] (expect [6,6])
+ideal dims: 8 8 (expect 8, 8)
+[I1,I2]=0: True
+[I1, A2-triple]=0: True  [I2, A2-triple]=0: True
+Q-RATIONAL: both ideals are spans of ROOT VECTORS + coroots — rational by construction.
+second JM triple (principal of I1) verified: True
+second triple commutes with first: True
+dim z_{e6}(e2) = 36 (A2 class <=> 36)
+dim joint centralizer of the two commuting A2 triples: 8 (expect 8 = one su(3): COLOR)
