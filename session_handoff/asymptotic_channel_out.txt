@@ -1,0 +1,7 @@
+fit over N in [400, 566, 800, 1131, 1600, 2263, 3200, 4525, 6400]:
+  exponent:  2*pi*A = 2.029883209935   vs Vol = 2.029883212819   (diff 2.88e-09)
+  power:     p      = 1.500003          vs 3/2
+  constant:  e^c    = 0.75981875      vs 3^(-1/4) = 0.75983569
+  refined exponent (Richardson): 2.0298832128847
+  banked Vol:                    2.0298832128193
+  agreement: 6.54e-11
