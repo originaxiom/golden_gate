@@ -1,0 +1,10 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+ad-invariance of CORRECTED form (300 triples): PASS
+control tau=id (expect split +6): dims 78/0; corrected sig (42+,36-); character 6 -> E6(6) split
+variant A (id on color): dims 36/42; corrected sig (40+,38-); character 2 -> E6(2)
+variant B (-1 on color): dims 38/40; corrected sig (42+,36-); character 6 -> E6(6) split
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+variant A [E6(2)]: color-sector signature (5, 3) -> sl(3,R)
+variant B [E6(6)]: color-sector signature (4, 4) -> su(2,1)

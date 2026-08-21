@@ -1,0 +1,9 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+eta values:  {1: 0, -1: 72}
+A (id-type): FULL 3003 bracket check: 0 failures
+A (id-type): dims 36/42; cross-block K(V+,V-) all zero: True
+A (id-type): EXACT character = 2 -> E6(2)
+B (-1 on color): FULL 3003 bracket check: 0 failures
+B (-1 on color): dims 38/40; cross-block K(V+,V-) all zero: True
+B (-1 on color): EXACT character = -10 -> INVALID
