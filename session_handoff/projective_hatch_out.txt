@@ -1,0 +1,30 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+stage 3: relator acts as identity on the 27: PASS
+Levi-regular classes found: 16 (B1098 total = 20 incl. 4 distinguished-non-regular)
+       dominant labels  dim z  27-weights even?  27-multiset
+    (0, 1, 0, 0, 0, 0)     56        needs lift  {-1: 6, 0: 15, 1: 6}
+    (1, 0, 0, 0, 0, 1)     46        needs lift  {-2: 1, -1: 8, 0: 9, 1: 8, 2: 1}
+    (0, 0, 0, 1, 0, 0)     38        needs lift  {-2: 3, -1: 6, 0: 9, 1: 6, 2: 3}
+    (0, 2, 0, 0, 0, 0)     36        PROJECTIVE  {-2: 6, 0: 15, 2: 6}
+    (1, 1, 0, 0, 0, 1)     32        needs lift  {-3: 1, -2: 4, -1: 5, 0: 7, 1: 5, 2: 4, 3: 1}
+    (2, 0, 0, 0, 0, 2)     30        PROJECTIVE  {-4: 1, -2: 8, 0: 9, 2: 8, 4: 1}
+    (0, 0, 1, 0, 1, 0)     28        needs lift  {-3: 2, -2: 3, -1: 6, 0: 5, 1: 6, 2: 3, 3: 2}
+    (1, 2, 0, 0, 0, 1)     26        needs lift  {-4: 1, -3: 4, -2: 1, -1: 4, 0: 7, 1: 4, 2: 1, 3: 4, 4: 1}
+    (1, 0, 0, 1, 0, 1)     24        needs lift  {-4: 1, -3: 2, -2: 4, -1: 4, 0: 5, 1: 4, 2: 4, 3: 2, 4: 1}
+    (0, 1, 1, 0, 1, 0)     22        needs lift  {-4: 2, -3: 2, -2: 3, -1: 4, 0: 5, 1: 4, 2: 3, 3: 2, 4: 2}
+    (2, 2, 0, 0, 0, 2)     18        PROJECTIVE  {-6: 1, -4: 4, -2: 5, 0: 7, 2: 5, 4: 4, 6: 1}
+    (0, 2, 0, 2, 0, 0)     18        PROJECTIVE  {-6: 3, -4: 3, -2: 3, 0: 9, 2: 3, 4: 3, 6: 3}
+    (1, 1, 1, 0, 1, 1)     16        needs lift  {-6: 1, -5: 1, -4: 2, -3: 2, -2: 3, -1: 3, 0: 3, 1: 3, 2: 3, 3: 2, 4: 2, 5: 1, 6: 1}
+    (2, 1, 1, 0, 1, 2)     14        needs lift  {-8: 1, -6: 1, -5: 2, -4: 2, -3: 2, -2: 2, -1: 2, 0: 3, 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 1, 8: 1}
+    (2, 2, 0, 2, 0, 2)     10        PROJECTIVE  {-10: 1, -8: 2, -6: 2, -4: 3, -2: 3, 0: 5, 2: 3, 4: 3, 6: 2, 8: 2, 10: 1}
+    (2, 2, 2, 2, 2, 2)      6        PROJECTIVE  {-16: 1, -14: 1, -12: 1, -10: 1, -8: 2, -6: 2, -4: 2, -2: 2, 0: 3, 2: 2, 4: 2, 6: 2, 8: 2, 10: 1, 12: 1, 14: 1, 16: 1}
+
+PROJECTIVE classes among the 16 Levi-regular: 6
+Checks: A2 class (dim z=16) multiset should be {-2:6, 0:15, 2:6} (B1100 banked);
+  A2 row: {4: 2, 2: 3, 0: 3, -2: 3, -4: 2, 5: 1, 3: 2, 1: 3, -1: 3, -3: 2, 6: 1, -6: 1, -5: 1} | projective: False
+  A1/su(6) row (dim z=35): None | projective: None
+  2A1/so(7) row (dim z=22): {1: 4, -1: 4, 4: 2, 2: 3, 0: 5, -2: 3, 3: 2, -3: 2, -4: 2} | projective: False
