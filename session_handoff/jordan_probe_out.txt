@@ -1,0 +1,15 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+stage 3: relator acts as identity on the 27: PASS
+       t                  tr(B_L B_R)                    tr(A B_R)                tr([B_L,B_R])
+       0                           27              141750+1011915q                           27
+       1 -4268791455703081896933+4496860756304889154560q              141750+1011915q -1012494675441866094969680468476925337415653+-19181399207157472539697602748942049339166720q
+       2 -1136640792617359937187813+1151247446406074247229440q              141750+1011915q -16755160684243541173825124529943231919652126693+-1308432850647916106766787473050401389584509255680q
+   omega       4725568716294111759387              141750+1011915q 21245539863128390787066847414681242215854107
+
+characters separate t=0 from t=1: True
+characters separate t=1 from t=2: True
+characters separate t=1 from t=omega: True
