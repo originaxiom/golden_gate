@@ -1,12 +1,17 @@
 # BANKING HANDOFF — the outside bench's complete record
 ## Repository: `originaxiom/golden_gate` · Branch: **`claude/paper-hostile-review-alero0`** · Directory: `session_handoff/`
-## Outside bench (independent Claude session), 2026-08-19 → 2026-08-21. Everything below is on this branch.
+## Outside bench (independent Claude session), 2026-08-19 → 2026-08-22. Everything below is on this branch, HEAD = the phase-III closing arc.
 
-**START HERE.** This file is the index. The session ran in two phases: (I) the original
+**START HERE.** This file is the index. The session ran in three phases: (I) the original
 verification session (hostile referee → physics road → corpus audits → origin →
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
-run (eight breakthrough memos + one resolved anomaly), after the corpus banked phase I as
-B1083–B1087. **Firewall status of the entire record: structure, negatives, and two
+run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
+corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
+(memos 10–17, 2026-08-22, after digesting B1110–B1131): the simultaneous closing →
+the fork theorem → the gauge closing → the Y-selection → the installment plan → the
+family triplet → the first beat → the descent. Phase III differs from phase II in kind:
+every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
+with raw output in `outputs/` — re-run them directly. **Firewall status of the entire record: structure, negatives, and two
 literature-standard identities. No measured SM value is claimed anywhere; Gate 5
 untouched; every interpretive passage is labeled.** Standing grades: MACHINE-VERIFIED
 (certificate + expected output named), CITED (literature-standard, not re-derived),
@@ -21,8 +26,8 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
 | `memos/` | The seventeen memos of phases II–III, in order below. |
-| `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
-| `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
+| `certificates/` | 30 exact-arithmetic scripts: the 17 of phase I + the 13 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 27 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -176,19 +181,29 @@ ascending; caught because the antipodal control lost 63/64 of its solutions; per
 row re-checks added as a permanent guard). Every one is documented at its point of
 occurrence.
 
-## OPEN CELLS, CONSOLIDATED (ranked by leverage)
-C-AR1 the 𝔽₂-kernel sweep (compact-color hosting; instrument now validated) ·
-C-S2 the matter–geometry bridge (does B1107's Ruelle tower couple to the (1,1) block?) ·
-C-V2/C-V4 Ohtsuki arithmetic at 50 digits + the tower-invariant crossing class
-(nomination-gated) · C-AD3 the Habiro/congruence-tower match · C-J2 the Jordan ledger
-(with its stated falsifier) · C-P1 the 4 distinguished strata's parities ·
-C-D3 the ledger conjecture (discrete freedom = {C, P, spin lift} exactly) ·
-the Gieseking first beat (untouched) · QP-1 the quine (the corpus's own open cell).
+## OPEN CELLS, CONSOLIDATED (post-phase-III; ranked by leverage)
+CLOSED BY PHASE III: C-AR1 (memos 10+12: compact color hosted, sweeps exhaustive) ·
+the Gieseking first beat (memos 16+17) · B1127's relayed holonomy-bridge (memo 17) ·
+F-1/G-1/G-2/G-3 (memos 12–15) · C-D3 sharpened (after the closing the ledger holds the
+spin lift ALONE — memos 13+11; spin pair-invisible per corpus B1122).
+STILL OPEN, ranked:
+Σ-27 (descend memo 17's Σ one level further: its action on the 27 and the dial slots) ·
+the S₄ question (does W(E₈) permute the four A2 slots fully? needs stabilizer-chain,
+not enumeration) · F-3 the frame audit (tag each banked arc with its S₃ color frame —
+memo 11's ledger flag) · the AW/McKay stabilizer typing (B1111's residue, now sharpened:
+full-stack points must be E₈/2I points, memo 14) · C-S2 the matter–geometry bridge ·
+C-V2/C-V4 Ohtsuki at 50 digits + the tower-invariant crossing class (nomination-gated) ·
+C-AD3 the Habiro/congruence-tower match · C-J2 the Jordan ledger · C-P1 the 4
+distinguished strata's parities · PR-1..4 per the owner-agreed prime-lane ruling (RH
+FENCED) · QP-1 the quine (the corpus's own).
 
 ## FOR THE SEAT'S PROCESS
-Every phase-II claim is re-derivable from the outputs plus the transcript's inline
-scripts; where a script lives only in the transcript, the output file carries the full
-stdout including all gate lines. Verification culture as in phase I: two-outcome cells,
+Every phase-III claim re-runs directly: `python3 certificates/<name>.py` (they import
+the paper's `check_charge_bracket.py` by absolute path — edit the path to your checkout;
+`gieseking_beat.py` and the generic `e7_ladder.py`/`e8_lower.py` are fully
+self-contained). Every phase-II claim is re-derivable from the outputs plus the
+transcript's inline scripts; where a script lives only in the transcript, the output
+file carries the full stdout including all gate lines. Verification culture as in phase I: two-outcome cells,
 controls before trust, errors filed at point of occurrence. The outside bench requests
 the usual treatment: independent re-derivation before banking, integrate-don't-merge,
 and the anomaly chain (memo 6 §2 → memo 8) banked as a pair so the error-class and the
