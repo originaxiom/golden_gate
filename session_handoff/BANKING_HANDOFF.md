@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The fifteen memos of phases II–III, in order below. |
+| `memos/` | The sixteen memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -140,6 +140,15 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    D₅×u(1) = charges {4:1, −2:10, +1:16} — the 16-spinor family, machine-verified.
    Four-slot S₄ frame question typed open (W(E₈) too large for enumeration here).
    Certificate: `certificates/family_triplet.py`; output `outputs/family_triplet_out.txt`.
+16. **`FIRST_BEAT.md`** (phase III) — the corpus's untouched Gieseking cell executed:
+   the object's own ANTILINEAR element explicit — **W = [[1,q],[0,1]]**, acting z ↦ z̄+q
+   (glide reflection; Gieseking cusp = Klein bottle), with W·conj(W) = A EXACTLY: **the
+   meridian is the beat's square because q+q̄ = 1**. Fiber x=AB⁻¹, y=A⁻¹B verified
+   (tr[x,y]=−2); monodromy = conj-by-meridian (x↦xxyx, y↦x⁻¹; H₁ det 1 tr 3); H₁(beat)
+   det −1, beat² = monodromy. **Answers B1127's open bridge constructively** (the
+   holonomy-layer antilinear action now has a matrix); the beat and the observer's
+   closing share the C∘P factorization; tick parity gets a geometric seat (labeled).
+   Certificate: `certificates/gieseking_beat.py`; output `outputs/gieseking_beat_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)

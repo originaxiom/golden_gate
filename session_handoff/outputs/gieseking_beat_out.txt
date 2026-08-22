@@ -1,0 +1,19 @@
+fiber x=AB^-1, y=A^-1B:  tr x = (Fraction(2, 1), Fraction(-1, 1))  tr y = (Fraction(2, 1), Fraction(-1, 1))  tr xy = (Fraction(1, 1), Fraction(1, 1))
+tr [x,y] = (Fraction(-2, 1), Fraction(0, 1))  (fiber boundary parabolic: expect -2 up to sign)
+monodromy: A x A^-1 = xxyx
+monodromy: A y A^-1 = X
+monodromy H1 matrix [[3, -1], [1, 0]], det 1, trace 3  (expect det 1, trace 3)
+
+beat solutions found: 7
+  beat: x -> xxy, y -> YX;  W conj(W) ~ A (scalar (Fraction(1, 1), Fraction(0, 1)))
+     W = [[(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(1, 1))], [(Fraction(0, 1), Fraction(0, 1)), (Fraction(1, 1), Fraction(0, 1))]]  det W = (Fraction(1, 1), Fraction(0, 1))
+  beat: x -> xyx, y -> XY;  W conj(W) ~ A*X (scalar (Fraction(1, 1), Fraction(0, 1)))
+     W = [[(Fraction(1, 1), Fraction(-1, 1)), (Fraction(0, 1), Fraction(1, 1))], [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1))]]  det W = (Fraction(0, 1), Fraction(-1, 1))
+  beat: x -> xyx, y -> YX;  W conj(W) ~ A*yx (scalar (Fraction(1, 1), Fraction(0, 1)))
+     W = [[(Fraction(0, 1), Fraction(0, 1)), (Fraction(1, 1), Fraction(0, 1))], [(Fraction(0, 1), Fraction(1, 1)), (Fraction(1, 1), Fraction(0, 1))]]  det W = (Fraction(0, 1), Fraction(-1, 1))
+  beat: x -> XYX, y -> xy;  W conj(W) ~ A*y (scalar (Fraction(1, 1), Fraction(0, 1)))
+     W = [[(Fraction(0, 1), Fraction(-1, 1)), (Fraction(0, 1), Fraction(0, 1))], [(Fraction(0, 1), Fraction(-1, 1)), (Fraction(1, 1), Fraction(0, 1))]]  det W = (Fraction(0, 1), Fraction(-1, 1))
+  VERIFY: intertwining exact: True; H1(beat) = [[2,-1],[1,-1]] det -1 (Fibonacci class, det -1); beat^2 H1 = monodromy H1: True
+  => Gamma_G = <Gamma, w>, w antiholomorphic, w^2 = meridian x fiber:
+     THE OBJECT'S OWN FIRST BEAT = (Galois conjugation) o (Fibonacci step),
+     and m004's monodromy (the tick^2) is its square.
