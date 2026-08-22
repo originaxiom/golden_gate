@@ -1,0 +1,19 @@
+dim z(T1)               = 16  (expect 16: one triple spent)
+dim z(T1 u color)       = 8  (expect 8: EW branch — sl(S1) room, rank-2 Cartan for Y)
+dim z(T1,T2)            = 8  (expect 8 = B1114: color exactly)
+dim z(T1,T2 u color)    = 0  (expect 0: Lorentz+color leaves NOTHING for hypercharge)
+THE LADDER 16 -> 8 -> 0: PASS — the fork is a centralizer theorem
+
+S3 actions realized by W(E6) on the three A2's {S0,S1,S2}:
+   (0, 1, 2): 216 elements
+   (0, 2, 1): 216 elements
+   (1, 0, 2): 216 elements
+   (1, 2, 0): 216 elements
+   (2, 0, 1): 216 elements
+   (2, 1, 0): 216 elements
+ALL THREE transpositions + both 3-cycles realized inside W(E6): PASS
+=> the three A2's are one W-orbit of frames; 'which factor is color' is a frame choice
+
+B1118's fusing swap (3,2,1,0) exchanges the p1-block and p2-block of the
+hypercharge Cartan coordinates = the transposition of the two orthogonal A2's.
+The simultaneous-closing swap is the S0<->S1 transposition. Same S3 conjugacy class.
