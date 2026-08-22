@@ -1,0 +1,5 @@
+roots orthogonal to S0,S1,S2: 6 (expect 6 = the fourth A2)
+fourth-slot sl3 (8 elements) commutes with ALL of T1,T2,color: True
+rank of the 8 exhibited elements: 8 (expect 8)
+closure spot-check bracket nonzero-or-zero computed OK
+

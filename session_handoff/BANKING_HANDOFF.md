@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The thirteen memos of phases II–III, in order below. |
+| `memos/` | The fourteen memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -124,6 +124,14 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    Self-correction filed: literal P-closure holds only 3/9 — orbit-straddling is the
    invariant. After the closing the freedom ledger holds spin alone. Certificates:
    `certificates/g1_yselect.py` + 2 follow-ups; outputs `outputs/g1_*`.
+14. **`AMBIENT_LADDER.md`** (phase III) — G-2 executed: the room left after Lorentz+color
+   is **0 in E₆ / exactly 1 in E₇ / exactly 8 in E₈**. Generic simply-laced builder
+   (E₆ control reproduces 16/8/0); E₇ exact 35/9/1 with the survivor verified pure-Cartan
+   u(1); E₈ by rigorous sandwich (mod-p ≤ 8, explicit fourth-A2 sl₃ ≥ 8). **The
+   exceptional series sells the SM in installments — the fork dissolves only at E₈ (four
+   orthogonal A2 slots).** McKay hook typed for the AW lane: a full-stack point must be
+   an E₈ (2I, order-120) point. Certificates: `certificates/e7_ladder.py`,
+   `certificates/e8_lower.py`; outputs `outputs/e7_ladder_out.txt`, `outputs/e8_lower_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)

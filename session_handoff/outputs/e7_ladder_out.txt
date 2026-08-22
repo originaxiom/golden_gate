@@ -1,0 +1,13 @@
+E6 (control): dim 78, roots 72; slots |S0,S1,S2| = 6,6,6
+  dim z(T1) = 16  [exact]
+  dim z(T1,T2) = 8  [exact]
+  dim z(T1,T2 u color) = 0  [exact]
+E7: dim 133, roots 126; slots |S0,S1,S2| = 6,6,6
+  dim z(T1) = 35  [exact]
+  dim z(T1,T2) = 9  [exact]
+  dim z(T1,T2 u color) = 1  [exact]
+  E7 hypercharge room generator: commutes with ALL of T1,T2,color: True; pure-Cartan (a u(1) direction): True
+E8: dim 248, roots 240; slots |S0,S1,S2| = 6,6,6
+  dim z(T1) <= 78  [mod p sandwich upper bound]
+  dim z(T1,T2) <= 16  [mod p sandwich upper bound]
+  dim z(T1,T2 u color) <= 8  [mod p sandwich upper bound]
