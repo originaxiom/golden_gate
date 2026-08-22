@@ -208,6 +208,23 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    VI.3(a) wiring remains corpus-side. Certificate: `certificates/voice_ladder.py`;
    output `outputs/voice_ladder_out.txt`.
 
+## CORPUS SYNC (second fetch, 2026-08-22, corpus f7c47cf → d067d35)
+The seat has BANKED memo 10 as **B1134** and memo 12 as **B1135**, both TWO-BENCH
+verified with independent re-derivations, no math discrepancy. B1134 carries a novelty
+correction, accepted and filed inside `memos/SIMULTANEOUS_CLOSING.md` (20/24 hits new,
+4/24 already implicit in B1127; "reflection" → fixed-point-free on color). Memos
+13–22 (commits 0db27e0…6d4cba8) POST-DATE the seat's read and await verification —
+note for the seat: its own B1134 relay ("the 64 fixed dimensions where hypercharge and
+27-reality would organize — the natural next cell") is already partially executed by
+memo 13 (Y-selection inside the closing) and memo 18 (Σ-27/matter reality). New corpus
+arcs digested: **B1132** (listener instrument NULL on the whole sphere — ninth value
+negative — plus the exact golden meridian law, structure not value), **B1133** (**C₄
+recognized**: (278392949/1813985280)π⁴C₀, numerator prime; the tower is SINGLE-END
+ℚ(√−3)/E₆ only; the reality-parity arithmetic now holds at FIVE consecutive orders
+k=0..4), **B1136** (genericity control on the wins: 14 census manifolds share the
+ℚ(√−3) shape field; exactly one property separates m004 — H₁=ℤ; scope notes on the Vol
+identity and amphichirality: family-level, not m004-specific).
+
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
 over-gauge-fixing; equivariant normalization; G1 search miss; 'aaa' reachability; the

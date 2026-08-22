@@ -88,3 +88,16 @@ The two halves of the observer's archimedean closing — Lorentz signature (B111
 compact color (B1127) — are purchasable in a single conjugation, the conjugation's
 linear clothing is the object's own integral automorphism, and every such purchase is
 forced into the object's own M(𝕆,ℂ): one observer, one act, one host.
+
+### CORRECTION FILED (2026-08-22, after the seat's B1134 two-bench verification)
+The seat's independent re-derivation CONFIRMS the theorem in full (480 pairs, the
+histogram, all 24 hits χ=−26/(3,3)/θ²=I, the 3003-bracket check, all controls) and
+corrects two framing points, accepted here: (1) "precisely the family neither swept
+torsor contained" overstates by 4/24 — one winning swapper (NEG∘π_mirror) IS in
+B1127's torsor and its 4 hits match B1127's stored compact hits exactly; the other
+20/24 hits (5 swapper elements) are genuinely new. The truth is stronger: the closing
+is reachable from multiple independent directions, all forced into E₆(−26). (2)
+"nontrivial reflection" should read: all 6 hit-generating swappers act
+FIXED-POINT-FREELY on the color A₂ (0/6 roots fixed). Bonus banked by the seat: the
+exact bijection (4,4)⟺χ+6, (5,3)⟺χ+2, (0,8)⟺χ−26 — color compactness and the
+M(𝕆,ℂ) host are the same fact.
