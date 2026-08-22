@@ -25,9 +25,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The nineteen memos of phases II–III, in order below. |
-| `certificates/` | 32 exact-arithmetic scripts: the 17 of phase I + the 15 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 29 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty memos of phases II–III, in order below. |
+| `certificates/` | 34 exact-arithmetic scripts: the 17 of phase I + the 17 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 31 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -180,6 +180,16 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    family index) is a frame choice; the torsor bracket extends: Klein (rules) → S₃
    (E₆ frames) → S₄ (E₈ slots). Index-2 stabilizer refinement typed, not classified.
    Certificate: `certificates/s4_question.py`; output `outputs/s4_question_out.txt`.
+20. **`AW_TYPING.md`** (phase III) — B1111's residue (ii) closed NEGATIVELY:
+   **NO-ADE-STABILIZER**. Third-bench censuses green ({3:53,1:42}; {0:1656,1:2556,
+   3:253}); FULL transversal census (all 1,656 pairs, vs B1111's 25-sample):
+   subgroup orders {8:72, 16:432, 24:288, 96:864}; every arising subgroup typed —
+   **the order-24 candidates are D₁₂ (13 involutions), NOT 2T (one involution); no
+   subgroup of any order passes the SU(2)/left-quaternion gate** (isolation holds,
+   ADE fails). The AW chirality hatch is shut on the flat cone at the typing step;
+   memo-14's McKay requirement (binary stabilizer) becomes the typed spec for any
+   successor background. Certificates: `certificates/aw_typing.py`, `aw_typing2.py`;
+   outputs `outputs/aw_typing*_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
@@ -204,8 +214,7 @@ F-1/G-1/G-2/G-3 (memos 12–15) · C-D3 sharpened (after the closing the ledger 
 spin lift ALONE — memos 13+11; spin pair-invisible per corpus B1122).
 STILL OPEN, ranked (Σ-27 closed as memo 18; the S₄ question closed as memo 19):
 F-3 the frame audit (tag each banked arc with its S₃ color frame —
-memo 11's ledger flag) · the AW/McKay stabilizer typing (B1111's residue, now sharpened:
-full-stack points must be E₈/2I points, memo 14) · C-S2 the matter–geometry bridge ·
+memo 11's ledger flag; AW typing now CLOSED as memo 20) · C-S2 the matter–geometry bridge ·
 C-V2/C-V4 Ohtsuki at 50 digits + the tower-invariant crossing class (nomination-gated) ·
 C-AD3 the Habiro/congruence-tower match · C-J2 the Jordan ledger · C-P1 the 4
 distinguished strata's parities · PR-1..4 per the owner-agreed prime-lane ruling (RH
