@@ -1,0 +1,20 @@
+R(A,B)   = +I: True
+R(-A,-B) = +I: True
+R(-A,B)  = -I: True
+R(A,-B)  = -I: True
+W conj(A) W^-1 = +A (sign exact): True
+W conj(B) W^-1 = +B^-1ABA^-1B (sign exact): True
+W conj(W) = +A (sign exact): True
+det W = 1: True
+intertwiner solution space dimension: 1 (1 => every beat implementation = lambda*W)
+N(lambda) = x^2+xy+y^2 is positive-definite over Q: (x+y/2)^2 + 3y^2/4  => |lambda|^2 = -1 IMPOSSIBLE
+beat(a) letters: a=1(odd), b=0(even) -> chi(beat(a)) = chi(a)
+beat(b) letters: a=2(even), b=3(odd) -> chi(beat(b)) = chi(b)
+=> chi is beat-invariant; sign(w~^2) = chi(meridian) independent of all modifications:
+   chi=+1 lift: extension EXISTS (scalar +1, fact 2).
+   chi=-1 lift: extension IMPOSSIBLE (|lambda|^2 = -1 has no solution).
+
+THE SPIN PAYMENT: the Gieseking Z/2 extends over exactly ONE spin structure —
+the object's own non-orientability SELECTS the lift; the spin bit's freedom is
+paid by consistency with the beat, a currency neither B1122 (coupling) nor the
+AW typing (collision geometry) ever fenced.

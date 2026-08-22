@@ -1,4 +1,17 @@
-# BANKING HANDOFF — the outside bench's complete record
+# BANKING HANDOFF — the outside bench
+28. **`SPIN_PAYMENT.md`** (phase III, the spin-bit cell) — **the Gieseking extension
+   exists over exactly ONE of the two spin structures**: exactly two lifts (R(±A,±B)
+   census exact); beat closure over χ=+1 with every sign on the nose (W·conj(W) = +A,
+   det W = 1); the intertwiner space is 1-dimensional so every implementation is λW
+   with square N(λ)·A, N(λ) = x²+xy+y² > 0 ⇒ **the χ=−1 lift is IMPOSSIBLE
+   (|λ|² = −1)**; χ is beat-invariant so the obstruction = χ(meridian), cohomological
+   and choice-independent. **The object's own ℤ/2 selects the spin structure — the
+   bit's freedom is paid by CONSISTENCY, a currency neither B1122 (coupling) nor the
+   AW typing (collision geometry) fenced**; explains B1122's pair-invisibility (the
+   bit is a topological consistency condition, not an observable). Named next cell
+   SP-2: the parity dictionary of B1112's odd strata vs the selected lift — either
+   answer banked-grade. Certificate: `certificates/spin_payment.py`; output
+   `outputs/spin_payment_out.txt`.'s complete record
 ## Repository: `originaxiom/golden_gate` · Branch: **`claude/paper-hostile-review-alero0`** · Directory: `session_handoff/`
 ## Outside bench (independent Claude session), 2026-08-19 → 2026-08-22. Everything below is on this branch, HEAD = the phase-III closing arc.
 
@@ -7,9 +20,9 @@ verification session (hostile referee → physics road → corpus audits → ori
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
 run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
-(memos 10–27, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
+(memos 10–28, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
-family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized. Phase III differs from phase II in kind:
+family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized → THE SPIN PAYMENT. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
 with raw output in `outputs/` — re-run them directly. **Firewall status of the entire record: structure, negatives, and two
 literature-standard identities. No measured SM value is claimed anywhere; Gate 5
@@ -26,9 +39,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST_PHASE3.md` | Mechanical re-run manifest for all 21 phase-III certificates (command + verbatim expected output tails). |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The twenty-seven memos of phases II–III, in order below. |
-| `certificates/` | 45 scripts: the 17 of phase I + the 28 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 41 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty-eight memos of phases II–III, in order below. |
+| `certificates/` | 46 scripts: the 17 of phase I + the 29 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 42 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
