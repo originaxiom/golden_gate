@@ -1,0 +1,42 @@
+27 minuscule weights rebuilt: 27
+slots: S0 (landing), S1, S2 orthogonal; cor basis fixed
+hypercharge directions recomputed: 18 (B1102/B1118 banked: 18)
+factor-preserving involutions: 128
+
+involutions admitting a GAUGE-ROW lift (S0 compact, S1=S2=su(2,1)): 16
+distribution over them of (#Y with gY=-Y [compact u(1)], #Y with gY=+Y [split u(1)]):
+   anti=2, fixed=0 : 9 involutions
+   anti=6, fixed=0 : 6 involutions
+   anti=18, fixed=0 : 1 involutions
+
+example with 2 selected compact Y's:
+   Y=('-4', '-2', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-2', '-1', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+
+example with 6 selected compact Y's:
+   Y=('-4', '-2', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-2', '-1', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '-1', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '2', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '-2', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '4', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+
+example with 18 selected compact Y's:
+   Y=('-4', '-2', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-4', '-2', '-1', '1')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-4', '-2', '2', '1')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-2', '-1', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-2', '-1', '-2', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('-2', '-1', '4', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '-1', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '-1', '-2', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '-1', '4', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '2', '-2', '-4')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '2', '-2', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('1', '2', '4', '2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '-2', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '-2', '-1', '1')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '-2', '2', '1')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '4', '-1', '-2')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '4', '-1', '1')  annihilated roots (surviving su(2) candidates): 4
+   Y=('2', '4', '2', '1')  annihilated roots (surviving su(2) candidates): 4

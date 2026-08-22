@@ -1,0 +1,25 @@
+27 minuscule weights rebuilt: 27
+slots: S0 (landing), S1, S2 orthogonal; cor basis fixed
+hypercharge directions recomputed: 18 (B1102/B1118 banked: 18)
+factor-preserving involutions: 128
+gauge involutions: 16 cosets: {'dW'}
+  |sel|= 2  P-closed=True  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|= 2  P-closed=True  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|= 2  P-closed=False  coset=dW
+  |sel|= 2  P-closed=True  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|= 6  P-closed=False  coset=dW
+  |sel|=18  P-closed=True  coset=dW
+distinct 2-selections among the generic closings: 9
+total mirror pairs among the 18: 9
+generic selections that are exactly mirror pairs: 3
+

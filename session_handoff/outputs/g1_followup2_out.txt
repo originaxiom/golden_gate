@@ -1,0 +1,16 @@
+27 minuscule weights rebuilt: 27
+slots: S0 (landing), S1, S2 orthogonal; cor basis fixed
+hypercharge directions recomputed: 18 (B1102/B1118 banked: 18)
+factor-preserving involutions: 128
+generic pairs: 9
+  pair straddles orbits: True   members-orbit: (O2,O1)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+  pair straddles orbits: True   members-orbit: (O2,O1)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+  pair straddles orbits: True   members-orbit: (O2,O1)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+  pair straddles orbits: True   members-orbit: (O1,O2)
+union of the 9 pairs covers: 18 of 18; pairwise disjoint: True
+
