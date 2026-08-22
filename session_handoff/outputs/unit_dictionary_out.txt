@@ -1,0 +1,25 @@
+cyclically-reduced classes (rotation+inversion) to length 8: 693
+loxodromic classes: 672; distinct (T,N) labels: 122
+EXACT quartic identity x^4 - T x^3 + (N+2) x^2 - T x + 1 (constant term 1 => UNIT): PASS all
+length = log Mahler(P_TN): max |error| over census = 3.77e-15
+
+first entries of the dictionary (shortest word per (T,N) label):
+word          T    N   N(t^2-4)  prime factors [p mod 3: 1=split, 2=inert, 3=ram]
+Ab            3    3         13  13^1[1]
+AB            5    7         21  3^1[ram], 7^1[1]
+AAb           2    4         48  2^4[2], 3^1[ram]
+AAB           6   12        112  2^4[2], 7^1[1]
+AbAb         -1    7        117  3^2[ram], 13^1[1]
+AAbb          0   12        256  2^8[2]
+AAAb          1    7        117  3^2[ram], 13^1[1]
+AAAB          7   19        333  3^2[ram], 37^1[1]
+ABAB          7   31       1029  3^1[ram], 7^3[1]
+AABB          8   28        768  2^8[2], 3^1[ram]
+AAbAb        -4   16        336  2^4[2], 3^1[ram], 7^1[1]
+AAAbb        -2   28       1008  2^4[2], 3^2[ram], 7^1[1]
+AAbab         4   16        336  2^4[2], 3^1[ram], 7^1[1]
+AABaB         8   16        144  2^4[2], 3^2[ram]
+AABAB         8   64       4368  2^4[2], 3^1[ram], 7^1[1], 13^1[1]
+AAABB        10   52       2736  2^4[2], 3^2[ram], 19^1[1]
+AbAbAb       -9   27        637  7^2[1], 13^1[1]
+AAbbAb       -9   39       1525  5^2[2], 61^1[1]
