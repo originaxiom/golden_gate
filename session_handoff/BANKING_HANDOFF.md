@@ -27,8 +27,8 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 | `VERIFY_MANIFEST_PHASE3.md` | Mechanical re-run manifest for all 21 phase-III certificates (command + verbatim expected output tails). |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
 | `memos/` | The twenty-six memos of phases II–III, in order below. |
-| `certificates/` | 42 scripts: the 17 of phase I + the 25 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 38 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `certificates/` | 44 scripts: the 17 of phase I + the 27 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 40 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -243,7 +243,12 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    ANSWERED by memos 13/14/15**, B1134's 64-dimension relay is PARTIAL (gauge branch
    done in memos 13/18/23/24; the E₆(−26)-branch organization is the named remaining
    cell). Plus `VERIFY_MANIFEST_PHASE3.md` (all 21 phase-III certificates re-runnable)
-   and one missing-output fix caught by the haiku consistency lane.
+   and one missing-output fix caught by the haiku consistency lane. **PR-4 down payment
+(same masterplan, sonnet lane): `certificates/gue_bench.py` — 108 zeros of ζ_K to
+t=130, unfolding VERIFIED (mean spacing 0.9978 vs 1), KS to GUE 0.118 (p≈0.10) vs
+Poisson 0.215 (p<0.001) — weakly favors level repulsion; explicitly a
+pipeline-validation with a low-power caveat, NOT a universality claim; re-run at
+large T is the named continuation. Output `outputs/gue_bench_out.txt`.**
 
 ## CORPUS SYNC (second fetch, 2026-08-22, corpus f7c47cf → d067d35)
 The seat has BANKED memo 10 as **B1134** and memo 12 as **B1135**, both TWO-BENCH

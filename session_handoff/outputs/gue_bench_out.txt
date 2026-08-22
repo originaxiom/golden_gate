@@ -1,0 +1,29 @@
+==============================================================================
+GUE BENCH -- zeros of zeta_K(s) = zeta(s) * L(s, chi_-3), K = Q(sqrt(-3))
+==============================================================================
+
+Setup log:
+  Probe: L-zero scan to T=20.0 took 2.13s -> projected scan to T=130.0 ~ 13.9s
+  L(s,chi_-3) zero scan for T=130.0: 65 zeros in 49.1s
+  zeta zero fetch for T=130.0: 43 zeros in 0.9s
+
+mp.mp.dps            = 20
+T_max (height)        = 130.0000
+n_L_zeros (chi_-3)    = 65
+n_zeta_zeros          = 43
+n_zeros (merged)      = 108
+n_spacings            = 107
+
+Unfolded mean spacing = 0.997767  (target 1.0)
+mean_spacing_dev      = 0.002233
+
+KS distance vs GUE Wigner surmise CDF     = 0.117658  (p=0.1034)
+KS distance vs Poisson CDF                = 0.214751  (p=0.0001)
+
+Total wall-clock time  = 52.5s
+
+------------------------------------------------------------------------------
+HONEST REPORT (5 sentences)
+------------------------------------------------------------------------------
+Merging the 43 Riemann zeta zeros and 65 L(s,chi_-3) zeros found on the critical line for 0 < t < 130.0 (mp.dps=20, sign-change scan at step 0.05, bisection-refined) gives 108 ordinates whose unfolding by the conductor-3 smooth counting function N(t) = (t/pi) log(t*sqrt(3)/(2*pi*e)) yields a mean nearest-neighbor spacing of 0.9978, i.e. a deviation of only 0.0022 from the theoretical value of 1, confirming the unfolding is asymptotically consistent even at this modest height. The Kolmogorov-Smirnov distance of the 107 unfolded spacings to the GUE Wigner surmise CDF is 0.1177 (p=0.103) versus 0.2148 (p=0.000) against the Poisson CDF, so the empirical spacing distribution sits closer to GUE than to Poisson by this one KS statistic, weakly favoring level repulsion in this merged two-L-function ensemble. This is a very small sample -- only on the order of a few dozen zeros from each factor, well below the hundreds-to-thousands typically used for credible GUE-vs-Poisson KS discrimination -- so neither p-value is remotely decisive and the KS test has low power to reject either null here. Treat this run strictly as a numerics down payment (sign-change zero finding, unfolding, and KS machinery all verified to work end-to-end): it establishes the pipeline and a first-pass number, not a statistically significant statement about GUE universality for zeta_K(s), and should be re-run at much larger T (thousands of zeros) before drawing any conclusion about the level-spacing statistics of this merged sequence.
+
