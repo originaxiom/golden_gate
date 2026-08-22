@@ -1,0 +1,18 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+stage 3: relator acts as identity on the 27: PASS
+A1 stratum 27-weights: {Fraction(-1, 1): 6, Fraction(0, 1): 15, Fraction(1, 1): 6} (expect {1:6, 0:15, -1:6} — ODD)
+relator = +I on the A1 matter rep: True
+central element C = diag((-1)^wt): C != I: True; C^2 = I: True; commutes with rep: True
+=> the two lifts give genuinely DIFFERENT matter reps (differ by C): oddness certified
+Omega^2 = A27 (chi=+1 lifted meridian): True
+Omega A27 Omega^-1 = A27: True
+Omega B27 Omega^-1 = rho(B^-1 A B A^-1 B): True
+
+SP-2 GREEN: the beat closes on the fermion-capable (odd) A1 stratum over the
+selected chi=+1 lift — functorially, because W = exp(q e) lives upstream of every
+embedding. The chi=-1 side needs no rep-level check: the GROUP extension already
+fails there (memo 28). THE GENERATION'S KINEMATIC SEAT CLOSES.
