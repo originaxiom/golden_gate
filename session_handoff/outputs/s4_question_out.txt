@@ -1,0 +1,39 @@
+  BFS depth 5: 87 states
+  BFS depth 10: 1122 states
+  BFS depth 15: 6256 states
+  BFS depth 20: 21629 states
+  BFS depth 25: 52097 states
+  BFS depth 30: 97693 states
+  BFS depth 35: 154729 states
+  BFS depth 40: 211524 states
+  BFS depth 45: 252491 states
+  BFS depth 50: 267778 states
+  BFS depth 55: 268800 states
+orbit of the ordered 4-slot configuration: 268800 states
+|Stab_ordered| = |W(E8)|/orbit = 2592  (contains W(A2)^4 = 1296: index 2)
+permutations of the four slots realized by W(E8): 24 of 24
+    (0, 1, 2, 3)
+    (0, 1, 3, 2)
+    (0, 2, 1, 3)
+    (0, 2, 3, 1)
+    (0, 3, 1, 2)
+    (0, 3, 2, 1)
+    (1, 0, 2, 3)
+    (1, 0, 3, 2)
+    (1, 2, 0, 3)
+    (1, 2, 3, 0)
+    (1, 3, 0, 2)
+    (1, 3, 2, 0)
+    (2, 0, 1, 3)
+    (2, 0, 3, 1)
+    (2, 1, 0, 3)
+    (2, 1, 3, 0)
+    (2, 3, 0, 1)
+    (2, 3, 1, 0)
+    (3, 0, 1, 2)
+    (3, 0, 2, 1)
+    (3, 1, 0, 2)
+    (3, 1, 2, 0)
+    (3, 2, 0, 1)
+    (3, 2, 1, 0)
+=> realized group order 24 - the FULL S4
