@@ -1,0 +1,25 @@
+27 minuscule weights rebuilt: 27
+slots: S0 (landing), S1, S2 orthogonal; cor basis fixed
+hypercharge directions recomputed: 18 (B1102/B1118 banked: 18)
+factor-preserving involutions: 128
+physical assignments collected: 36 (expect 36)
+SP-3: distinct (color,T3L,Y,Q) tables across all assignments: 1 (1 = invariant)
+SP-3: assignments with all five Y/Q anomaly traces zero: 36/36
+SP-1: forced targets imposed: 10 (expect 10 = 6+3+1)
+SP-1: solvable: True  solutions: 1
+SP-1: c = [0, -1, 0, 4/3 - c5, c5 - 1, c5]
+   colored=False T3L=-1/2 Y= -1/2 Q=   -1 B-L=     -c5 x1
+   colored=False T3L=-1/2 Y= -1/2 Q=   -1 B-L=  c5 - 1 x1
+   colored=False T3L=-1/2 Y=  1/2 Q=    0 B-L=       0 x1
+   colored=False T3L=   0 Y=    0 Q=    0 B-L=  1 - c5 x1
+   colored=False T3L=   0 Y=    0 Q=    0 B-L=      c5 x1
+   colored=False T3L=   0 Y=    1 Q=    1 B-L=       1 x1
+   colored=False T3L= 1/2 Y= -1/2 Q=    0 B-L=     -c5 x1
+   colored=False T3L= 1/2 Y= -1/2 Q=    0 B-L=  c5 - 1 x1
+   colored=False T3L= 1/2 Y=  1/2 Q=    1 B-L=       0 x1
+   colored=True  T3L=-1/2 Y=  1/6 Q= -1/3 B-L=     1/3 x3
+   colored=True  T3L=   0 Y= -1/3 Q= -1/3 B-L=    -2/3 x3
+   colored=True  T3L=   0 Y= -2/3 Q= -2/3 B-L=    -1/3 x3
+   colored=True  T3L=   0 Y=  1/3 Q=  1/3 B-L=2/3 - c5 x3
+   colored=True  T3L=   0 Y=  1/3 Q=  1/3 B-L=c5 - 1/3 x3
+   colored=True  T3L= 1/2 Y=  1/6 Q=  2/3 B-L=     1/3 x3

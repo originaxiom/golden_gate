@@ -1,0 +1,7 @@
+NEG per-slot pattern: OOOO (expect OOOO)
+NEG in W(A2)^4: False
+=> <W(A2)^4, NEG> order = 2592  = memo-19 stabilizer 2592: True
+VERDICT: the index-2 element of the four-slot stabilizer is the E8 antipode
+w0 = -1 (CITED: -1 in W(E8)), acting OUTER on all four slots simultaneously (OOOO);
+no mixed pattern exists (index is exactly 2).
+
