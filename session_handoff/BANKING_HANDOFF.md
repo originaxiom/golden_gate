@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The fourteen memos of phases II–III, in order below. |
+| `memos/` | The fifteen memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -132,6 +132,14 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    orthogonal A2 slots).** McKay hook typed for the AW lane: a full-stack point must be
    an E₈ (2I, order-120) point. Certificates: `certificates/e7_ladder.py`,
    `certificates/e8_lower.py`; outputs `outputs/e7_ladder_out.txt`, `outputs/e8_lower_out.txt`.
+15. **`FAMILY_TRIPLET.md`** (phase III) — G-3 executed: in E₈, EVERY one of the four A2
+   slots has complement e₆ (72 roots, checked each) and its 162 crossing roots split as
+   exactly 6 triplet weights × 27 ⟹ **248 = (8,1)⊕(1,78)⊕(3,27)⊕(3̄,27̄): the 27 enters
+   E₈ exactly THREE times, indexed by an A₂ triplet — the full-stack algebra fixes the
+   matter count in the same purchase**. Plus the family table on the E₆ bench: 27 under
+   D₅×u(1) = charges {4:1, −2:10, +1:16} — the 16-spinor family, machine-verified.
+   Four-slot S₄ frame question typed open (W(E₈) too large for enumeration here).
+   Certificate: `certificates/family_triplet.py`; output `outputs/family_triplet_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)

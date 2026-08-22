@@ -1,0 +1,17 @@
+=== E8: the four orthogonal A2 slots ===
+S0: |slot|=6  |complement|=72 (expect 72 = e6)  |crossing|=162 (expect 162)
+     crossing projections onto slot weights: {(0, -1): 27, (1, 0): 27, (1, -1): 27, (-1, 1): 27, (-1, 0): 27, (0, 1): 27}
+S1: |slot|=6  |complement|=72 (expect 72 = e6)  |crossing|=162 (expect 162)
+     crossing projections onto slot weights: {(1, -1): 27, (1, 0): 27, (0, -1): 27, (0, 1): 27, (-1, 0): 27, (-1, 1): 27}
+S2: |slot|=6  |complement|=72 (expect 72 = e6)  |crossing|=162 (expect 162)
+     crossing projections onto slot weights: {(-1, 1): 27, (-1, 0): 27, (0, 1): 27, (0, -1): 27, (1, 0): 27, (1, -1): 27}
+S3: |slot|=6  |complement|=72 (expect 72 = e6)  |crossing|=162 (expect 162)
+     crossing projections onto slot weights: {(1, 0): 27, (-1, 1): 27, (0, -1): 27, (0, 1): 27, (1, -1): 27, (-1, 0): 27}
+EVERY slot: complement = e6; crossing = 6 weights x 27 each
+=> 248 = (8,1) + (1,78) + (3,27) + (3bar,27bar): the 27 enters E8 exactly
+   THREE times, indexed by the triplet of the chosen A2 slot.  8+78+81+81=248
+
+=== E6: the 27 under D5 x u(1) (the family table) ===
+27 weights rebuilt (minuscule node 0)
+charge multiset (3*alpha_node coefficient): {-2: 10, 1: 16, 4: 1}
+multiplicities: [16, 10, 1] (expect [16,10,1] = spinor family + vector + singlet)
