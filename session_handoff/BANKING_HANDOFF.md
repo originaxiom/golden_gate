@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The sixteen memos of phases II–III, in order below. |
+| `memos/` | The seventeen memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -149,6 +149,16 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    holonomy-layer antilinear action now has a matrix); the beat and the observer's
    closing share the C∘P factorization; tick parity gets a geometric seat (labeled).
    Certificate: `certificates/gieseking_beat.py`; output `outputs/gieseking_beat_out.txt`.
+17. **`BEAT_DESCENT.md`** (phase III) — **B1127's relayed bridge COMPLETED**: the beat
+   descends canonically to e₆ as **Σ = exp(ad qE)∘gal** (extends the dictionary from Γ
+   to the non-orientable Γ_G; antilinear bracket-automorphism, verified), and
+   **Σ² = exp(ad E) = Ad(meridian) on all 78 basis vectors — NOT an involution: the
+   object's antilinear element squares to the tick** (same q+q̄=1 mechanism). The beat
+   moves the color slot (dim Σ(I2)∩I2 = 2 of 8). Resolution of the framing fence: the
+   object supplies the MIRROR (it descends), the observer supplies the FRAME (no
+   involution exists while ticking) — the observer's closing = the beat with the tick
+   stopped (σ²=1 vs Σ²=Ad(tick)). Certificate: `certificates/beat_descent.py`;
+   output `outputs/beat_descent_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)

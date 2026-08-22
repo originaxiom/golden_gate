@@ -1,0 +1,10 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+2x2: beat(e)=e: True   beat(h)=h-2q e: True   beat(f)=f+q h-q^2 e: True
+2x2: beat(A)=A: True
+e6: exp(ad qE) H = H - 2q E: True
+e6: exp(ad qE) F = F + q H - q^2 E: True
+e6: Sigma^2 = exp(ad E) = Ad(meridian) on ALL 78 basis vectors: True
+    (and exp(ad E) != identity, so Sigma is NOT an involution: True )
+e6: Sigma is a bracket-automorphism (120 random pairs): True
+color slot: dim( exp(ad qE)(I2) meet I2 ) = 2  (8 = preserved; <8 = the beat MOVES color)
