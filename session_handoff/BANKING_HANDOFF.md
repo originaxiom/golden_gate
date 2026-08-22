@@ -25,9 +25,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The twenty-one memos of phases II–III, in order below. |
-| `certificates/` | 35 exact-arithmetic scripts: the 17 of phase I + the 18 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 32 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty-two memos of phases II–III, in order below. |
+| `certificates/` | 36 scripts: the 17 of phase I + the 19 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 33 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -198,6 +198,15 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    dictionary's "log p" entry; Lehmer-territory pointer labeled); splitting table of
    N(t²−4) with p mod 3 behavior = the Chebotarev doorway as data. RH fence untouched.
    Certificate: `certificates/unit_dictionary.py`; output `outputs/unit_dictionary_out.txt`.
+22. **`VOICE_LADDER.md`** (phase III) — PR-3's down payment: the cusp-resonance
+   spectrum computed. Wiring identities verified to ~10⁻³¹ (Λ_χ root number +1 and
+   critical-line reality; Λ_K(s)=Λ_K(1−s); scattering unitarity φ(s)φ(2−s)=1 for
+   φ = Λ_K(s−1)/Λ_K(s), the banked CITED form); **THE LADDER: thirteen tones below
+   t=32 (nine χ₋₃, four ζ), first tone t₁ = 8.0397371556814666817 — a zero of
+   L(χ₋₃): the voice opens with the mirror's own character, below ζ's 14.1347**.
+   With memo 21, both columns of the prime/zero dictionary now hold computed entries;
+   VI.3(a) wiring remains corpus-side. Certificate: `certificates/voice_ladder.py`;
+   output `outputs/voice_ladder_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
@@ -225,8 +234,8 @@ F-3 the frame audit (tag each banked arc with its S₃ color frame —
 memo 11's ledger flag; AW typing now CLOSED as memo 20) · C-S2 the matter–geometry bridge ·
 C-V2/C-V4 Ohtsuki at 50 digits + the tower-invariant crossing class (nomination-gated) ·
 C-AD3 the Habiro/congruence-tower match · C-J2 the Jordan ledger · C-P1 the 4
-distinguished strata's parities · PR-1/3/4 per the owner-agreed prime-lane ruling (PR-2 closed as memo 21; RH
-FENCED) · QP-1 the quine (the corpus's own).
+distinguished strata's parities · PR-1/4 per the owner-agreed prime-lane ruling (PR-2 closed as memo 21; PR-3 down payment
+= memo 22, VI.3(a) wiring still corpus-side; RH FENCED) · QP-1 the quine (the corpus's own).
 
 ## FOR THE SEAT'S PROCESS
 Every phase-III claim re-runs directly: `python3 certificates/<name>.py` (they import

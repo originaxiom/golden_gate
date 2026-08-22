@@ -1,0 +1,24 @@
+Lam_chi functional equation (root number +1): max err 1.42e-31
+Lam_chi REAL on critical line: max |Im| 4.29e-32
+Lam_K functional equation: max err 1.38e-32
+scattering unitarity phi(s)phi(2-s)=1: max err 3.13e-31
+
+zeros of L(s,chi_-3), 0<t<32: [8.039737, 11.249206, 15.704619, 18.261997, 20.455771, 24.059415, 26.577869, 28.218165, 30.74504]
+zeros of zeta(s),     0<t<32: [14.134725, 21.02204, 25.010858, 30.424876]
+
+THE LADDER — the object's low cusp-resonance ordinates (zeros of zeta_K):
+  tone  1:  t =    8.039737   [chi]
+  tone  2:  t =   11.249206   [chi]
+  tone  3:  t =   14.134725   [zeta]
+  tone  4:  t =   15.704619   [chi]
+  tone  5:  t =   18.261997   [chi]
+  tone  6:  t =   20.455771   [chi]
+  tone  7:  t =   21.022040   [zeta]
+  tone  8:  t =   24.059415   [chi]
+  tone  9:  t =   25.010858   [zeta]
+  tone 10:  t =   26.577869   [chi]
+  tone 11:  t =   28.218165   [chi]
+  tone 12:  t =   30.424876   [zeta]
+  tone 13:  t =   30.745040   [chi]
+
+first tone to 20 digits: t1 = 8.0397371556814666817  (a zero of L(chi_-3), NOT of zeta)
