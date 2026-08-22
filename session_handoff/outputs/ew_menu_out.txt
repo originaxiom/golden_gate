@@ -1,0 +1,19 @@
+factor-preserving involutions in Aut(Phi): 128 (64 in W, 64 in deltaW)
+total (involution, sign-solution) pairs: 2000
+
+THE MENU  (sig S0 | sig S1 | sig S2 | global char) : count [coset of first example]
+  (5, 3)=sl(3,R) | (5, 3)=sl(3,R) | (5, 3)=sl(3,R) | char +6 [E6(6)] : 1000  [W]
+  (4, 4)=su(2,1) | (4, 4)=su(2,1) | (4, 4)=su(2,1) | char +2 [E6(2)] : 729  [dW]
+  (4, 4)=su(2,1) | (0, 8)=su(3) | (4, 4)=su(2,1) | char -14 [E6(-14)] : 81  [dW]
+  (0, 8)=su(3) | (4, 4)=su(2,1) | (4, 4)=su(2,1) | char -14 [E6(-14)] : 81  [dW]
+  (4, 4)=su(2,1) | (4, 4)=su(2,1) | (0, 8)=su(3) | char -14 [E6(-14)] : 81  [dW]
+  (0, 8)=su(3) | (0, 8)=su(3) | (4, 4)=su(2,1) | char +2 [E6(2)] : 9  [dW]
+  (4, 4)=su(2,1) | (0, 8)=su(3) | (0, 8)=su(3) | char +2 [E6(2)] : 9  [dW]
+  (0, 8)=su(3) | (4, 4)=su(2,1) | (0, 8)=su(3) | char +2 [E6(2)] : 9  [dW]
+  (0, 8)=su(3) | (0, 8)=su(3) | (0, 8)=su(3) | char -78 [E6c] : 1  [dW]
+
+ROWS WITH COMPACT COLOR (S2=(0,8)) — the EW options coexisting with compact color:
+  S0=(0, 8)=su(3)  EW-slot S1=(0, 8)=su(3)  char -78 [E6c] : 1
+  S0=(0, 8)=su(3)  EW-slot S1=(4, 4)=su(2,1)  char +2 [E6(2)] : 9
+  S0=(4, 4)=su(2,1)  EW-slot S1=(0, 8)=su(3)  char +2 [E6(2)] : 9
+  S0=(4, 4)=su(2,1)  EW-slot S1=(4, 4)=su(2,1)  char -14 [E6(-14)] : 81

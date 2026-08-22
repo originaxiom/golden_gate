@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The eleven memos of phases II–III, in order below. |
+| `memos/` | The twelve memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -106,6 +106,14 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    B1114/B1125/B1127 run different color frames, consistent only because the fork
    branches are exclusive. σ = τ∘θ = C∘P; the spin lift (B1122) is the one bit no CP act
    pays. Certificate: `certificates/fork_theorem.py`; output `outputs/fork_theorem_out.txt`.
+12. **`GAUGE_CLOSING.md`** (phase III) — F-1 executed: sweep of all 128 factor-preserving
+   involutions × lifts (2000 pairs). W-coset: uniformly split E₆(6); δW-coset factorizes
+   EXACTLY per slot as (9+1)³ — 9 closings to su(2,1), 1 to su(3) per A2 — global form by
+   compact count {0:E₆(2), 1:**E₆(−14)**, 2:E₆(2), 3:E₆(−78)}. **The EW slot closes as
+   su(2,1) = u(2)⊕doublet; the gauge branch's host is E₆(−14) (compact core = the SO(10)
+   GUT algebra; 27 = 16⊕10⊕1 CITED); compactness requires the outer (27↔27̄) coset. The
+   five real forms of E₆ = the five postures of the observer.** Certificate:
+   `certificates/ew_menu.py`; output `outputs/ew_menu_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
