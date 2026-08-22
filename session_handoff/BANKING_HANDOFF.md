@@ -1,17 +1,4 @@
-# BANKING HANDOFF — the outside bench
-28. **`SPIN_PAYMENT.md`** (phase III, the spin-bit cell) — **the Gieseking extension
-   exists over exactly ONE of the two spin structures**: exactly two lifts (R(±A,±B)
-   census exact); beat closure over χ=+1 with every sign on the nose (W·conj(W) = +A,
-   det W = 1); the intertwiner space is 1-dimensional so every implementation is λW
-   with square N(λ)·A, N(λ) = x²+xy+y² > 0 ⇒ **the χ=−1 lift is IMPOSSIBLE
-   (|λ|² = −1)**; χ is beat-invariant so the obstruction = χ(meridian), cohomological
-   and choice-independent. **The object's own ℤ/2 selects the spin structure — the
-   bit's freedom is paid by CONSISTENCY, a currency neither B1122 (coupling) nor the
-   AW typing (collision geometry) fenced**; explains B1122's pair-invisibility (the
-   bit is a topological consistency condition, not an observable). Named next cell
-   SP-2: the parity dictionary of B1112's odd strata vs the selected lift — either
-   answer banked-grade. Certificate: `certificates/spin_payment.py`; output
-   `outputs/spin_payment_out.txt`.'s complete record
+# BANKING HANDOFF — the outside bench's complete record
 ## Repository: `originaxiom/golden_gate` · Branch: **`claude/paper-hostile-review-alero0`** · Directory: `session_handoff/`
 ## Outside bench (independent Claude session), 2026-08-19 → 2026-08-22. Everything below is on this branch, HEAD = the phase-III closing arc.
 
@@ -267,7 +254,20 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    (memos 12/13/23/24/25), E₆(−26) = the geometry (memos 10/27). The corpus's
    firewalled 64-hypothesis closes as the tenth value negative — by structure, not
    by scan. Certificate: `certificates/spacetime64.py`; output
-   `outputs/spacetime64_out.txt`. **PR-4 down payment
+   `outputs/spacetime64_out.txt`.
+28. **`SPIN_PAYMENT.md`** (phase III, the spin-bit cell) — **the Gieseking extension
+   exists over exactly ONE of the two spin structures**: exactly two lifts (R(±A,±B)
+   census exact); beat closure over χ=+1 with every sign on the nose (W·conj(W) = +A,
+   det W = 1); the intertwiner space is 1-dimensional so every implementation is λW
+   with square N(λ)·A, N(λ) = x²+xy+y² > 0 ⇒ **the χ=−1 lift is IMPOSSIBLE
+   (|λ|² = −1)**; χ is beat-invariant so the obstruction = χ(meridian), cohomological
+   and choice-independent. **The object's own ℤ/2 selects the spin structure — the
+   bit's freedom is paid by CONSISTENCY, a currency neither B1122 (coupling) nor the
+   AW typing (collision geometry) fenced**; explains B1122's pair-invisibility (the
+   bit is a topological consistency condition, not an observable). Named next cell
+   SP-2: the parity dictionary of B1112's odd strata vs the selected lift — either
+   answer banked-grade. Certificate: `certificates/spin_payment.py`; output
+   `outputs/spin_payment_out.txt`. **PR-4 down payment
 (same masterplan, sonnet lane): `certificates/gue_bench.py` — 108 zeros of ζ_K to
 t=130, unfolding VERIFIED (mean spacing 0.9978 vs 1), KS to GUE 0.118 (p≈0.10) vs
 Poisson 0.215 (p<0.001) — weakly favors level repulsion; explicitly a
