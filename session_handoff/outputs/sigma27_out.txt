@@ -1,0 +1,18 @@
+stage 0: e6 loaded, 72 roots, dim 78
+stage 0: principal sl2 + dial slots hv(8), hv(16) embedded
+stage 1: 27 weights built (crystal of omega_1)
+stage 1 VERIFY: rho27 respects ALL 3003 Chevalley brackets: PASS
+stage 2: principal strings: [16, 8, 0] (expect [16,8,0])
+stage 3: relator acts as identity on the 27: PASS
+2x2: W conj(B) W^-1 = B^-1 A B A^-1 B: True
+27: Omega^2 = A27 (the tick on matter): True
+    and A27 != +-1  =>  neither real nor quaternionic structure from the object: True
+27: Omega A27 Omega^-1 = A27: True
+27: Omega B27 Omega^-1 = rho(B^-1 A B A^-1 B): True
+27: Omega rho(X8) Omega^-1 = rho(X8)  (dial slot beat-fixed): True
+27: Omega rho(X16) Omega^-1 = rho(X16): True
+
+=> the beat fixes the dial SLOTS and, being antilinear, sends the dial VALUE
+   t -> gal(t): the L79 mirror (the Galois twist of the dial) IS the beat,
+   now exhibited at the matter-module level; and matter carries no object-side
+   real structure — Omega^2 is the tick, one meridian short of a reality.

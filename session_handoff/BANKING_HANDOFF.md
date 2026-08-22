@@ -25,9 +25,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The seventeen memos of phases II–III, in order below. |
-| `certificates/` | 30 exact-arithmetic scripts: the 17 of phase I + the 13 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 27 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The eighteen memos of phases II–III, in order below. |
+| `certificates/` | 31 exact-arithmetic scripts: the 17 of phase I + the 14 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 28 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -164,6 +164,14 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    involution exists while ticking) — the observer's closing = the beat with the tick
    stopped (σ²=1 vs Σ²=Ad(tick)). Certificate: `certificates/beat_descent.py`;
    output `outputs/beat_descent_out.txt`.
+18. **`SIGMA_27.md`** (phase III) — the Σ-27 cell: the beat on MATTER. Beat word
+   W·conj(B)·W⁻¹ = B⁻¹ABA⁻¹B verified; **Ω = exp(ρ₂₇(qE))∘gal has Ω² = A27 exactly —
+   the tick reaches the module, so the 27 has neither real nor quaternionic structure
+   from the object** (Frobenius–Schur: reality needs Ω²=±1; the object offers the tick);
+   the 27-rep extends to the non-orientable Γ_G (Ω·B27·Ω⁻¹ = ρ(B⁻¹ABA⁻¹B) exact); the
+   dial slots are beat-fixed (Ω fixes ρ(X8), ρ(X16)) while dial VALUES are conjugated —
+   **the L79 mirror IS the beat, at the module level**. Certificate:
+   `certificates/sigma27.py`; output `outputs/sigma27_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
@@ -186,8 +194,7 @@ CLOSED BY PHASE III: C-AR1 (memos 10+12: compact color hosted, sweeps exhaustive
 the Gieseking first beat (memos 16+17) · B1127's relayed holonomy-bridge (memo 17) ·
 F-1/G-1/G-2/G-3 (memos 12–15) · C-D3 sharpened (after the closing the ledger holds the
 spin lift ALONE — memos 13+11; spin pair-invisible per corpus B1122).
-STILL OPEN, ranked:
-Σ-27 (descend memo 17's Σ one level further: its action on the 27 and the dial slots) ·
+STILL OPEN, ranked (Σ-27 now CLOSED as memo 18):
 the S₄ question (does W(E₈) permute the four A2 slots fully? needs stabilizer-chain,
 not enumeration) · F-3 the frame audit (tag each banked arc with its S₃ color frame —
 memo 11's ledger flag) · the AW/McKay stabilizer typing (B1111's residue, now sharpened:
