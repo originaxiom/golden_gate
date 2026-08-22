@@ -1,0 +1,46 @@
+involutive swappers: 48
+hit found: swapper#13; h2 = theta(h1) in Cartan OK
+full weight table (a,b,type):
+   (0, 0, 'cartan') : 6
+   (Fraction(-2, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(-2, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(-2, 1), Fraction(0, 1), 'neutral') : 2
+   (Fraction(-2, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(-4, 1), Fraction(0, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(-2, 1), 'neutral') : 2
+   (Fraction(0, 1), Fraction(-4, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(0, 1), 'S2root') : 6
+   (Fraction(0, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(2, 1), 'neutral') : 2
+   (Fraction(0, 1), Fraction(4, 1), 'neutral') : 1
+   (Fraction(2, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(2, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(2, 1), Fraction(0, 1), 'neutral') : 2
+   (Fraction(2, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(4, 1), Fraction(0, 1), 'neutral') : 1
+S2 root (h1,h2) weights: {(Fraction(0, 1), Fraction(0, 1))} (expect {(0,0)})
+complement dimension: 64 (expect 64)
+complement weight table:
+   (0, 0, 'cartan') : 2
+   (Fraction(-2, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(-2, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(-2, 1), Fraction(0, 1), 'neutral') : 1
+   (Fraction(-2, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(-4, 1), Fraction(0, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(-2, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(-4, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(0, 1), Fraction(2, 1), 'neutral') : 1
+   (Fraction(0, 1), Fraction(4, 1), 'neutral') : 1
+   (Fraction(2, 1), Fraction(-2, 1), 'col') : 6
+   (Fraction(2, 1), Fraction(0, 1), 'col') : 6
+   (Fraction(2, 1), Fraction(0, 1), 'neutral') : 1
+   (Fraction(2, 1), Fraction(2, 1), 'col') : 6
+   (Fraction(4, 1), Fraction(0, 1), 'neutral') : 1
+color-singlet (0,0) content in the complement: 2 (0 = NO hypercharge room; matches memo 11)
+spin-2 tops: S0-side weight-(4,0) roots: 1 ; S1-side (0,4): 1
+theta maps S0 spin-2 top into sl3(S1) span: True -> sigma glues the two spin-2s into ONE complex spin-2 (real dim 10)

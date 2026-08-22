@@ -7,9 +7,9 @@ verification session (hostile referee → physics road → corpus audits → ori
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
 run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
-(memos 10–26, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
+(memos 10–27, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
-family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit. Phase III differs from phase II in kind:
+family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
 with raw output in `outputs/` — re-run them directly. **Firewall status of the entire record: structure, negatives, and two
 literature-standard identities. No measured SM value is claimed anywhere; Gate 5
@@ -26,9 +26,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST_PHASE3.md` | Mechanical re-run manifest for all 21 phase-III certificates (command + verbatim expected output tails). |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The twenty-six memos of phases II–III, in order below. |
-| `certificates/` | 44 scripts: the 17 of phase I + the 27 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 40 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty-seven memos of phases II–III, in order below. |
+| `certificates/` | 45 scripts: the 17 of phase I + the 28 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 41 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -243,7 +243,18 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    ANSWERED by memos 13/14/15**, B1134's 64-dimension relay is PARTIAL (gauge branch
    done in memos 13/18/23/24; the E₆(−26)-branch organization is the named remaining
    cell). Plus `VERIFY_MANIFEST_PHASE3.md` (all 21 phase-III certificates re-runnable)
-   and one missing-output fix caught by the haiku consistency lane. **PR-4 down payment
+   and one missing-output fix caught by the haiku consistency lane.
+27. **`THE_64_ORGANIZED.md`** (phase III, the masterplan's final cell) — **B1134's
+   relayed value target answered**: on a B1134 hit, the 64-complement decomposes
+   EXACTLY as (spin-2,0;1)⊕(0,spin-2;1)⊕(1,1;3)⊕(1,1;3̄) [5+5+27+27], θ glues the
+   spin-2s into ONE complex spin-2 (verified), the only (0,0) singlet states are
+   spin-2 middle weights — **invariant content ZERO: hypercharge cannot organize in
+   the spacetime 64; what lives there is the graviton slot + colored bi-vectors**.
+   The fork's branches split the world with no overlap: E₆(−14) = the charges
+   (memos 12/13/23/24/25), E₆(−26) = the geometry (memos 10/27). The corpus's
+   firewalled 64-hypothesis closes as the tenth value negative — by structure, not
+   by scan. Certificate: `certificates/spacetime64.py`; output
+   `outputs/spacetime64_out.txt`. **PR-4 down payment
 (same masterplan, sonnet lane): `certificates/gue_bench.py` — 108 zeros of ζ_K to
 t=130, unfolding VERIFIED (mean spacing 0.9978 vs 1), KS to GUE 0.118 (p≈0.10) vs
 Poisson 0.215 (p<0.001) — weakly favors level repulsion; explicitly a
