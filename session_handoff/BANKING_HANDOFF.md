@@ -9,7 +9,7 @@ run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), a
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
 (memos 10–23, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
-family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point. Phase III differs from phase II in kind:
+family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
 with raw output in `outputs/` — re-run them directly. **Firewall status of the entire record: structure, negatives, and two
 literature-standard identities. No measured SM value is claimed anywhere; Gate 5
@@ -25,9 +25,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The twenty-three memos of phases II–III, in order below. |
-| `certificates/` | 37 scripts: the 17 of phase I + the 20 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 34 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty-four memos of phases II–III, in order below. |
+| `certificates/` | 38 scripts: the 17 of phase I + the 21 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 35 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -216,6 +216,15 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    symmetry-point value (CITED) — the banked content is the FORCING. The measured 0.231
    (running) is explicitly NOT claimed; Gate 5 untouched. Certificate:
    `certificates/weinberg.py`; output `outputs/weinberg_out.txt`.
+24. **`SM_TABLE.md`** (phase III) — the closing's full one-generation table, exact:
+   EW content perfectly SM (Q_L at Y=1/6 with Q=2/3,−1/3; u/d-type singlets; the
+   vector-like D at Q=−1/3; the trinification lepton nonet as a 3×3 bidoublet grid);
+   **the anomaly table vanishes — eight exact zeros** (Tr Y, Y³, T₃L²Y, Q, Q³, B−L,
+   (B−L)³, T₃R²Y); and a typed NEGATIVE: the naive Pati–Salam Y/2 = T₃R + (B−L)/2
+   with the closing's second su(2) fails (colored 5/3, −4/3; singlets ±2) — the
+   closing's pair is trinification-native; B−L is a different Cartan combination,
+   typed as cell SP-1 (small exact solve). Certificate: `certificates/sm_table.py`;
+   output `outputs/sm_table_out.txt`.
 
 ## CORPUS SYNC (second fetch, 2026-08-22, corpus f7c47cf → d067d35)
 The seat has BANKED memo 10 as **B1134** and memo 12 as **B1135**, both TWO-BENCH
