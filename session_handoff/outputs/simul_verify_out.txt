@@ -1,0 +1,7 @@
+involutive swappers: 48
+hit: swapper#13 [W] S2-action=nontrivial  theta^2=I OK  automorphism FULL-3003 OK  global sig (26,52) char -26 [E6(-26)=M(O,C)]  double (3, 3, 0)  color (0,8)
+
+total hits verified: 24
+summary {(char, double_sig, coset, S2-action): count}:
+   (-26, (3, 3, 0), 'W', 'nontrivial') : 24
+

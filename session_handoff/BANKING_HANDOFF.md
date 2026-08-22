@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The eight memos of phase II, in order below. |
+| `memos/` | The ten memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -86,6 +86,18 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    su(2,1)). Neither lift gives compact color; the question is now the finite 𝔽₂-kernel
    sweep (C-AR1). The Lorentz memo's algebra is UNAFFECTED (brackets/dimensions only).
    Outputs: `outputs/anomaly_hunt_out.txt`, `outputs/anomaly_resolved_out.txt`.
+9. **`PRIME_LANE.md`** — the prime/zeta ruling (owner-agreed): the toolkit enters only
+   where it intersects existing open nodes, queue order, never a destination; **RH fenced
+   as a BOUNDARY question**; verified anchor: holonomy eigenvalues of primitive geodesics
+   are algebraic units (abAba → x²−4x+1 = 2+√3). Gated cells PR-1..5.
+10. **`SIMULTANEOUS_CLOSING.md`** (phase III, post-digest) — **one antilinear
+   conjugation buys so(3,1) on the Lorentz double AND compact su(3) color, and all 24
+   such conjugations land in E₆(−26) = M(𝕆,ℂ)** — exhaustive over the 48 involutive
+   slot-swappers of Aut(Φ(E₆)) = W∪δW × all involutive signed lifts (color signatures
+   (4,4):216, (5,3):240, (0,8):24). The winners: pure Weyl swappers reflecting the color
+   A2 — the family missed by both B1125/B1127's torsor and the naive −w. Composes
+   B1114 + B1127 into "one observer, one act, one host". Certificates:
+   `certificates/simul_{closing,sweep,verify}.py`; outputs `outputs/simul_*`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
@@ -97,7 +109,11 @@ rational ideals — superseded by the root-subsystem construction); (12) the mis
 (r,−r)→Cartan constraint class in the sign lift (caught, added); (13) THE FAKE INVARIANT
 FORM (the anomaly; see memo 8 — five checks passed because none tested ad-invariance);
 (14) an mpmath nsum failure on a stepwise character (caught by a 1% mismatch; replaced
-by Hurwitz-zeta exact evaluation). Every one is documented at its point of occurrence.
+by Hurwitz-zeta exact evaluation). Phase III adds one: (15) a GF(2) back-substitution
+ordering error in the sign-lift solver (pivot rows carry lower-indexed pivots — evaluate
+ascending; caught because the antipodal control lost 63/64 of its solutions; per-solution
+row re-checks added as a permanent guard). Every one is documented at its point of
+occurrence.
 
 ## OPEN CELLS, CONSOLIDATED (ranked by leverage)
 C-AR1 the 𝔽₂-kernel sweep (compact-color hosting; instrument now validated) ·

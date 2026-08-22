@@ -1,0 +1,7 @@
+involutive swappers: 48 total (24 in W, 24 in deltaW)
+swappers with no involutive lift: 0/48
+color signatures over ALL (swapper, sign-solution) pairs: {(4, 4): 216, (0, 8): 24, (5, 3): 240}
+
+SIMULTANEOUS CLOSING (so(3,1) + compact color (0,8)): 24 hits
+>>> EXISTS — first hit at swapper 13
+

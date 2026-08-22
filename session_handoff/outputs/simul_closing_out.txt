@@ -1,0 +1,26 @@
+e6 loaded: 72 roots, dim 78
+corrected form ad-invariance (300 triples): PASS
+S0 (Levi 0,2), orthogonal components S1,S2 of sizes 6,6: OK
+triple1 (regular of S0) verified
+|W(E6)| enumerated: 51840 (expect 51840)
+swap elements (S0<->S1, S2 setwise): 216; involutions: 24; involutions pointwise-id on S2: 0
+
+w involution: pointwise-id on S2 = False
+
+=== class antipodal (control): 64 involutive sign solutions ===
+  char -78 [E6 compact]  global sig (0, 78)  color_preserved=True color_sig=(0, 8)  swaps_triples=False double_sig=None
+  char -14 [E6(-14)]  global sig (32, 46)  color_preserved=True color_sig=(4, 4)  swaps_triples=False double_sig=None
+  char +2 [E6(2)]  global sig (40, 38)  color_preserved=True color_sig=(4, 4)  swaps_triples=False double_sig=None
+  char -14 [E6(-14)]  global sig (32, 46)  color_preserved=True color_sig=(0, 8)  swaps_triples=False double_sig=None
+  char +2 [E6(2)]  global sig (40, 38)  color_preserved=True color_sig=(0, 8)  swaps_triples=False double_sig=None
+
+=== class permute (control, B1114 class): 8 involutive sign solutions ===
+  char +6 [E6(6) split]  global sig (42, 36)  color_preserved=True color_sig=(4, 4)  swaps_triples=True double_sig=(3, 3, 0)
+
+=== class MIXED -w (the unswept class): 8 involutive sign solutions ===
+  char +2 [E6(2)]  global sig (40, 38)  color_preserved=True color_sig=(5, 3)  swaps_triples=True double_sig=(3, 3, 0)
+
+================ VERDICT ================
+antipodal: solutions=64, compact-color=16, so(3,1)-double=0, BOTH=0
+permute: solutions=8, compact-color=0, so(3,1)-double=8, BOTH=0
+mixed: solutions=8, compact-color=0, so(3,1)-double=8, BOTH=0
