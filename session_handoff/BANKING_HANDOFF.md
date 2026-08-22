@@ -20,7 +20,7 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 |---|---|
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The ten memos of phases II–III, in order below. |
+| `memos/` | The eleven memos of phases II–III, in order below. |
 | `certificates/` | All 17 exact-arithmetic scripts of phase I (the phase-II computations are inline in the transcript; their full stdout is in `outputs/`). |
 | `outputs/` | 14 raw output files — the certificates of phase II plus phase-I extras. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
@@ -98,6 +98,14 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
    A2 — the family missed by both B1125/B1127's torsor and the naive −w. Composes
    B1114 + B1127 into "one observer, one act, one host". Certificates:
    `certificates/simul_{closing,sweep,verify}.py`; outputs `outputs/simul_*`.
+11. **`FORK_THEOREM.md`** (phase III) — **the D5 fork is a centralizer theorem**: exact
+   ladder dim z(T₁)=16, z(T₁∪color)=8=sl(S₁) (the EW room, where B1102's 18 live),
+   z(T₁,T₂)=8, **z(T₁,T₂∪color)=0** — any TWO of {spacetime Lorentz, color, EW}, never
+   three. Plus the **S₃ frame torsor** (N_W(A₂³)/W(A₂)³ ≅ S₃ full, 216=6³ per class;
+   "which factor is color" is a frame choice) with a **ledger flag**: B1102/B1118 and
+   B1114/B1125/B1127 run different color frames, consistent only because the fork
+   branches are exclusive. σ = τ∘θ = C∘P; the spin lift (B1122) is the one bit no CP act
+   pays. Certificate: `certificates/fork_theorem.py`; output `outputs/fork_theorem_out.txt`.
 
 ## ERRORS CAUGHT ON THIS BENCH (phases I+II — the seat should read these first)
 Phase I: ten, listed in `HANDOFF.md` (discrete-torsion bits; modal-row tie; SL(3)
