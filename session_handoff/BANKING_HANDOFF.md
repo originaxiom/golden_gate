@@ -7,7 +7,7 @@ verification session (hostile referee → physics road → corpus audits → ori
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
 run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
-(memos 10–23, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
+(memos 10–24, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
 family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
