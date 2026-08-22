@@ -1,0 +1,4 @@
+orbit states: 21
+Schreier stabilizer elements checked: 29
+per-slot inner(I)/outer(O) patterns found: {'IIII': 29}
+VERDICT: the index-2 extension acts with pattern(s): none found among sampled Schreier gens (all inner) — sample more
