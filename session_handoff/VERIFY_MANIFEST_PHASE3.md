@@ -1,5 +1,5 @@
 # VERIFY MANIFEST — PHASE III certificates
-## Run from `session_handoff/`; scripts importing the paper's `check_charge_bracket.py` use an absolute path — repoint to your checkout. Extracted mechanically (haiku lane of the masterplan workflow), tails verbatim from `outputs/`. Late-phase-III entries (spacetime64 … sp2_seat) appended 2026-08-25 at seat-close.
+## SELF-CONTAINED as of close-out (2026-08-25): every certificate resolves its paths relative to its own file location; the paper's `check_charge_bracket.py` is shipped at `certificates/paper/verify/check_charge_bracket.py`; sibling-script loads are `__file__`-anchored. **No repointing needed — run each from any working directory** (deps: python3 + sympy; mpmath for `voice_ladder`/`gue_bench`). Entries extracted mechanically (haiku lane of the masterplan workflow), tails verbatim from `outputs/`. Late-phase-III entries (spacetime64 … sp2_seat) appended at seat-close. Full re-run sweep at close: `VERIFY_SWEEP_CLOSEOUT.md`.
 
 ### `simul_closing.py`
 - run: `python3 certificates/simul_closing.py`

@@ -121,14 +121,23 @@ print("  gcd factor:",sp.factor(g))
 gs=sp.expand(g)
 # try writing in terms of m2 = s^2 + 1/s^2 = X^2-2
 gg = sp.simplify(gs)
-# Instead: check the claim numerically: for random X, the two u-roots of u^2+(5-X^2)u+(5-X^2)=0
+# Instead: check the claim numerically: for random X, the two u-roots of the Riley
+# quadratic IN THIS BENCH'S CONVENTION (B lower-left = +u): u^2+(X^2-5)u+(5-X^2)=0
 # should satisfy the relator equation for s with s+1/s=X.
+# [CORRECTION filed at close-out 2026-08-25, error #16: this line originally used the
+#  paper's convention u^2+(5-x^2)u+(5-x^2) (B lower-left = -u); with THIS script's
+#  Mb=[[s,0],[+u,1/s]] the two differ by u -> -u (HANDOFF.md item: "u=-w; paper correct"),
+#  so the numeric check failed with O(1) residuals. Exact re-derivation at close-out:
+#  A*W - W*B has both nonzero entries proportional to s^4*u - s^4 + s^2*u^2 - 3*s^2*u
+#  + 3*s^2 + u - 1 = s^2 * (u^2 + (X^2-5)u + (5-X^2)), X = s+1/s. At the cusp X=2 this
+#  is u^2-u+1=0 — exactly the banked q. The discriminant (5-x^2)(1-x^2) and every
+#  downstream trace-field claim are unchanged (the sign dies in the discriminant).]
 import random
 def test_claim(Xval):
     sv=sp.nsimplify(0)
     svs=sp.solve(sp.Eq(s+1/s,Xval),s)
     sv=svs[0]
-    us=sp.solve(u**2+(5-Xval**2)*u+(5-Xval**2),u)
+    us=sp.solve(u**2+(Xval**2-5)*u+(5-Xval**2),u)
     okloc=True
     for uv in us:
         Ma=sp.Matrix([[sv,1],[0,1/sv]]); Mb=sp.Matrix([[sv,0],[uv,1/sv]])
@@ -138,7 +147,11 @@ def test_claim(Xval):
         if mx>1e-15: okloc=False
     return okloc
 res=[test_claim(sp.Rational(v,7)) for v in (3,10,15)]
-check("character-variety relation u^2+(5-x^2)u+(5-x^2)=0 holds (numeric, 3 values)", all(res))
+check("character-variety relation u^2+(x^2-5)u+(5-x^2)=0 holds (bench convention; numeric, 3 values)", all(res))
+# exact form of the same fact (added at close-out): the relator entries factor through the quadratic
+_rel=sp.expand(sp.numer(sp.together((sp.Matrix([[s,1],[0,1/s]])*(sp.Matrix([[s,0],[u,1/s]])*sp.Matrix([[s,1],[0,1/s]]).inv()*sp.Matrix([[s,0],[u,1/s]]).inv()*sp.Matrix([[s,1],[0,1/s]]))-(sp.Matrix([[s,0],[u,1/s]])*sp.Matrix([[s,1],[0,1/s]]).inv()*sp.Matrix([[s,0],[u,1/s]]).inv()*sp.Matrix([[s,1],[0,1/s]]))*sp.Matrix([[s,0],[u,1/s]]))[1])))
+check("EXACT: relator entry = s^2*(u^2+((s+1/s)^2-5)u+(5-(s+1/s)^2))",
+      sp.expand(_rel - sp.expand(s**2*(u**2+((s+1/s)**2-5)*u+(5-(s+1/s)**2))))==0)
 # trace field radical: verify tr(rho(AB)) or similar generates Q(x, sqrt((5-x^2)(1-x^2)))?
 # u = [-(5-x^2) ± sqrt((5-x^2)^2-4(5-x^2))]/2 ; (5-x^2)^2-4(5-x^2)=(5-x^2)(1-x^2). Discriminant matches:
 D=sp.expand((5-X**2)**2-4*(5-X**2))
@@ -174,7 +187,16 @@ def sym_inv_dim(group,n):
         chi=sum(sp.exp(sp.I*(n-2*k)*aval) for k in range(n+1))
         total+=chi
     return sp.simplify(total/len(group))
-dims2T={n:sp.nsimplify(sp.simplify(sym_inv_dim(quats,n)),rational=True) for n in [2,6,8,10,12,14,16,22]}
+# numeric resolution of sympy root-branch artifacts ((-1)**(1/3) forms that simplify()
+# leaves unresolved): the Molien average is an exact non-negative integer, so evaluate
+# at 50 digits and round, asserting the residual and imaginary part are < 1e-40.
+def _as_int(e):
+    v=sp.N(e,50)
+    assert abs(sp.im(v))<sp.Float('1e-40'), f"nonreal Molien dim: {v}"
+    r=int(sp.Integer(round(float(sp.re(v)))))
+    assert abs(sp.re(v)-r)<sp.Float('1e-40'), f"non-integer Molien dim: {v}"
+    return r
+dims2T={n:_as_int(sym_inv_dim(quats,n)) for n in [2,6,8,10,12,14,16,22]}
 print("  2T Molien dims:",dims2T)
 check("2T: dim inv = 0 at 2,10; 1 at 8,14,16,22; 1 at 6",
       dims2T[2]==0 and dims2T[10]==0 and dims2T[8]==1 and dims2T[14]==1 and dims2T[16]==1 and dims2T[22]==1 and dims2T[6]==1)
@@ -188,7 +210,7 @@ for pair in it.combinations(range(4),2):
             oct_extra.append(tuple(q))
 group2O=[tuple(sp.nsimplify(x) for x in q) for q in quats]+oct_extra
 check("|2O|=48", len(group2O)==48)
-dims2O={n:sp.nsimplify(sp.simplify(sym_inv_dim(group2O,n)),rational=True) for n in [2,8,10,14,16,22]}
+dims2O={n:_as_int(sym_inv_dim(group2O,n)) for n in [2,8,10,14,16,22]}
 print("  2O Molien dims:",dims2O)
 check("2O: dim inv 1 at 8,16 and 0 at 2,10,14,22",
       dims2O[8]==1 and dims2O[16]==1 and dims2O[2]==0 and dims2O[10]==0 and dims2O[14]==0 and dims2O[22]==0)

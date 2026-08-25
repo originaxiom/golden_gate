@@ -1,15 +1,19 @@
 # BANKING HANDOFF — the outside bench's complete record
 ## Repository: `originaxiom/golden_gate` · Branch: **`claude/paper-hostile-review-alero0`** · Directory: `session_handoff/`
-## Outside bench (independent Claude session), 2026-08-19 → 2026-08-22. Everything below is on this branch, HEAD = the phase-III closing arc.
+## Outside bench (independent Claude session), 2026-08-19 → 2026-08-25. Everything below is on this branch, HEAD = the close-out (seat closed, record self-contained).
 
-**START HERE.** This file is the index. The session ran in three phases: (I) the original
+**SESSION CLOSED 2026-08-25 — the capstone is `CLOSE_OUT.md` (read it first): the
+compressed ledger of all 29 memos with two-bench/red-team status, the three remaining
+gates, the self-containment record, and the close-out relay for the seat.**
+
+**START HERE** (after `CLOSE_OUT.md`). This file is the index. The session ran in three phases: (I) the original
 verification session (hostile referee → physics road → corpus audits → origin →
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
 run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
 (memos 10–29, 2026-08-22/25, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
-family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized → THE SPIN PAYMENT. Phase III differs from phase II in kind:
+family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized → THE SPIN PAYMENT → THE SEAT CLOSES. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
 with raw output in `outputs/` — re-run them directly. **Firewall status of the entire record: structure, negatives, and two
 literature-standard identities. No measured SM value is claimed anywhere; Gate 5
@@ -323,8 +327,16 @@ FORM (the anomaly; see memo 8 — five checks passed because none tested ad-inva
 by Hurwitz-zeta exact evaluation). Phase III adds one: (15) a GF(2) back-substitution
 ordering error in the sign-lift solver (pivot rows carry lower-indexed pivots — evaluate
 ascending; caught because the antipodal control lost 63/64 of its solutions; per-solution
-row re-checks added as a permanent guard). Every one is documented at its point of
-occurrence.
+row re-checks added as a permanent guard). The close-out re-verification sweep adds one:
+(16) `indep3.py` paired the PAPER's Riley quadratic u²+(5−x²)u+(5−x²) (B lower-left −u)
+with THIS bench's matrix convention (B lower-left +u) — off by u→−u exactly as HANDOFF.md
+had already recorded ("u=−w; paper correct") — so its numeric relator check failed with
+O(1) residuals; and its Molien check compared unresolved sympy root-branch expressions
+structurally to integers. Both fixed at close-out (bench-convention quadratic + an EXACT
+relator-factorization check added; Molien dims resolved at 50 digits with 1e-40 gates),
+correction filed inside `certificates/indep3.py`; no memo-level claim was affected (the
+sign dies in the discriminant, and the Molien values were correct all along). Every one
+is documented at its point of occurrence.
 
 ## OPEN CELLS, CONSOLIDATED (post-phase-III; ranked by leverage)
 CLOSED BY PHASE III: the spin bit + SP-2 (memos 28+29: the beat selects the lift and
@@ -333,9 +345,9 @@ C-AR1 (memos 10+12: compact color hosted, sweeps exhaustive) ·
 the Gieseking first beat (memos 16+17) · B1127's relayed holonomy-bridge (memo 17) ·
 F-1/G-1/G-2/G-3 (memos 12–15) · C-D3 sharpened (after the closing the ledger holds the
 spin lift ALONE — memos 13+11; spin pair-invisible per corpus B1122).
-STILL OPEN, ranked (Σ-27 closed as memo 18; the S₄ question closed as memo 19):
-F-3 the frame audit (tag each banked arc with its S₃ color frame —
-memo 11's ledger flag; AW typing now CLOSED as memo 20) · C-S2 the matter–geometry bridge ·
+STILL OPEN, ranked (Σ-27 closed as memo 18; the S₄ question closed as memo 19;
+F-3 the frame audit CLOSED as memo 26; AW typing CLOSED as memo 20; B1134's
+64-dimension relay CLOSED as memo 27): C-S2 the matter–geometry bridge ·
 C-V2/C-V4 Ohtsuki at 50 digits + the tower-invariant crossing class (nomination-gated) ·
 C-AD3 the Habiro/congruence-tower match · C-J2 the Jordan ledger · C-P1 the 4
 distinguished strata's parities · PR-1/4 per the owner-agreed prime-lane ruling (PR-2 closed as memo 21; PR-3 down payment

@@ -13,7 +13,7 @@ import importlib.util, itertools, random
 from fractions import Fraction as F
 
 spec = importlib.util.spec_from_file_location("ccb",
-  "/tmp/claude-0/-home-user-golden-gate/7aec077f-59a6-5129-b1a7-361cc5dcb800/scratchpad/paper/verify/check_charge_bracket.py")
+  __import__('os').path.dirname(__import__('os').path.abspath(__file__))+"/paper/verify/check_charge_bracket.py")
 ccb = importlib.util.module_from_spec(spec); spec.loader.exec_module(ccb)
 br, add_, smul_, is_zero = ccb.br, ccb.add, ccb.smul, ccb.is_zero
 evec, hvec, eps, ip = ccb.evec, ccb.hvec, ccb.eps, ccb.ip

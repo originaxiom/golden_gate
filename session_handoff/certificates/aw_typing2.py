@@ -1,5 +1,5 @@
 # type ALL subgroup orders arising from transversal pairs (8, 16, 24, 96)
-exec(open("aw_typing.py").read().split("for si,Sg in enumerate")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+"/aw_typing.py").read().split("for si,Sg in enumerate")[0])
 from collections import Counter
 allsubs={}
 for p in trans:

@@ -15,7 +15,7 @@ annihilates (one per EW slot — both tried, tagged); Y_phys = (6Y-eigenvalue)/6
 """
 import itertools
 from fractions import Fraction as F
-exec(open('g1_yselect.py').read().split("solset=set(sols)")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/g1_yselect.py').read().split("solset=set(sols)")[0])
 solset=set(sols)
 import sympy as sp
 

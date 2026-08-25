@@ -1,7 +1,7 @@
 # SP-4 resolved by candidate: the E8 antipode NEG (= w0(E8), CITED: -1 in W(E8)).
 # Verify: NEG stabilizes each slot setwise, acts OUTER on every slot (pattern OOOO),
 # and W(A2)^4 extended by NEG has order exactly 2592 = the memo-19 stabilizer.
-exec(open('sp4_idx2.py').read().split("# BFS with parents")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/sp4_idx2.py').read().split("# BFS with parents")[0])
 NEG=tuple(IDX[tuple(-x for x in r)] for r in allr)
 assert tuple(apply_mask(NEG,m) for m in masks)==tuple(masks), "NEG must fix each slot setwise"
 pat=outer_pattern(NEG)

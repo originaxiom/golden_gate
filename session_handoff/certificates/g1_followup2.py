@@ -1,5 +1,5 @@
 import importlib.util, itertools
-exec(open('g1_yselect.py').read().split("solset=set(sols)")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/g1_yselect.py').read().split("solset=set(sols)")[0])
 solset=set(sols)
 import sympy as sp
 # W(S1)xW(S2) = order 36 on cor-coords (recovered B1102 machinery)

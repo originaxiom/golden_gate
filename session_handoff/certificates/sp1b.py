@@ -1,5 +1,5 @@
 # pin c5=1 (the physical branch) and complete SP-1: physicality, traces, decomposition
-exec(open('sp1_bl.py').read().split("# ---------- SP-1")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/sp1_bl.py').read().split("# ---------- SP-1")[0])
 g,y,bL=phys_assign[0]
 import sympy as sp
 rows=[]

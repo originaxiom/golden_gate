@@ -9,7 +9,7 @@ inner Weyl = 6 permutations from its two simple reflections); the first Schreier
 element outside gives the outer pattern (which slots are flipped).
 """
 import itertools
-exec(open('e7_ladder.py').read().split("CART={")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/e7_ladder.py').read().split("CART={")[0])
 CART_E8=[[2,-1,0,0,0,0,0,0],[-1,2,-1,0,0,0,0,0],[0,-1,2,-1,0,0,0,-1],[0,0,-1,2,-1,0,0,0],[0,0,0,-1,2,-1,0,0],[0,0,0,0,-1,2,-1,0],[0,0,0,0,0,-1,2,0],[0,0,-1,0,0,0,0,2]]
 alg=build_algebra(CART_E8)
 ipr=alg['ipr']; allr=alg['roots']; n=alg['n']

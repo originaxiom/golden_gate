@@ -14,7 +14,7 @@ SP-3: for ALL physical assignments (closing, Y, beta_L) from memo 23: verify the
 """
 import itertools
 from fractions import Fraction as F
-exec(open('g1_yselect.py').read().split("solset=set(sols)")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/g1_yselect.py').read().split("solset=set(sols)")[0])
 solset=set(sols)
 import sympy as sp
 from collections import Counter

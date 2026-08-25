@@ -14,7 +14,7 @@ All exact over Q(sqrt2) (fast pair arithmetic, converted once from the sympy bui
 """
 import sympy as sp, itertools
 from fractions import Fraction as F
-exec(open('/home/user/golden_gate/session_handoff/certificates/g2strata.py').read().split("# ---------- S1/S2")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/g2strata.py').read().split("# ---------- S1/S2")[0])
 # els: 96 sympy 7x7 matrices. Convert to Q(sqrt2) pairs (a, b) = a + b*sqrt2.
 s2sym=sp.sqrt(2)
 def conv_entry(x):

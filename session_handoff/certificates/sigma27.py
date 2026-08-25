@@ -15,7 +15,7 @@ is rational, so gal is well-defined on the 27).  Verify exactly over Q(q):
 """
 import importlib.util, itertools, sys
 from fractions import Fraction as F
-SCR="/tmp/claude-0/-home-user-golden-gate/7aec077f-59a6-5129-b1a7-361cc5dcb800/scratchpad"
+SCR=__import__('os').path.dirname(__import__('os').path.abspath(__file__))+""
 src=open(SCR+"/twisted_double.py").read()
 cut=src.index("# ---------------- stage 4")
 exec(src[:cut])     # field ops, e6, X8/X16, 27 module, A27/B27, nilexp, mmul, eye

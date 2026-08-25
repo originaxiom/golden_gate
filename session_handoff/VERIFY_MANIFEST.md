@@ -4,8 +4,14 @@ Environment: python3 with sympy (1.14 used here) and numpy (2.4 used here; only
 `edge_chirality.py` needs it). All scripts exact-arithmetic except the numerically-controlled
 parts of `edge_chirality.py` (eigenvalues; stability quoted at 1e-15) and `indep3.py`'s Molien
 evaluation (numeric resolution of sympy root-branch artifacts).
-`allbrackets.py` and `twisted_double.py` import `paper/verify/check_charge_bracket.py` by
-absolute path — EDIT THE PATH at the top of each to your checkout of the paper's verify/ dir.
+CORRECTION at close-out (2026-08-25, error #16, filed inside `certificates/indep3.py`):
+`indep3.py` originally tested the PAPER's Riley quadratic against THIS bench's matrix
+convention (they differ by u→−u; HANDOFF.md line "u=−w; paper correct") and its Molien
+check compared unresolved branch expressions structurally — both repaired; it now ends
+`OVERALL: ALL PASS` including a new EXACT relator-factorization check.
+SELF-CONTAINED as of close-out (2026-08-25): `allbrackets.py` and `twisted_double.py` now
+resolve `check_charge_bracket.py` relative to their own file location, and it is shipped at
+`certificates/paper/verify/check_charge_bracket.py` — no path editing needed.
 
 | script | runtime | expected tail |
 |---|---|---|

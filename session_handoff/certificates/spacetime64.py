@@ -12,7 +12,7 @@ sigma-real 64 = one COMPLEX spin-2 [10] + the colored bi-vector [54].
 """
 import importlib.util, itertools, random
 from fractions import Fraction as F
-SCR="/tmp/claude-0/-home-user-golden-gate/7aec077f-59a6-5129-b1a7-361cc5dcb800/scratchpad"
+SCR=__import__('os').path.dirname(__import__('os').path.abspath(__file__))+""
 exec(open(SCR+'/simul_verify.py').read().split("# principal triple of S0")[0])
 # machinery loaded: e6 (ccb), slots S0/S1/S2, G_swap, solve_lift, theta_matrix, apply,
 # frac_nullspace, gform...

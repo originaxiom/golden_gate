@@ -9,7 +9,7 @@
 """
 from fractions import Fraction as F
 import itertools
-exec(open('e7_ladder.py').read().split("CART={")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/e7_ladder.py').read().split("CART={")[0])
 CARTS={
  'E6':[[2,-1,0,0,0,0],[-1,2,-1,0,0,0],[0,-1,2,-1,0,-1],[0,0,-1,2,-1,0],[0,0,0,-1,2,0],[0,0,-1,0,0,2]],
  'E8':[[2,-1,0,0,0,0,0,0],[-1,2,-1,0,0,0,0,0],[0,-1,2,-1,0,0,0,-1],[0,0,-1,2,-1,0,0,0],[0,0,0,-1,2,-1,0,0],[0,0,0,0,-1,2,-1,0],[0,0,0,0,0,-1,2,0],[0,0,-1,0,0,0,0,2]],

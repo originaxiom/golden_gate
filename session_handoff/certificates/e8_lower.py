@@ -1,6 +1,6 @@
 # E8 lower bound: exhibit the FOURTH orthogonal A2's sl3 and verify it commutes
 # with T1, T2, color exactly => dim z(T1,T2 u color) >= 8; with mod-p <= 8 => = 8.
-exec(open('e7_ladder.py').read().split("CART={")[0])
+exec(open(__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/e7_ladder.py').read().split("CART={")[0])
 CART_E8=[[2,-1,0,0,0,0,0,0],[-1,2,-1,0,0,0,0,0],[0,-1,2,-1,0,0,0,-1],[0,0,-1,2,-1,0,0,0],[0,0,0,-1,2,-1,0,0],[0,0,0,0,-1,2,-1,0],[0,0,0,0,0,-1,2,0],[0,0,-1,0,0,0,0,2]]
 alg=build_algebra(CART_E8)
 S0,S1,S2,T1,T2,color=slots_and_triples(alg)
