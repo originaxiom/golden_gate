@@ -1,5 +1,5 @@
 # VERIFY MANIFEST — PHASE III certificates
-## Run from `session_handoff/`; scripts importing the paper's `check_charge_bracket.py` use an absolute path — repoint to your checkout. Extracted mechanically (haiku lane of the masterplan workflow), tails verbatim from `outputs/`.
+## Run from `session_handoff/`; scripts importing the paper's `check_charge_bracket.py` use an absolute path — repoint to your checkout. Extracted mechanically (haiku lane of the masterplan workflow), tails verbatim from `outputs/`. Late-phase-III entries (spacetime64 … sp2_seat) appended 2026-08-25 at seat-close.
 
 ### `simul_closing.py`
 - run: `python3 certificates/simul_closing.py`
@@ -190,3 +190,69 @@ closing-independence: YES — single value
   Tr T3R^2 Y= 0
 ```
 
+### `spacetime64.py`
+- run: `python3 certificates/spacetime64.py`
+- expected tail:
+```
+color-singlet (0,0) content in the complement: 2 (0 = NO hypercharge room; matches memo 11)
+spin-2 tops: S0-side weight-(4,0) roots: 1 ; S1-side (0,4): 1
+theta maps S0 spin-2 top into sl3(S1) span: True -> sigma glues the two spin-2s into ONE complex spin-2 (real dim 10)
+```
+
+### `sp1_bl.py`
+- run: `python3 certificates/sp1_bl.py`
+- expected tail:
+```
+   colored=True  T3L=   0 Y=  1/3 Q=  1/3 B-L=c5 - 1/3 x3
+   colored=True  T3L= 1/2 Y=  1/6 Q=  2/3 B-L=     1/3 x3
+```
+
+### `sp1b.py`
+- run: `python3 certificates/sp1b.py`
+- expected tail:
+```
+Tr(B-L) = 0   Tr(B-L)^3 = 0
+B-L = a*Y + b*T3R exactly? NO — independent third Cartan direction
+B-L in span{Y,T3R,T3L}? NO — genuinely fourth direction
+```
+
+### `sp4_idx2.py` (superseded control — kept for the record; its "sample more" verdict is answered by `sp4b.py`)
+- run: `python3 certificates/sp4_idx2.py`
+- expected tail:
+```
+per-slot inner(I)/outer(O) patterns found: {'IIII': 29}
+VERDICT: the index-2 extension acts with pattern(s): none found among sampled Schreier gens (all inner) — sample more
+```
+
+### `sp4b.py`
+- run: `python3 certificates/sp4b.py`
+- expected tail:
+```
+VERDICT: the index-2 element of the four-slot stabilizer is the E8 antipode
+w0 = -1 (CITED: -1 in W(E8)), acting OUTER on all four slots simultaneously (OOOO);
+no mixed pattern exists (index is exactly 2).
+```
+
+### `gue_bench.py` (numerics down payment, NOT exact — low-power caveat inside)
+- run: `python3 certificates/gue_bench.py`
+- expected tail: the HONEST REPORT paragraph; key numbers `mean nearest-neighbor spacing of 0.9978`, `KS ... 0.1177 (p=0.103)` vs Poisson `0.2148 (p=0.000)`.
+
+### `spin_payment.py` (memo 28 + red-team hardening block)
+- run: `python3 certificates/spin_payment.py`
+- expected tail:
+```
+RED-TEAM (ii): beta^2(b) = a b a^-1 (beta^2 = Ad(meridian)): True
+RED-TEAM (iii): (gamma W) conj(gamma W) = gamma * [W conj(gamma) W^-1] * [W conj(W)] on 10 words: True
+=> exhaustiveness now MACHINE-VERIFIED: no rival sign-twisted automorphism admits any
+   intertwiner; no inner modification escapes; the chi=-1 obstruction is total.
+```
+
+### `sp2_seat.py` (memo 29 — THE SEAT CLOSES)
+- run: `python3 certificates/sp2_seat.py`
+- expected tail:
+```
+SP-2 GREEN: the beat closes on the fermion-capable (odd) A1 stratum over the
+selected chi=+1 lift — functorially, because W = exp(q e) lives upstream of every
+embedding. The chi=-1 side needs no rep-level check: the GROUP extension already
+fails there (memo 28). THE GENERATION'S KINEMATIC SEAT CLOSES.
+```

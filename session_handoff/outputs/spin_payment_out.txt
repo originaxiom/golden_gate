@@ -18,3 +18,10 @@ THE SPIN PAYMENT: the Gieseking Z/2 extends over exactly ONE spin structure —
 the object's own non-orientability SELECTS the lift; the spin bit's freedom is
 paid by consistency with the beat, a currency neither B1122 (coupling) nor the
 AW typing (collision geometry) ever fenced.
+
+RED-TEAM (i): intertwiner dims over all four sign-targets: {(1, 1): 1, (1, -1): 0, (-1, 1): 0, (-1, -1): 0}  (expect (1,1)->1, others 0)
+RED-TEAM (ii): R(A, beta(B)) = +I: True
+RED-TEAM (ii): beta^2(b) = a b a^-1 (beta^2 = Ad(meridian)): True
+RED-TEAM (iii): (gamma W) conj(gamma W) = gamma * [W conj(gamma) W^-1] * [W conj(W)] on 10 words: True
+=> exhaustiveness now MACHINE-VERIFIED: no rival sign-twisted automorphism admits any
+   intertwiner; no inner modification escapes; the chi=-1 obstruction is total.

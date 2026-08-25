@@ -100,3 +100,56 @@ print("\nTHE SPIN PAYMENT: the Gieseking Z/2 extends over exactly ONE spin struc
 print("the object's own non-orientability SELECTS the lift; the spin bit's freedom is")
 print("paid by consistency with the beat, a currency neither B1122 (coupling) nor the")
 print("AW typing (collision geometry) ever fenced.")
+
+# ================= RED-TEAM HARDENING (added after internal adversarial review) =================
+# (i) ALL FOUR sign-target intertwiner systems: dim must be 1 for (+,+) and 0 otherwise.
+def intertwiner_dim(sa,sb):
+    tA = A if sa==1 else mneg(A)
+    tB = wB if sb==1 else mneg(wB)
+    rows=[]
+    for (Mb,T) in ((mbar(A),tA),(mbar(B),tB)):
+        for i in range(2):
+            for j in range(2):
+                coef={(p,qm):ZERO for p in range(2) for qm in range(2)}
+                for k in range(2):
+                    coef[(i,k)]=fadd(coef[(i,k)],Mb[k][j])
+                    coef[(k,j)]=fsub(coef[(k,j)],T[i][k])
+                rows.append([coef[(0,0)],coef[(0,1)],coef[(1,0)],coef[(1,1)]])
+    Mx=[r[:] for r in rows]; piv=[]; r=0
+    for cc in range(4):
+        pr=next((i for i in range(r,len(Mx)) if Mx[i][cc]!=ZERO), None)
+        if pr is None: continue
+        Mx[r],Mx[pr]=Mx[pr],Mx[r]
+        inv=finv(Mx[r][cc]); Mx[r]=[fmul(inv,x) for x in Mx[r]]
+        for i in range(len(Mx)):
+            if i!=r and Mx[i][cc]!=ZERO:
+                f_=Mx[i][cc]; Mx[i]=[fsub(x,fmul(f_,y)) for x,y in zip(Mx[i],Mx[r])]
+        piv.append(cc); r+=1
+    return 4-len(piv)
+dims={(sa,sb): intertwiner_dim(sa,sb) for sa in (1,-1) for sb in (1,-1)}
+print("\nRED-TEAM (i): intertwiner dims over all four sign-targets:", dims,
+      " (expect (1,1)->1, others 0)")
+assert dims[(1,1)]==1 and dims[(1,-1)]==0 and dims[(-1,1)]==0 and dims[(-1,-1)]==0
+# (ii) beta is a genuine automorphism of Gamma compatible with the extension:
+#     beta(a)=a, beta(b)=wB; relator preserved; beta^2 = Ad(a).
+print("RED-TEAM (ii): R(A, beta(B)) = +I:", relator(A,wB)==I2)
+bb = mm(mm(mm(mm(mi(wB),A),wB),mi(A)),wB)   # beta(beta(b)) via the word in (A, wB)
+AdA = mm(mm(A,B),mi(A))
+print("RED-TEAM (ii): beta^2(b) = a b a^-1 (beta^2 = Ad(meridian)):", bb==AdA)
+# (iii) the inner-modification escape is closed: (gamma W)*conj(gamma W) = gamma * W conj(gamma) W^-1 * W conj(W)
+import itertools
+GEN={'a':A,'A':mi(A),'b':B,'B':mi(B)}
+def wmat(word):
+    M=I2
+    for ch in word: M=mm(M,GEN[ch])
+    return M
+ok3=True
+for word in ['a','b','A','B','ab','ba','aB','bA','abA','aab']:
+    g=wmat(word)
+    lhs=mm(mm(g,W),mbar(mm(g,W)))
+    rhs=mm(mm(g, mm(mm(W,mbar(g)),mi(W))), mm(W,mbar(W)))
+    if lhs!=rhs: ok3=False; break
+print("RED-TEAM (iii): (gamma W) conj(gamma W) = gamma * [W conj(gamma) W^-1] * [W conj(W)] on 10 words:", ok3)
+assert ok3
+print("=> exhaustiveness now MACHINE-VERIFIED: no rival sign-twisted automorphism admits any")
+print("   intertwiner; no inner modification escapes; the chi=-1 obstruction is total.")

@@ -7,7 +7,7 @@ verification session (hostile referee → physics road → corpus audits → ori
 M-theory → L79), packaged in `HANDOFF.md` with its `VERIFY_MANIFEST.md`; (II) the memo
 run (eight breakthrough memos + one resolved anomaly + the prime-lane ruling), after the
 corpus banked phase I as B1083–B1087 and phase II as B1112–B1119; (III) THE CLOSING ARC
-(memos 10–28, 2026-08-22, after digesting B1110–B1136): the simultaneous closing →
+(memos 10–29, 2026-08-22/25, after digesting B1110–B1136): the simultaneous closing →
 the fork theorem → the gauge closing → the Y-selection → the installment plan → the
 family triplet → the first beat → the descent → Σ-27 → the S₄ torsor → the AW typing → the unit dictionary → the voice ladder → the Weinberg point → the symmetry-point table → B−L the fourth direction → the frame audit → the 64 organized → THE SPIN PAYMENT. Phase III differs from phase II in kind:
 every memo has a STANDALONE certificate script in `certificates/` (not transcript-inline)
@@ -26,9 +26,9 @@ INTERPRETIVE (labeled, proposed for firewalled rooms only).
 | `HANDOFF.md` | Phase I master document: Parts I–VII (referee verification; six no-gos; G₂ cone; SL(3) landscape; Wilson menu; corpus two-axis census; six-gap docs sweep; origin/heartbeat; edge observability; origin torsor; AW stratification; L79 spectrum law + genericity sweep), the ten-error sobriety block, suggested arc bankings. Banked by the seat as B1083–B1087; kept as provenance. |
 | `VERIFY_MANIFEST_PHASE3.md` | Mechanical re-run manifest for all 21 phase-III certificates (command + verbatim expected output tails). |
 | `VERIFY_MANIFEST.md` | Re-run commands, runtimes, expected output tails for every phase-I certificate. NOTE: two scripts import `paper/verify/check_charge_bracket.py` by absolute path — edit the path to your checkout of the paper's verify directory. |
-| `memos/` | The twenty-eight memos of phases II–III, in order below. |
-| `certificates/` | 46 scripts: the 17 of phase I + the 29 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
-| `outputs/` | 42 raw output files — phase-II stdout + one output per phase-III certificate. |
+| `memos/` | The twenty-nine memos of phases II–III, in order below. |
+| `certificates/` | 46 scripts: the 17 of phase I + the 29 standalone phase-III certificates (simul_*, fork_theorem, ew_menu, g1_*, e7_ladder, e8_lower, family_triplet, gieseking_beat, beat_descent, sigma27, s4_question, aw_typing*, unit_dictionary, voice_ladder, weinberg, sm_table, sp1_bl/sp1b, sp4_idx2/sp4b, spin_payment [now with the red-team hardening block], sp2_seat). Phase-II computations remain transcript-inline with stdout in `outputs/`. |
+| `outputs/` | 43 raw output files — phase-II stdout + one output per phase-III certificate. |
 | `reports/` | 4 HTML session reports; `capstone.html` (§0–§12) is the readable narrative of everything. |
 | `data/` | The two-axis census data (`batches.json`, `full_census.txt`, `final_classifications.json`). |
 
@@ -273,6 +273,25 @@ t=130, unfolding VERIFIED (mean spacing 0.9978 vs 1), KS to GUE 0.118 (p≈0.10)
 Poisson 0.215 (p<0.001) — weakly favors level repulsion; explicitly a
 pipeline-validation with a low-power caveat, NOT a universality claim; re-run at
 large T is the named continuation. Output `outputs/gue_bench_out.txt`.**
+29. **`THE_SEAT_CLOSES.md`** (phase III, SP-2 — the hinge of memo 28, 2026-08-25) —
+   **the fermion-capable stratum lives over the beat-selected lift: SP-2 GREEN, the
+   generation's kinematic seat closes.** The landing's A1 stratum is ODD on the 27
+   (weights {−1:6, 0:15, +1:6} — six doublets + fifteen singlets, the fermion parity
+   class); the central C = diag((−1)^wt) ≠ I, C² = I, commutes ⇒ the two lifts give
+   genuinely different matter reps (the question was real); the relator = +I on the
+   χ=+1 matter rep; and the beat closes ON MATTER over χ=+1: Ω² = A₂₇,
+   Ω·A₂₇·Ω⁻¹ = A₂₇, Ω·B₂₇·Ω⁻¹ = ρ(B⁻¹ABA⁻¹B), all exact. Functorial: W = exp(q·e)
+   lives upstream of every embedding, and the χ=−1 side needs no rep check — the
+   GROUP extension already fails there (memo 28, all four sign-patterns
+   machine-verified). **RED-TEAMED BEFORE BANKING** (masterplan Lane B): verdict
+   SURVIVES, no broken claim; four fences installed in memo 28's RED-TEAM ADDENDUM
+   (machine-verified exhaustiveness; Culler 1986 anchor for lifts↔spin; the
+   Pin-compatibility terminology fence; the w-notation note); literature lane found
+   no precedent for the ℚ(√−3) selection mechanism (stated as the contribution).
+   NOT claimed: dynamics, values beyond the symmetric point, the seat's independent
+   re-derivation (the three remaining gates). Certificates:
+   `certificates/sp2_seat.py` (+ hardened `certificates/spin_payment.py`); outputs
+   `outputs/sp2_seat_out.txt`, `outputs/spin_payment_out.txt`.
 
 ## CORPUS SYNC (second fetch, 2026-08-22, corpus f7c47cf → d067d35)
 The seat has BANKED memo 10 as **B1134** and memo 12 as **B1135**, both TWO-BENCH
@@ -308,7 +327,9 @@ row re-checks added as a permanent guard). Every one is documented at its point 
 occurrence.
 
 ## OPEN CELLS, CONSOLIDATED (post-phase-III; ranked by leverage)
-CLOSED BY PHASE III: C-AR1 (memos 10+12: compact color hosted, sweeps exhaustive) ·
+CLOSED BY PHASE III: the spin bit + SP-2 (memos 28+29: the beat selects the lift and
+the odd stratum lives on the selected side — the kinematic seat closes) ·
+C-AR1 (memos 10+12: compact color hosted, sweeps exhaustive) ·
 the Gieseking first beat (memos 16+17) · B1127's relayed holonomy-bridge (memo 17) ·
 F-1/G-1/G-2/G-3 (memos 12–15) · C-D3 sharpened (after the closing the ledger holds the
 spin lift ALONE — memos 13+11; spin pair-invisible per corpus B1122).

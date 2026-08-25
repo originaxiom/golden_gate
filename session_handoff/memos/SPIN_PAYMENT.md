@@ -68,3 +68,39 @@ object itself: of its two spin structures, exactly one lets the Gieseking beat c
 with scalar one — and the other would need |λ|² = −1; the bit is paid by consistency
 with the object's own ℤ/2, the freedom ledger empties for beat-respecting observers,
 and the generation's seat waits only on the parity dictionary of the odd strata.
+
+---
+
+### RED-TEAM ADDENDUM (masterplan Lane B, 2026-08-25; verdict: SURVIVES)
+A hostile-review lane (independent agents, no shared state with the prover) attacked
+every step. **No claim broke.** Four fences were demanded and are now installed:
+
+1. **Exhaustiveness machine-verified, not argued.** The original fact 3 checked the
+   intertwiner space for the target signs (+,+) only. The hardened certificate
+   (`certificates/spin_payment.py`, "RED-TEAM HARDENING" block) now solves the linear
+   system V·conj(A) = ε_A·A·V, V·conj(B) = ε_B·w(B)·V for **all four sign patterns**:
+   dims = {(+,+): 1, (+,−): 0, (−,+): 0, (−,−): 0}. So no rival sign-twisted
+   antiholomorphic automorphism admits *any* implementation — the impossibility is
+   total, not anecdotal. It also verifies β (the beat) is a genuine automorphism
+   (R(A, β(B)) = +I, β² = Ad(meridian) as words) and the inner-modification identity
+   (γW)·conj(γW) = γ·[W conj(γ) W⁻¹]·[W·conj(W)] on a 10-word sample — the algebraic
+   backbone of fact 4's choice-independence.
+2. **Literature anchor (lifts ↔ spin structures).** The bijection between lifts of a
+   PSL(2,ℂ) holonomy to SL(2,ℂ) and spin structures on the hyperbolic manifold is
+   standard — M. Culler, *"Lifting representations to covering groups"*, Adv. Math. 59
+   (1986). Our two-lift census R(±A,±B) is an exact instance of it (H¹(m004;ℤ/2)=ℤ/2).
+3. **Terminology fence — what is actually computed.** The theorem is a
+   **Pin-compatibility statement**: whether the chosen spin structure on m004 extends
+   across the orientation-reversing deck map of the Gieseking cover. It is *not* the
+   claim "the Gieseking manifold has a spin structure" (a non-orientable manifold has
+   Pin± structures, not spin ones). The memo's language "the extension exists over
+   exactly one spin structure" is exactly the computed statement.
+4. **Notation collision.** The relator-internal word w = ba⁻¹b⁻¹a (used inside R) and
+   the beat W = [[1,q],[0,1]] are different objects; the certificate names them
+   distinctly. Read w̃² in fact 4 as (the lifted beat)², never the relator word.
+
+**Novelty note (literature lane):** the lifts↔spin dictionary is classical; what we
+found no precedent for is the *selection mechanism* — using the exact ℚ(√−3) arithmetic
+of the non-orientable ℤ/2 (Galois = complex conjugation, N(λ) positive-definite) to
+show the Gieseking extension is possible over exactly one of the two spin structures.
+That mechanism is the memo's contribution and is stated as such.
