@@ -22,7 +22,7 @@ resolve `check_charge_bracket.py` relative to their own file location, and it is
 | `orbifold_door.py`, `vertices2.py` | s | symmetry homomorphisms verified; dets {1} inner, {2} outer |
 | `equivariant2.py` | ~min | table: tau +1 all blocks; sigma −1 at Sym8/Sym16/(Sym0); consistency OK |
 | `g2cone.py` | ~min | PASS per generator; `order of G-hat: 96`; fixdims `{3: 53, 1: 42}`; OVERALL PASS |
-| `sl3vacuum.py` | ~min | 4 components; Falbel 2p^2−5p+4=0 over Q(√−7); indices 0 |
+| `sl3vacuum.py` | ~min | PASS relator + irreducibility at the Falbel vacuum (p=(5±√−7)/4, the 2p²−5p+4=0 root); Lawton traces; duality table (ρ∘φ_σ MATCHES ρ, ρ* DIFFERS); CHIRALITY INDEX 0; h¹(ad)=2. (The 4-component enumeration is HANDOFF II.6 + transcript; manifest row corrected at close-out to match the script's actual output.) |
 | `heartbeat.py` | s | 9× PASS; OVERALL ALL PASS (note: only 'bb' unreachable; σ(bbb)='aaa') |
 | `edge_chirality.py` | ~1 min | rho_ab≈0.38202 (∋α), rho_ba≈0.61795 (∋1−α); 5 vs 6 edge states; stability ≤1e−15; interior IDS diff = 1/N |
 | (edge scaling check) | inline in transcript | half-line IDS diff ×N ∈ {0.00, 1.00} at N=610..4181 |

@@ -1,11 +1,11 @@
-orbit states: 21
-Schreier stabilizer elements checked: 29
-per-slot inner(I)/outer(O) patterns found: {'IIII': 29}
-VERDICT: the index-2 extension acts with pattern(s): none found among sampled Schreier gens (all inner) — sample more
-
+27 minuscule weights rebuilt: 27
+slots: S0 (landing), S1, S2 orthogonal; cor basis fixed
+hypercharge directions recomputed: 18 (B1102/B1118 banked: 18)
+factor-preserving involutions: 128
+physical assignments collected: 36 (expect 36)
+SP-3: distinct (color,T3L,Y,Q) tables across all assignments: 1 (1 = invariant)
 SP-3: assignments with all five Y/Q anomaly traces zero: 36/36
 SP-1 (c5=1): B-L physical on ALL 27: True
 Tr(B-L) = 0   Tr(B-L)^3 = 0
 B-L = a*Y + b*T3R exactly? NO — independent third Cartan direction
 B-L in span{Y,T3R,T3L}? NO — genuinely fourth direction
-
