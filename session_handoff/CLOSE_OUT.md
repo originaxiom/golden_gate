@@ -104,7 +104,11 @@ ledger first — it is the best predictor of where a re-derivation should look h
 
 ## FOR THE BANKING SEAT — the close-out relay
 Pull `claude/paper-hostile-review-alero0` on `originaxiom/golden_gate`; everything is
-under `session_handoff/`. Suggested order: this file → `BANKING_HANDOFF.md` →
+under `session_handoff/`. **Read `CORPUS_ADOPTION_AUDIT.md` early**: it audits the
+corpus's B1138–B1142 adoptions of this bench's memos — four adoption-layer errors to
+correct corpus-side (two spurious errata, one false provenance record, one stale
+open-cell tag), each backed by a re-runnable computation or a git timestamp.
+Suggested order: this file → the audit → `BANKING_HANDOFF.md` →
 memos 28–29 with `certificates/spin_payment.py` (hardened) and `certificates/sp2_seat.py`
 → the open-cells list. Requested treatment, as always: independent re-derivation before
 banking; integrate-don't-merge; corrections in both directions filed at the point of
