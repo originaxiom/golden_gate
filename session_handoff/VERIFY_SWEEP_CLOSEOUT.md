@@ -1,5 +1,5 @@
 # CLOSE-OUT VERIFICATION SWEEP — every certificate re-run end-to-end, 2026-08-25
-## Run AFTER the self-containment surgery (paths made `__file__`-relative, dependency shipped), from a clean working directory, on the shipped files exactly as they sit in `certificates/`. Phase III diffed byte-wise against the banked `outputs/`; phase I checked against `VERIFY_MANIFEST.md`'s expected tails (phase-I outputs were never stored as files — they live in the manifest and the reports).
+## Run AFTER the self-containment surgery (paths made `__file__`-relative, dependency shipped), from a clean working directory, on the shipped files exactly as they sit in `certificates/`. Phase III diffed byte-wise against the banked `outputs/`; phase I checked against `VERIFY_MANIFEST.md`'s expected tails (phase-I outputs were never stored as files — they live in the manifest and the reports). **FINAL TALLY: 46/46 certificates ran, every mathematical verdict line reproduced; two file-level defects surfaced and fixed (below); zero banked claims touched.**
 
 ### Phase III — 29 certificates, 29 ran, ALL VERDICT LINES REPRODUCED
 | certificate | vs banked output |
@@ -52,7 +52,7 @@
   chirality index 0). Row rewritten to the script's actual output; the enumeration
   claim remains where it always lived (HANDOFF II.6 + transcript).
 
-### Phase I — 17 certificates, all ran to completion (exit 0 after the indep3 fix)
+### Phase I — 17 certificates, 17 ran to completion, ALL PASS (after the indep3 fix)
 | certificate | result |
 |---|---|
 | allbrackets | `dim z(C) = 12`, all brackets True — matches manifest |
@@ -70,8 +70,8 @@
 | physics1 | `27 = Sym^16 + Sym^8 + Sym^0 : True` — matches |
 | physics2 | h¹=1 per block, h¹(M;27∘ρ₀)=3 — matches |
 | sl3vacuum | Falbel-vacuum certificate reproduced (see manifest-accuracy fix above) |
-| twisted_double | RESULT PENDING AT WRITING — filled in below |
-| vertices2 | RESULT PENDING AT WRITING — filled in below |
+| twisted_double | 3003 brackets PASS, strings [16,8,0], h¹(M;27)=3, longitude `bABaaBAb` (trace −2 lift, off-diag 2√3·i), torus h⁰=3/h¹=6, mirror=Galois VERIFIED, MV rows reproduced, adjoint sweep closure 78 at ALL SIX (slot,t) cells — matches manifest |
+| vertices2 | all 8 involution/homomorphism PASS lines, m004 length spectrum reproduced, both tr=0 involution checks True, OVERALL PASS — matches |
 
 ### The sentence this file exists for
 After the record was made self-contained, **every certificate in the handoff was re-run
