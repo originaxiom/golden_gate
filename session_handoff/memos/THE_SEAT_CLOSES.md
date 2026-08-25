@@ -82,3 +82,20 @@ selected, functorially and with every sign exact, so the last named hinge of the
 generation's seat swings shut: the kinematic Standard Model picture is complete for
 beat-respecting observers, with dynamics, values, and the banking seat's hostile
 re-derivation as the three gates that remain.
+
+---
+
+### SCOPE ADDENDUM (adopted 2026-08-25, at B1145's banking; correction filed at point of occurrence)
+This memo is now TWO-BENCH (banking seat B1145: sealed prereg MATCH + primary-source
+re-run + adversarial own-code re-derivation) and its certificates were independently
+re-run by a fourth bench (the codex seat, OA-C1056: all 46 certificates reproduce).
+That fourth bench flagged, and this bench ADOPTS, a scope sharpening on the physical
+reading: **the A1 here is an su(2) INTERNAL to E₆ (centralizer su(6)) — it is not the
+4d Lorentz group.** What is proven is exactly what the certificate computes: the exact
+algebraic closure (relator +I, Ω² = A₂₇, both intertwinings) of the beat on the
+fermion-capable internal stratum over the selected χ = +1 lift. What is NOT proven by
+this result alone: a 4d Weyl spinor, a Pin structure on spacetime, a Dirac index, 4d
+chirality, or three physical generations. "The generation's kinematic seat closes" is
+the programme's THESIS reading of the exact algebra — the internal→spacetime bridge
+(the E₆(−26) branch, memo 27 / B1140) remains the unpaid verb, and the memo's own
+"What is NOT claimed" section should be read as including it explicitly.
